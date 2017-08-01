@@ -1,0 +1,204 @@
+DROP DATABASE dboracle;
+CREATE DATABASE dboracle;
+
+USE dboracle;
+
+
+
+/*  ######################
+Defects table to insert transaction data */
+
+CREATE TABLE defects(
+id int NOT NULL AUTO_INCREMENT,
+machineNo VARCHAR (100),
+dt VARCHAR (100),
+status INT,
+a1 INT,
+a2 INT,
+a3 INT,
+b1 INT,
+b2 INT,
+c1 INT,
+c2 INT,
+d INT,
+dj INT,
+f INT,
+f1 INT,
+g1 INT,
+g2 INT,
+g3 INT,
+g4 INT,
+h1 INT,
+h2 INT,
+total INT,
+
+PRIMARY KEY (id)
+)Engine=InnoDB;
+
+/* ######################
+defecttypes includes defects like frayed yearn and drop stitch */
+
+
+/* DROP TABLE defecttypes; */
+
+
+CREATE TABLE defecttypes(
+defecttypeid int NOT NULL,
+defecttype VARCHAR (50),
+notifyinguserid1 int,
+defectcountmargin1 int,
+notifyinguserid2 int,
+defectcountmargin2 int,
+notifyinguserid3 int,
+defectcountmargin3 int,
+notifyinguserid4 int,
+defectcountmargin4 int,
+PRIMARY KEY (defecttypeid)
+)Engine=InnoDB;
+
+
+/* ######################
+defect status includes three types of status i.e Good,Reject,Rework */
+
+/* DROP TABLE defectstatus; */
+
+/*
+CREATE TABLE defectstatus(
+defectstatusid int NOT NULL,
+status VARCHAR (20),
+
+PRIMARY KEY (defectstatusid)
+)Engine=InnoDB;
+
+INSERT INTO defectstatus (defectstatusid, status)
+VALUES (0, "Good");
+
+INSERT INTO defectstatus (defectstatusid, status)
+VALUES (1, "Rework");
+
+INSERT INTO defectstatus (defectstatusid, status)
+VALUES (2, "Reject");
+
+*/
+
+
+
+/* ######################
+Downtime types includes four types of downtimes i.e technical,changeover,other and operational  */
+
+/* DROP TABLE downtimetypes; 
+
+
+
+CREATE TABLE downtimetypes(
+typeid int NOT NULL,
+type VARCHAR (20),
+
+PRIMARY KEY (typeid)
+)Engine=InnoDB;
+
+INSERT INTO downtimetypes (typeid, type)
+VALUES (1, "technical");
+
+INSERT INTO downtimetypes (typeid, type)
+VALUES (2, "operational");
+
+INSERT INTO downtimetypes (typeid, type)
+VALUES (3, "changeover");
+
+INSERT INTO downtimetypes (typeid, type)
+VALUES (4, "other");
+
+*/
+
+/* ######################
+QA Evaluation 3 evaluation types i.e 0=QA not checked,1=QA approved,2=QA rejected  */
+
+/* DROP TABLE qatypes; */
+
+/*
+
+CREATE TABLE qatypes(
+qatypeid int NOT NULL,
+evaluation VARCHAR (20),
+
+PRIMARY KEY (qatypeid)
+)Engine=InnoDB;
+
+INSERT INTO qatypes (qatypeid, evaluation)
+VALUES (0, "QA not checked");
+
+INSERT INTO qatypes (qatypeid, evaluation)
+VALUES (1, "QA approved");
+
+INSERT INTO qatypes (qatypeid, evaluation)
+VALUES (2, "QA rejected");
+
+*/
+
+/* ######################
+NotifyingUsers includes users infrrmation who will be sent notfications */
+
+/* DROP TABLE notifyingusers; */
+
+CREATE TABLE notifyingusers(
+notifyinguserid int NOT NULL AUTO_INCREMENT,
+username VARCHAR (50),
+contactnumber VARCHAR (50),
+email VARCHAR (50),
+PRIMARY KEY (notifyinguserid)
+)Engine=InnoDB;
+
+/* ######################
+userhasdefectdurations includes notification time intervals for each defect for a particular user  */
+
+/* DROP TABLE userhasdefectdurations; 
+
+CREATE TABLE userhasdefectdurations(
+notifyinguserid int NOT NULL,
+defecttypeid int NOT NULL,
+duration int,
+PRIMARY KEY (notifyinguserid,defecttypeid),
+FOREIGN KEY (notifyinguserid) REFERENCES notifyingusers(notifyinguserid),
+FOREIGN KEY (defecttypeid) REFERENCES defecttypes(defecttypeid)
+)Engine=InnoDB;
+
+*/
+
+/* ######################
+Downtimecategory includes all possible downtimes like No reason selected and Vector error */
+
+/* DROP TABLE downtimereason; */
+
+CREATE TABLE downtimereason(
+downtimeid int NOT NULL,
+description VARCHAR (50),
+downtimetype VARCHAR (50),
+notifyinguserid1 int,
+downtimenotifytime1 int,
+notifyinguserid2 int,
+downtimenotifytime2 int,
+notifyinguserid3 int,
+downtimenotifytime3 int,
+notifyinguserid4 int,
+downtimenotifytime4 int,
+PRIMARY KEY (downtimeid)
+)Engine=InnoDB;
+
+/* ######################
+Downtimes includes downtime transaction records received from R-Pi */
+
+/* DROP TABLE downtimes; */
+
+CREATE TABLE downtimes(
+downtimeid int NOT NULL AUTO_INCREMENT,
+machineno VARCHAR (50),
+stoptime VARCHAR (50),
+starttime int,
+reason int,
+duration int,
+PRIMARY KEY (downtimeid)
+)Engine=InnoDB;
+
+
+
