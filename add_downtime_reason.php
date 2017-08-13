@@ -1,6 +1,8 @@
 <?php
 
 include("connect.php");
+
+//POST request
    	
 $link=Connection();
 
