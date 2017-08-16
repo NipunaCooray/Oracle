@@ -113,8 +113,7 @@ machineno VARCHAR (50),
 stoptime TIMESTAMP,
 starttime TIMESTAMP,
 reason VARCHAR(100),
-PRIMARY KEY (downtimeid),
-FOREIGN KEY (downtimetypeid) REFERENCES downtimereason(downtimeid)
+PRIMARY KEY (downtimeid)
 )Engine=InnoDB;
 
 

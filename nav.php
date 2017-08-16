@@ -77,7 +77,7 @@
 
      <li class="submenu"> <a href="#"><i class="icon icon-th-list"></i> <span>Manage planning data</span> </a>
       <ul>
-        <li><a href="#">Upload planning data</a></li>
+        <li><a href="upload_plan_ui.php">Upload planning data</a></li>
         <li><a href="#">View recent data</a></li>
       </ul>
     </li>
