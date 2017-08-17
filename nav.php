@@ -82,6 +82,16 @@
       </ul>
     </li>
 
+    <li class="submenu"> <a href="#"><i class="icon icon-th-list"></i> <span>IE Executive functions</span> </a>
+      <ul>
+        <li><a href="#">Add team members</a></li>
+        <li><a href="#">Setup tabs</a></li>
+        <li><a href="#">Assign tabs</a></li>
+      </ul>
+    </li>
+
+   
+
     
     <!-- <li class="content"> <span>Monthly Bandwidth Transfer</span>
       <div class="progress progress-mini progress-danger active progress-striped">

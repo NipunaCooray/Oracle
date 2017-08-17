@@ -1,7 +1,6 @@
 DROP DATABASE dboracle;
 CREATE DATABASE dboracle;
-
-USE dboracle;
+ 
 
 /*  ######################
 Defects table to insert transaction data */
@@ -9,7 +8,7 @@ Defects table to insert transaction data */
 CREATE TABLE defects(
 id int NOT NULL AUTO_INCREMENT,
 machineNo VARCHAR (100),
-dt VARCHAR (100),
+dt TIMESTAMP,
 status INT,
 A INT,
 A1 INT,
@@ -125,6 +124,17 @@ CREATE TABLE machinestatus(
 machineno VARCHAR (50) NOT NULL,
 status VARCHAR (50),
 PRIMARY KEY (machineno)
+)Engine=InnoDB;
+
+/* ######################
+Table to store android tokens*/
+
+/* DROP TABLE androidtokens; */
+CREATE TABLE androidtokens(
+tabid int NOT NULL AUTO_INCREMENT,
+token VARCHAR (300),
+PRIMARY KEY (tabid),
+UNIQUE KEY (token)
 )Engine=InnoDB;
 
 
