@@ -85,7 +85,7 @@
     <li class="submenu"> <a href="#"><i class="icon icon-th-list"></i> <span>IE Executive functions</span> </a>
       <ul>
         <li><a href="#">Add team members</a></li>
-        <li><a href="#">Setup tabs</a></li>
+        <li><a href="add_token_data_ui.php">Setup tabs</a></li>
         <li><a href="#">Assign tabs</a></li>
       </ul>
     </li>

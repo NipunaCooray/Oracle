@@ -15,11 +15,18 @@ $query = "INSERT INTO `downtimes` (`downtimetypeid`, `machineno`,`stoptime`, `st
 	VALUES ('".$downtimetypeid."','".$machineno."','".$stoptime."','".$starttime."','".$reason."')"; 
 	
 $result = mysql_query($query,$link) or die(mysql_error());
+
+
+
+
 mysql_close($link);
+
+$successMessage = "Successfully saved json";
 
 
 if ($result==1){
    echo "Successfully saved";
+   //echo json_encode(array("result"=>$successMessage));
 }else{
    echo $result;
 }
