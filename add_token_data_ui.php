@@ -126,7 +126,7 @@
                     <div class="control-group">
                       <label class="control-label">Firebase token:</label>
                       <div class="controls">
-                        <input type="text" class="span3" placeholder="Firebase token" id="tokenid" name="tokenid" />
+                        <input type="text" class="span11" placeholder="Firebase token" id="tokenid" name="tokenid" />
                       </div>
                     </div>
 
