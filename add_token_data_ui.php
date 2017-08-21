@@ -44,7 +44,16 @@
 
 <script src="js/jquery.min.js"></script> 
 
+<script type="text/javascript">
+   $(document).ready(function() {
+    
 
+    $.get("view_all_tokens.php",function(all_defects){
+      $("#defect_types").html(all_defects);
+    });
+  });
+
+</script>
 
 
 <script src="js/jquery.ui.custom.js"></script> 
@@ -159,6 +168,19 @@
  
                     </div>
                 </div> 
+
+                <div class ="row-fluid">
+                    <div class="span12"> 
+                      <div class="widget-content" id="defect_types">
+                        
+
+                      </div>
+
+                      
+
+ 
+                    </div>
+                </div>   
 
                
 
