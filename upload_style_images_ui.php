@@ -123,6 +123,7 @@
                 <form class="form-horizontal" id="fileUploadForm" action="#" method="post" enctype="multipart/form-data">
                     
                     
+
                     <div class="control-group">
                       <label class="control-label">Select image to upload:</label>
                       <div class="controls">
@@ -130,6 +131,7 @@
                       </div>
                     </div>
 
+           
   
                     <div class="form-actions">
                       <button  id="btnSave" type="submit" name="submit" class="btn btn-success">Upload</button>
@@ -166,6 +168,8 @@
         </div>
 
     </div>
+</div>
+</div>
 </div>
 
 <!--end-main-container-part-->
