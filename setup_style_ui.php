@@ -68,7 +68,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   
   <style>
-    #draggable { width: 50px; height: 50px; padding: 0.5em; }
+    #draggable { width: 30px; height: 30px;  }
   </style>
 
   <!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script> -->
@@ -416,6 +416,7 @@
   <div class="container-fluid">
   
     <?php include 'action_boxes.php';?>
+
 <!--End-Action boxes-->    
 
 
@@ -614,57 +615,57 @@
                     </div>
                 </div> 
 
+                <div class="row-fluid">
                 
+                  <div class="span8" id="screen">  
+
+                        <!-- Loading the area image icons -->
+
+                        <img id="imgA" src="AreaIcons/A.png" class="draggable" alt="" title=""  />
+                        <img id="imgA1" src="AreaIcons/A1.png" class="draggable" alt="" title=""  />
+                        <img id="imgA2" src="AreaIcons/A2.png" class="draggable" alt="" title=""  />
+                        <img id="imgB" src="AreaIcons/B.png" class="draggable" alt="" title=""  />
+                        <img id="imgB1" src="AreaIcons/B1.png" class="draggable" alt="" title=""  />
+                        <img id="imgB2" src="AreaIcons/B2.png" class="draggable" alt="" title=""  />
+                        <img id="imgB3" src="AreaIcons/B3.png" class="draggable" alt="" title=""  />
+                        <img id="imgB4" src="AreaIcons/B4.png" class="draggable" alt="" title=""  />
+                        <img id="imgB5" src="AreaIcons/B5.png" class="draggable" alt="" title=""  />
+                        <img id="imgB6" src="AreaIcons/B6.png" class="draggable" alt="" title=""  />
+                        <img id="imgC" src="AreaIcons/C.png" class="draggable" alt="" title=""  />
+                        <img id="imgC1" src="AreaIcons/C1.png" class="draggable" alt="" title=""  />
+                        <img id="imgC2" src="AreaIcons/C2.png" class="draggable" alt="" title=""  />
+                        <img id="imgE1" src="AreaIcons/E1.png" class="draggable" alt="" title=""  />
+                        <img id="imgE2" src="AreaIcons/E2.png" class="draggable" alt="" title=""  />
+                        <img id="imgH" src="AreaIcons/H.png" class="draggable" alt="" title=""  />
+                        <img id="imgH1" src="AreaIcons/H1.png" class="draggable" alt="" title=""  />
+                        <img id="imgH2" src="AreaIcons/H2.png" class="draggable" alt="" title=""  />
+                        <img id="imgH3" src="AreaIcons/H3.png" class="draggable" alt="" title=""  />
+                        <img id="imgH4" src="AreaIcons/H4.png" class="draggable" alt="" title=""  />
+                        <img id="imgS1" src="AreaIcons/S1.png" class="draggable" alt="" title=""  />
+                        <img id="imgS2" src="AreaIcons/S2.png" class="draggable" alt="" title=""  />
+                        <img id="imgS3" src="AreaIcons/S3.png" class="draggable" alt="" title=""  />
+                        <img id="imgS4" src="AreaIcons/S4.png" class="draggable" alt="" title=""  />
+                        <img id="imgT" src="AreaIcons/T.png" class="draggable" alt="" title=""  />
+                        <img id="imgTT" src="AreaIcons/TT.png" class="draggable" alt="" title=""  />
+                        <img id="imgV1" src="AreaIcons/V1.png" class="draggable" alt="" title=""  />
+                        <img id="imgV2" src="AreaIcons/V2.png" class="draggable" alt="" title=""  />
+                        <img id="imgV3" src="AreaIcons/V3.png" class="draggable" alt="" title=""  />
+                        <img id="imgV4" src="AreaIcons/V4.png" class="draggable" alt="" title=""  />
+   
+                        <!-- <img id="productid_2" src="icon.png" class="draggable" alt="" title="" /> -->
+
+                    
+                  </div> 
                 
-                <div class="span8">  
-                  <div id="screen">
-
-            
-                      <!-- Loading the area image icons -->
-
-                      <img id="imgA" src="AreaIcons/A.png" class="draggable" alt="" title=""  />
-                      <img id="imgA1" src="AreaIcons/A1.png" class="draggable" alt="" title=""  />
-                      <img id="imgA2" src="AreaIcons/A2.png" class="draggable" alt="" title=""  />
-                      <img id="imgB" src="AreaIcons/B.png" class="draggable" alt="" title=""  />
-                      <img id="imgB1" src="AreaIcons/B1.png" class="draggable" alt="" title=""  />
-                      <img id="imgB2" src="AreaIcons/B2.png" class="draggable" alt="" title=""  />
-                      <img id="imgB3" src="AreaIcons/B3.png" class="draggable" alt="" title=""  />
-                      <img id="imgB4" src="AreaIcons/B4.png" class="draggable" alt="" title=""  />
-                      <img id="imgB5" src="AreaIcons/B5.png" class="draggable" alt="" title=""  />
-                      <img id="imgB6" src="AreaIcons/B6.png" class="draggable" alt="" title=""  />
-                      <img id="imgC" src="AreaIcons/C.png" class="draggable" alt="" title=""  />
-                      <img id="imgC1" src="AreaIcons/C1.png" class="draggable" alt="" title=""  />
-                      <img id="imgC2" src="AreaIcons/C2.png" class="draggable" alt="" title=""  />
-                      <img id="imgE1" src="AreaIcons/E1.png" class="draggable" alt="" title=""  />
-                      <img id="imgE2" src="AreaIcons/E2.png" class="draggable" alt="" title=""  />
-                      <img id="imgH" src="AreaIcons/H.png" class="draggable" alt="" title=""  />
-                      <img id="imgH1" src="AreaIcons/H1.png" class="draggable" alt="" title=""  />
-                      <img id="imgH2" src="AreaIcons/H2.png" class="draggable" alt="" title=""  />
-                      <img id="imgH3" src="AreaIcons/H3.png" class="draggable" alt="" title=""  />
-                      <img id="imgH4" src="AreaIcons/H4.png" class="draggable" alt="" title=""  />
-                      <img id="imgS1" src="AreaIcons/S1.png" class="draggable" alt="" title=""  />
-                      <img id="imgS2" src="AreaIcons/S2.png" class="draggable" alt="" title=""  />
-                      <img id="imgS3" src="AreaIcons/S3.png" class="draggable" alt="" title=""  />
-                      <img id="imgS4" src="AreaIcons/S4.png" class="draggable" alt="" title=""  />
-                      <img id="imgT" src="AreaIcons/T.png" class="draggable" alt="" title=""  />
-                      <img id="imgTT" src="AreaIcons/TT.png" class="draggable" alt="" title=""  />
-                      <img id="imgV1" src="AreaIcons/V1.png" class="draggable" alt="" title=""  />
-                      <img id="imgV2" src="AreaIcons/V2.png" class="draggable" alt="" title=""  />
-                      <img id="imgV3" src="AreaIcons/V3.png" class="draggable" alt="" title=""  />
-                      <img id="imgV4" src="AreaIcons/V4.png" class="draggable" alt="" title=""  />
- 
-                      <!-- <img id="productid_2" src="icon.png" class="draggable" alt="" title="" /> -->
-
+                  <div class="span4">
+                    <button  id="findpos"  name="findpos" class="btn btn-success">Find positions</button>
                   </div>
-                </div> 
-                
-                <div class="span4">
-                  <button  id="findpos"  name="findpos" class="btn btn-success">Find positions</button>
+
                 </div>
 
                  
 
-                </div>
+            </div>
                
  
 
