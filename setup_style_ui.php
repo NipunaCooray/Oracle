@@ -768,15 +768,218 @@ $("#btnSetImage").click(function(event){
   var data = new FormData(form);
 
   var A = $("#imgA").offset(); 
-
   var A_x = findRelativePosition_x(A.left);
   var A_y = findRelativePosition_y(A.top);
 
-  alert(A_x);
-  alert(A_y);
+  var A1 = $("#imgA1").offset(); 
+  var A1_x = findRelativePosition_x(A1.left);
+  var A1_y = findRelativePosition_y(A1.top);
+
+  var A2 = $("#imgA2").offset(); 
+  var A2_x = findRelativePosition_x(A2.left);
+  var A2_y = findRelativePosition_y(A2.top);
+
+  var B = $("#imgB").offset(); 
+  var B_x = findRelativePosition_x(B.left);
+  var B_y = findRelativePosition_y(B.top);
+
+  var B1 = $("#imgB1").offset(); 
+  var B1_x = findRelativePosition_x(B1.left);
+  var B1_y = findRelativePosition_y(B1.top);
+
+  var B2 = $("#imgB2").offset(); 
+  var B2_x = findRelativePosition_x(B2.left);
+  var B2_y = findRelativePosition_y(B2.top);
+
+  var B3 = $("#imgB3").offset(); 
+  var B3_x = findRelativePosition_x(B3.left);
+  var B3_y = findRelativePosition_y(B3.top);
+
+  var B4 = $("#imgB4").offset(); 
+  var B4_x = findRelativePosition_x(B4.left);
+  var B4_y = findRelativePosition_y(B4.top);
+
+  var B5 = $("#imgB5").offset(); 
+  var B5_x = findRelativePosition_x(B5.left);
+  var B5_y = findRelativePosition_y(B5.top);
+
+  var B6 = $("#imgB6").offset(); 
+  var B6_x = findRelativePosition_x(B6.left);
+  var B6_y = findRelativePosition_y(B6.top);
+
+  var C = $("#imgC").offset(); 
+  var C_x = findRelativePosition_x(C.left);
+  var C_y = findRelativePosition_y(C.top);
+
+  var C1 = $("#imgC1").offset(); 
+  var C1_x = findRelativePosition_x(C1.left);
+  var C1_y = findRelativePosition_y(C1.top);
+
+  var C2 = $("#imgC2").offset(); 
+  var C2_x = findRelativePosition_x(C2.left);
+  var C2_y = findRelativePosition_y(C2.top);
+
+  var E1 = $("#imgE1").offset(); 
+  var E1_x = findRelativePosition_x(E1.left);
+  var E1_y = findRelativePosition_y(E1.top);
+
+  var E2 = $("#imgE2").offset(); 
+  var E2_x = findRelativePosition_x(E2.left);
+  var E2_y = findRelativePosition_y(E2.top);
+
+  var H = $("#imgH").offset(); 
+  var H_x = findRelativePosition_x(H.left);
+  var H_y = findRelativePosition_y(H.top);
+
+  var H1 = $("#imgH1").offset(); 
+  var H1_x = findRelativePosition_x(H1.left);
+  var H1_y = findRelativePosition_y(H1.top);
+
+  var H2 = $("#imgH2").offset(); 
+  var H2_x = findRelativePosition_x(H2.left);
+  var H2_y = findRelativePosition_y(H2.top);
+
+  var H3 = $("#imgH3").offset(); 
+  var H3_x = findRelativePosition_x(H3.left);
+  var H3_y = findRelativePosition_y(H3.top);
+
+  var H4 = $("#imgH4").offset(); 
+  var H4_x = findRelativePosition_x(H4.left);
+  var H4_y = findRelativePosition_y(H4.top);
+
+  var S1 = $("#imgS1").offset(); 
+  var S1_x = findRelativePosition_x(S1.left);
+  var S1_y = findRelativePosition_y(S1.top);
+
+  var S2 = $("#imgS2").offset(); 
+  var S2_x = findRelativePosition_x(S2.left);
+  var S2_y = findRelativePosition_y(S2.top);
+
+  var S3 = $("#imgS3").offset(); 
+  var S3_x = findRelativePosition_x(S3.left);
+  var S3_y = findRelativePosition_y(S3.top);
+
+  var S4 = $("#imgS4").offset(); 
+  var S4_x = findRelativePosition_x(S4.left);
+  var S4_y = findRelativePosition_y(S4.top);
+
+  var T = $("#imgT").offset(); 
+  var T_x = findRelativePosition_x(T.left);
+  var T_y = findRelativePosition_y(T.top);
+
+  var TT = $("#imgTT").offset(); 
+  var TT_x = findRelativePosition_x(TT.left);
+  var TT_y = findRelativePosition_y(TT.top);
+
+  var V1 = $("#imgV1").offset(); 
+  var V1_x = findRelativePosition_x(V1.left);
+  var V1_y = findRelativePosition_y(V1.top);
+
+  var V2 = $("#imgV2").offset(); 
+  var V2_x = findRelativePosition_x(V2.left);
+  var V2_y = findRelativePosition_y(V2.top);
+
+  var V3 = $("#imgV3").offset(); 
+  var V3_x = findRelativePosition_x(V3.left);
+  var V3_y = findRelativePosition_y(V3.top);
+
+  var V4 = $("#imgV4").offset(); 
+  var V4_x = findRelativePosition_x(V4.left);
+  var V4_y = findRelativePosition_y(V4.top);
+
+
+  //Appending data to the POST request
 
   data.append("A_x", A_x);
   data.append("A_y", A_y);
+  
+  data.append("A1_x", A1_x);
+  data.append("A1_y", A1_y);
+  
+  data.append("A2_x", A2_x);
+  data.append("A2_y", A2_y);
+
+  data.append("B_x", B_x);
+  data.append("B_y", B_y);
+
+  data.append("B1_x", B1_x);
+  data.append("B1_y", B1_y);
+
+  data.append("B2_x", B2_x);
+  data.append("B2_y", B2_y);
+
+  data.append("B3_x", B3_x);
+  data.append("B3_y", B3_y);
+
+  data.append("B4_x", B4_x);
+  data.append("B4_y", B4_y);
+
+  data.append("B5_x", B5_x);
+  data.append("B5_y", B5_y);
+
+  data.append("B6_x", B6_x);
+  data.append("B6_y", B6_y);
+
+  data.append("C_x", C_x);
+  data.append("C_y", C_y);
+
+  data.append("C1_x", C1_x);
+  data.append("C1_y", C1_y);
+
+  data.append("C2_x", C2_x);
+  data.append("C2_y", C2_y);
+
+  data.append("E1_x", E1_x);
+  data.append("E1_y", E1_y);
+
+  data.append("E2_x", E2_x);
+  data.append("E2_y", E2_y);
+
+  data.append("H_x", H_x);
+  data.append("H_y", H_y);
+
+  data.append("H1_x", H1_x);
+  data.append("H1_y", H1_y);
+
+  data.append("H2_x", H2_x);
+  data.append("H2_y", H2_y);
+
+  data.append("H3_x", H3_x);
+  data.append("H3_y", H3_y);
+
+  data.append("H4_x", H4_x);
+  data.append("H4_y", H4_y);
+
+  data.append("S1_x", S1_x);
+  data.append("S1_y", S1_y);
+
+  data.append("S2_x", S2_x);
+  data.append("S2_y", S2_y);
+
+  data.append("S3_x", S3_x);
+  data.append("S3_y", S3_y);
+
+  data.append("S4_x", S4_x);
+  data.append("S4_y", S4_y);
+
+  data.append("T_x", T_x);
+  data.append("T_y", T_y);
+
+  data.append("TT_x", TT_x);
+  data.append("TT_y", TT_y);
+
+  data.append("V1_x", V1_x);
+  data.append("V1_y", V1_y);
+
+  data.append("V2_x", V2_x);
+  data.append("V2_y", V2_y);
+
+  data.append("V3_x", V3_x);
+  data.append("V3_y", V3_y);
+
+  data.append("V4_x", V4_x);
+  data.append("V4_y", V4_y);
+
 
   // disabled the submit button
   $("#btnSetImage").prop("disabled", true);
