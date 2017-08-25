@@ -141,8 +141,8 @@ UNIQUE KEY (token)
 /* ######################
 Table to store style configuration data i.e area location*/
 
-/* DROP TABLE styleData; */
-CREATE TABLE styleData(
+/* DROP TABLE styledata; */
+CREATE TABLE styledata(
 styleNumber VARCHAR (300) NOT NULL ,
 imageLocation VARCHAR (500) NOT NULL,
 A_x  float(4,2),
