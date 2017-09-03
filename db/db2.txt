@@ -210,5 +210,22 @@ UNIQUE KEY (imageLocation)
 )Engine=InnoDB;
 
 
+/* ######################
+Table to store Planning data*/
 
+/* DROP TABLE planningdata; */
+CREATE TABLE planningdata(
+id int NOT NULL AUTO_INCREMENT,
+styleNumber VARCHAR (300) NOT NULL,
+salesOrder VARCHAR (50),
+lineItem int,
+sideAndColor  VARCHAR (50),
+machineNumber VARCHAR (50),
+orderStart TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+orderEnd TIMESTAMP NOT NULL,
+plannedQuantity int,
+size float(4,2),
+section VARCHAR (50),
+PRIMARY KEY (id)
+)Engine=InnoDB;
 

@@ -99,6 +99,8 @@
     <div class="span12">
 
         <div class="widget-box">
+
+           
           
             <div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
               <h5>Upload planning data</h5>
@@ -109,7 +111,12 @@
 
                 <form class="form-horizontal" id="fileUploadForm" >
                     
-
+                     <div class="control-group">
+                      <label class="control-label">Style number:</label>
+                      <div class="controls">
+                        <input type="text" class="span3" placeholder="Enter exact style number !" id="styleNumber" name="styleNumber" />
+                      </div>
+                    </div>
                      
                     
                     <div class="control-group">
@@ -212,7 +219,9 @@ function resetMenu() {
         var data = new FormData(form);
 
     // If you want to add an extra field for the FormData
-        data.append("CustomField", "This is some extra data, testing");
+        var styleNumber = $("#styleNumber").val(); 
+
+        data.append("styleNumber", styleNumber);
 
     // disabled the submit button
         $("#btnSave").prop("disabled", true);
