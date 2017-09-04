@@ -226,6 +226,7 @@ orderEnd TIMESTAMP NOT NULL,
 plannedQuantity int,
 size float(4,2),
 section VARCHAR (50),
+orderState VARCHAR(10) DEFAULT 'incomplete',
 PRIMARY KEY (id)
 )Engine=InnoDB;
 

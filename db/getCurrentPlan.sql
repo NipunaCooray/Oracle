@@ -1,0 +1,1 @@
+SELECT * FROM planningdata Where planningdata.orderState='incomplete' and planningdata.machineNumber = 'X23' ORDER BY planningdata.orderStart ASC,planningdata.orderEnd ASC LIMIT 1
