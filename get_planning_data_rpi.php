@@ -26,15 +26,15 @@ if($security_key == "12345"){
 		   $ongoingID = $row[0];
 		}
 
-		echo "OngoingID : ".$ongoingID;
+		//echo "OngoingID : ".$ongoingID;
 
 		$updateQuery = "UPDATE planningdata SET planningdata.orderState='complete' WHERE planningdata.id= '".$ongoingID."' ";
 		$updateQueryResult = mysql_query($updateQuery,$link) or die(mysql_error());
 
 		if ($updateQueryResult==1){
-			echo "Successfully updated ongoing to complete";
+			//echo "Successfully updated ongoing to complete";
 		}else{
-			echo $updateQueryResult;
+			//echo $updateQueryResult;
 		}
 
 
@@ -61,9 +61,9 @@ if($security_key == "12345"){
 		$updateNextPlanQueryResult = mysql_query($updateNextPlanQuery,$link) or die(mysql_error());
 
 		if ($updateNextPlanQueryResult==1){
-			echo "Successfully updated incomplete to ongoing";
+			//echo "Successfully updated incomplete to ongoing";
 		}else{
-			echo $updateNextPlanQueryResult;
+			//echo $updateNextPlanQueryResult;
 		}
 
 		mysql_free_result($nextPlan);
@@ -105,9 +105,9 @@ if($security_key == "12345"){
 			$updateNextPlanQueryResult = mysql_query($updateNextPlanQuery,$link) or die(mysql_error());
 
 			if ($updateNextPlanQueryResult==1){
-				echo "Successfully updated incomplete to ongoing";
+				//echo "Successfully updated incomplete to ongoing";
 			}else{
-				echo $updateNextPlanQueryResult;
+				//echo $updateNextPlanQueryResult;
 			}
 
 			mysql_free_result($nextPlan);
@@ -123,7 +123,6 @@ if($security_key == "12345"){
 
 		mysql_free_result($currentPlan);
 
-		
 	}
 
 	

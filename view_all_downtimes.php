@@ -13,14 +13,14 @@
 
 	$link=Connection();
 
-	$alldowntimes=mysql_query("SELECT * FROM `downtimes`",$link);
+	$alldowntimes=mysql_query("SELECT * FROM `downtimes` ORDER BY downtimes.downtimeid DESC",$link);
 
 
 	echo '<table class="table table-bordered"> ';
 	echo "<tr>
 	<th>ID</th>
 	<th>TypeID</th>
-	<th>M.N</th>
+	<th>Machine no</th>
 	<th>StopTime</th>
 	<th>StartTime</th>
 	<th>Reason</th>

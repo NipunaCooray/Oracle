@@ -13,17 +13,17 @@
 
 	$link=Connection();
 
-	$alldefects=mysql_query("SELECT * FROM `defects`",$link);
+	$alldefects=mysql_query("SELECT * FROM `defects` ORDER BY defects.id DESC",$link);
 
 
-	echo '<table class="table table-bordered"> ';
-	echo "<tr>
-	<th>ID</th>
-	<th>M.N</th>
-	<th>dt</th>
-	<th>status</th>
+	echo '<table class="table table-bordered table-responsive"> ';
+	echo '<thead> <tr>
+	<th class="col-md-1">ID</th>
+	<th class="col-md-3">Machine no</th>
+	<th class="col-md-3">Date and time</th>
+	<th class="col-md-3">Status</th>
 
-	</tr>";
+	</tr> </thead>';
 
 	if($alldefects === FALSE) { 
     	die(mysql_error()); // TODO: better error handling
