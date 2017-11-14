@@ -52,7 +52,7 @@
 
 
 
-	$message = array("message" => " FCM PUSH NOTIFICATION TEST MESSAGE");
+	$message = array("machine" => "A001","type" => "defect","timestamp" => "20170927");
 	$message_status = send_notification($tokens, $message);
 	echo $message_status;
 
