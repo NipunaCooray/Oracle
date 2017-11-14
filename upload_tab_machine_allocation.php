@@ -44,25 +44,29 @@
   		$row = 0;
 		if (($handle = fopen($_FILES['fileToUpload']['tmp_name'], "r")) !== FALSE) {
 		    while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
-		        if($row == 1){ $row++; continue; }
+		        //if($row == 1){ $row++; continue; }
 		        $num = count($data);
-		        echo "<p> $num fields in line $row: <br /></p>\n";
+		        //echo "<p> $num fields in line $row: <br /></p>\n";
 		        $row++;
 
                 $dbData = array();
 
 		        for ($c=0; $c < $num; $c++) {
                     //echo $styleNumber;
-		            echo $data[$c] . "<br />\n";
+
+		            echo $data[$c] . " ";
 
                     $dbData[$c] = $data[$c];
-
 		        }
+                echo "<br/>";
+
+
+
                 // $query = "INSERT INTO `planningdata` (`styleNumber`,`salesOrder`,`lineItem`,`sideAndColor`,`machineNumber`,`orderStart`,`orderEnd`,`plannedQuantity`,`size`,`section` ) 
                 //         VALUES ('".$styleNumber."','". $dbData[0]."' ,'". $dbData[1]."','". $dbData[2]."','". $dbData[3]."','". $dbData[4]."','". $dbData[5]."','". $dbData[6]."','". $dbData[7]."','". $dbData[8]."')"; 
         
                 // $result = mysql_query($query,$link) or die(mysql_error());
-                $numberOfResults = $numberOfResults + $result;
+                //$numberOfResults = $numberOfResults + $result;
 
 		    }
             mysql_close($link);
@@ -70,7 +74,7 @@
 		}
 	}
     
-    echo $numberOfResults. ' records has been saved';
+    //echo $numberOfResults. ' records has been saved';
   
     // Check if $uploadOk is set to 0 by an error
     // if ($uploadOk == 0) {
