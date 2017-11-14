@@ -86,7 +86,7 @@
       <ul>
         <li><a href="#">Add team members</a></li>
         <li><a href="add_token_data_ui.php">Setup tabs</a></li>
-        <li><a href="#">Assign tabs</a></li>
+        <li><a href="setup_tabs_ui.php">Assign tabs</a></li>
       </ul>
     </li>
 
