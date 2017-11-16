@@ -7,6 +7,8 @@ include("connect.php");
       
 $link=Connection();
 
+
+
 $machineNo = isset($_POST['machineNo']) ? $_POST['machineNo'] : null;
 $dt = isset($_POST['dt']) ? $_POST['dt'] : null;
 $status = isset($_POST['status']) ? $_POST['status'] : null;
@@ -47,12 +49,29 @@ $total = isset($_POST['total']) ? $_POST['total'] : null;
          VALUES ('".$machineNo."','".$dt."','".$status."','".$A."','".$A1."','".$A2."','".$B."','".$B1."','".$B2."','".$B3."','".$B4."','".$B5."','".$B6."','".$C."','".$C1."','".$C2."','".$E1."','".$E2."','".$H."','".$H1."','".$H2."','".$H3."','".$H4."','".$S1."','".$S2."','".$S3."','".$S4."','".$T."','".$TT."','".$V1."','".$V2."','".$V3."','".$V4."','".$total."')"; 
          
 $result = mysql_query($query,$link) or die(mysql_error());
-mysql_close($link);
+
 
 if ($result==1){
    echo "Successfully saved";
 }else{
    echo $result;
 }
+
+//TO:DO Update knitted quantity of the "ongoing" record of the "machineNo"
+
+if($status=="Good"){
+	$updateKnittingQuantity = "UPDATE `planningdata` SET planningdata.knittedQuantity= planningdata.knittedQuantity+1 WHERE planningdata.machineNumber= '".$machineNo."' AND planningdata.orderState= 'ongoing' " ;
+
+	$updateQueryResult = mysql_query($updateKnittingQuantity,$link) or die(mysql_error());
+
+	if ($updateQueryResult==1){
+		echo "Successfully updated knitting + 1";
+	}else{
+		echo $updateQueryResult;
+	}
+}
+
+mysql_close($link);
+
 
 ?>

@@ -39,9 +39,34 @@
     $numberOfResults = 0;
 
     if($uploadOk == 1) {
+
+
+
+         //Need to check whether added TabID's are valid
+        $allTabIDsResult = mysql_query(" SELECT tabid FROM `androidtokens` ",$link);
+
+        if($allTabIDsResult === FALSE) { 
+            die(mysql_error()); // TODO: better error handling
+        }
+
+        $TabIDList = array();
+
+        $index = 0;
+        while($singleID = mysql_fetch_array($allTabIDsResult)){ 
+
+             $TabIDList[$index] = $singleID["tabid"];
+
+             $index++;
+        }
+
+        echo "Printing tab id list :";
+
+        print_r($TabIDList);
+
+        echo "<br/>";
  
         
-  		$row = 0;
+  		$row = 1;
 		if (($handle = fopen($_FILES['fileToUpload']['tmp_name'], "r")) !== FALSE) {
 		    while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
 		        //if($row == 1){ $row++; continue; }
@@ -65,24 +90,8 @@
                     $dbData[$c] = "null";
                 }
 
-                //Need to check whether added TabID's are valid
-                $allTabIDsResult = mysql_query(" SELECT tabid FROM `androidtokens` ",$link);
-
-                if($allTabIDsResult === FALSE) { 
-                    die(mysql_error()); // TODO: better error handling
-                }
-
-                $TabIDList = array();
-
-                $index = 0;
-                while($singleID = mysql_fetch_array($allTabIDsResult)){ 
-
-                     $TabIDList[$index] = $singleID;
-
-                     $index++;
-                }
-
-                print_r($TabIDList);
+                echo "Printing dbData[0] :".$dbData[0]."<br/>";
+               
 
                 if (in_array($dbData[0], $TabIDList)){
                         $query = "INSERT INTO `tabmachineallocation` (`tabid`,`machine1`,`machine2`,`machine3`,`machine4`,`machine5`,`machine6`,`machine7`,`machine8`, `machine9`, `machine10`) 
@@ -90,8 +99,11 @@
         
                     $result = mysql_query($query,$link) or die(mysql_error());
                     $numberOfResults = $numberOfResults + $result;
+                    //echo "Match found<br>";
+
+
                 }else{
-                    echo "Invalid Tab IDs \n";
+                    echo "Invalid Tab IDs <br/>";
                 }
 
 

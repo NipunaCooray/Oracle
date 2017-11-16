@@ -1,4 +1,3 @@
-
 <?php
   session_start();
   if (empty($_SESSION['username'])) {
@@ -45,7 +44,16 @@
 
 <script src="js/jquery.min.js"></script> 
 
+<script type="text/javascript">
+   $(document).ready(function() {
+    
 
+    $.get("#",function(all_defects){
+      $("#defect_types").html(all_defects);
+    });
+  });
+
+</script>
 
 
 <script src="js/jquery.ui.custom.js"></script> 
@@ -81,7 +89,7 @@
 
 <!--breadcrumbs-->
   <div id="content-header">
-    <div id="breadcrumb"> <a href="index.php" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="#" class="current">Setup tabs</a> </div>
+    <div id="breadcrumb"> <a href="index.php" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="#" class="current">Add defect types</a> </div>
     
   </div>
 <!--End-breadcrumbs-->
@@ -89,7 +97,8 @@
 <!--Action boxes-->
   <div class="container-fluid">
   
-    <?php include 'action_boxes.php';?>
+  <?php include 'action_boxes.php';?>
+
 <!--End-Action boxes-->    
 
 
@@ -99,33 +108,45 @@
     <div class="span12">
 
         <div class="widget-box">
-
-           
           
             <div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
-              <h5>Upload tab-machine allocation (Select only a .csv file containing valid tab id's and machines to be allocated to them)</h5>
+              <h5>Add team members to the system</h5>
             </div>
-
-            
 
             <div class="widget-content nopadding">
                 
 
-                <form class="form-horizontal" id="fileUploadForm" >
+                <form class="form-horizontal" id="addTokensForm">
+
+                    <div class="control-group">
+                      <label class="control-label">EPF Number :</label>
+                      <div class="controls">
+                        <input type="text" class="span11" placeholder="EPF Number" id="epf_number" name="epf_number" />
+                      </div>
+                    </div>
+                    
                     
                     <div class="control-group">
-                      <label class="control-label">Select tab-machine alllocation:</label>
+                      <label class="control-label">Name :</label>
                       <div class="controls">
-                        <input type="file" name="fileToUpload" id="fileToUpload" >
+                        <input type="text" class="span11" placeholder="Team member name" id="member_name" name="member_name" />
+                      </div>
+                    </div>
+
+                    <div class="control-group">
+                      <label class="control-label">Name :</label>
+                      <div class="controls">
+                        <input type="text" class="span11" placeholder="Team member name" id="member_name" name="member_name" />
                       </div>
                     </div>
 
   
                     <div class="form-actions">
-                      <button  id="btnSave" type="submit" name="submit" class="btn btn-success">Upload</button>
+                      <button  id="btnSave" type="submit" name="submit" class="btn btn-success">Save</button>
                       <button  id="btnRefresh" type="reset" class="btn btn-success">Refresh</button>
                     </div>
-  
+                    
+                    
                 </form>
 
                 <!-- Error message area -->
@@ -137,6 +158,10 @@
                           
                         </div>
 
+                        <div id="noValues" class="alert alert-error"> <a class="close" data-dismiss="alert" href="#">×</a>
+                          Need to fill the firebase token id
+                        </div>
+
                         
 
                       </div>
@@ -145,13 +170,33 @@
                     </div>
                 </div> 
 
+                <div class ="row-fluid">
+                    <div class="span12"> 
+                      <div class="widget-content" id="defect_types">
+                        
+
+                      </div>
+
+                      
+
+ 
+                    </div>
+                </div>   
+
                
 
             </div>
+            
+           
+
 
         </div>
 
     </div>
+</div>
+
+</div>
+
 </div>
 
 <!--end-main-container-part-->
@@ -204,45 +249,49 @@ function resetMenu() {
         event.preventDefault();
 
         // Get form
-        var form = $('#fileUploadForm')[0];
+        var form = $('#addTokensForm')[0];
 
     // Create an FormData object
         var data = new FormData(form);
 
     // If you want to add an extra field for the FormData
-        // var styleNumber = $("#styleNumber").val(); 
-
-        // data.append("styleNumber", styleNumber);
+        data.append("CustomField", "This is some extra data, testing");
 
     // disabled the submit button
         $("#btnSave").prop("disabled", true);
 
-        $.ajax({
-            type: "POST",
-            enctype: 'multipart/form-data',
-            url: "upload_tab_machine_allocation.php",
-            data: data,
-            processData: false,
-            contentType: false,
-            cache: false,
-            timeout: 600000,
-            success: function (data) {
 
-                //$("#result").text(data);
-                $("#result").html(data).fadeIn();
-                console.log("SUCCESS : ", data);
-                $("#btnSave").prop("disabled", false);
+        if($("#tokenid").val() && $("#imei_number").val() ){
 
-            },
-            error: function (e) {
+            $.ajax({
+                type: "POST",
+                url: "add_token_data.php",
+                data: data,
+                processData: false,
+                contentType: false,
+                cache: false,
+                timeout: 600000,
+                success: function (data) {
 
-                // $("#result").text(e.responseText);
-                $("#result").html(data).fadeIn();
-                console.log("ERROR : ", e);
-                $("#btnSave").prop("disabled", false);
+                    //$("#result").text(data);
+                    $("#result").html(data).fadeIn();
+                    console.log("SUCCESS : ", data);
+                    $("#btnSave").prop("disabled", false);
 
-            }
-        });
+                },
+                error: function (e) {
+
+                    // $("#result").text(e.responseText);
+                    $("#result").html(data).fadeIn();
+                    console.log("ERROR : ", e);
+                    $("#btnSave").prop("disabled", false);
+
+                }
+  
+             });
+        }else{
+          $("#noValues").fadeIn();
+        }    
 
     });
 

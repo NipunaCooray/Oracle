@@ -117,6 +117,13 @@
                 
 
                 <form class="form-horizontal" id="addTokensForm">
+
+                    <div class="control-group">
+                      <label class="control-label">IMEI Number:</label>
+                      <div class="controls">
+                        <input type="text" class="span11" placeholder="IMEI number" id="imei_number" name="imei_number" />
+                      </div>
+                    </div>
                     
                     
                     <div class="control-group">
@@ -247,7 +254,7 @@ function resetMenu() {
         $("#btnSave").prop("disabled", true);
 
 
-        if($("#tokenid").val() ){
+        if($("#tokenid").val() && $("#imei_number").val() ){
 
             $.ajax({
                 type: "POST",

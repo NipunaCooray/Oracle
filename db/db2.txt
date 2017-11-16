@@ -132,9 +132,11 @@ Table to store android tokens*/
 /* DROP TABLE androidtokens; */
 CREATE TABLE androidtokens(
 tabid int NOT NULL AUTO_INCREMENT,
+imei_number VARCHAR (20),
 token VARCHAR (300),
 PRIMARY KEY (tabid),
-UNIQUE KEY (token)
+UNIQUE KEY (token),
+UNIQUE KEY (imei_number)
 )Engine=InnoDB;
 
 
@@ -224,6 +226,7 @@ machineNumber VARCHAR (50),
 orderStart TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 orderEnd TIMESTAMP NOT NULL,
 plannedQuantity int,
+knittedQuantity int DEFAULT 0,
 size float(4,2),
 section VARCHAR (50),
 orderState VARCHAR(10) DEFAULT 'incomplete',
