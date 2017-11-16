@@ -230,3 +230,24 @@ orderState VARCHAR(10) DEFAULT 'incomplete',
 PRIMARY KEY (id)
 )Engine=InnoDB;
 
+/* ######################
+Table to store TabMachineAllocation data*/
+
+/* DROP TABLE tabmachineallocation; */
+CREATE TABLE tabmachineallocation(
+id int NOT NULL AUTO_INCREMENT,
+timeadded TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+tabid int NOT NULL,
+machine1 VARCHAR (50) DEFAULT 'null',
+machine2 VARCHAR (50) DEFAULT 'null',
+machine3 VARCHAR (50) DEFAULT 'null',
+machine4 VARCHAR (50) DEFAULT 'null',
+machine5 VARCHAR (50) DEFAULT 'null',
+machine6 VARCHAR (50) DEFAULT 'null',
+machine7 VARCHAR (50) DEFAULT 'null',
+machine8 VARCHAR (50) DEFAULT 'null',
+machine9 VARCHAR (50) DEFAULT 'null',
+machine10 VARCHAR (50) DEFAULT 'null',
+PRIMARY KEY (id)
+)Engine=InnoDB;
+
