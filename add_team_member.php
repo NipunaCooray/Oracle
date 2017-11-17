@@ -64,11 +64,13 @@
 
         $epf_no = mysql_real_escape_string($_POST['epf_no']);
         $team_member_name = mysql_real_escape_string($_POST['team_member_name']);
+        $password = mysql_real_escape_string($_POST['password']);
         $shift = mysql_real_escape_string($_POST['shift']);
         $image_location = $target_file;
 
         echo $epf_no."<br/>";
         echo $team_member_name."<br/>";
+        echo $password."<br/>";
         echo $shift."<br/>";
         echo $image_location."<br/>";
 
@@ -78,8 +80,8 @@
 
 
 
-        $query = "INSERT INTO `team_members` (`epf_no`, `team_member_name`,`shift`,`image_location`) 
-         VALUES ('".$epf_no."','".$team_member_name."','".$shift."','".$image_location."')"; 
+        $query = "INSERT INTO `team_members` (`epf_no`, `team_member_name`, `password`,`shift`,`image_location`) 
+         VALUES ('".$epf_no."','".$team_member_name."','".$password."','".$shift."','".$image_location."')"; 
 
          $result = mysql_query($query,$link) or die(mysql_error());
         mysql_close($link);

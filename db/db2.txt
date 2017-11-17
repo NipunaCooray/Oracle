@@ -260,6 +260,7 @@ PRIMARY KEY (id)
 CREATE TABLE team_members(
 epf_no int NOT NULL,
 team_member_name VARCHAR(100),
+password VARCHAR(50),
 shift VARCHAR (50),
 image_location VARCHAR(100),
 PRIMARY KEY (epf_no)

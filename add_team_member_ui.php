@@ -133,6 +133,13 @@
                     </div>
 
                     <div class="control-group">
+                      <label class="control-label">Password:</label>
+                      <div class="controls">
+                        <input type="text" class="span3" placeholder="Password" id="password" name="password" />
+                      </div>
+                    </div>
+
+                    <div class="control-group">
                       <label class="control-label">Select downtime type:</label>
                         <div class="controls">
                            <select name="shift" class="form-control span3" id="shift">
@@ -173,7 +180,7 @@
                         </div>
 
                         <div id="noValues" class="alert alert-error"> <a class="close" data-dismiss="alert" href="#">×</a>
-                          Need to fill the firebase token id
+                          Need to fill all the values
                         </div>
 
                         
@@ -264,14 +271,17 @@ $("#btnSave").click(function (event) {
         // Get form
         var form = $('#fileUploadForm')[0];
 
-    // Create an FormData object
+        // Create an FormData object
         var data = new FormData(form);
 
-    // If you want to add an extra field for the FormData
+        // If you want to add an extra field for the FormData
         data.append("CustomField", "This is some extra data, testing");
 
-    // disabled the submit button
+        // disabled the submit button
         $("#btnSave").prop("disabled", true);
+
+
+         if($("#epf_no").val() && $("#team_member_name").val() && $("#password").val() && $("#shift").val() && $("#fileToUpload").val() ){
 
         $.ajax({
             type: "POST",
@@ -299,6 +309,16 @@ $("#btnSave").click(function (event) {
 
             }
         });
+
+
+      }else{
+
+
+        $("#noValues").fadeIn();
+      }
+
+
+      
 
   });
 
