@@ -48,8 +48,8 @@
    $(document).ready(function() {
     
 
-    $.get("#",function(all_defects){
-      // $("#defect_types").html(all_defects);
+    $.get("view_all_team_members.php",function(all_team_members){
+       $("#all_team_members").html(all_team_members);
     });
   });
 
@@ -193,7 +193,7 @@
 
                 <div class ="row-fluid">
                     <div class="span12"> 
-                      <div class="widget-content" id="defect_types">
+                      <div class="widget-content" id="all_team_members">
                         
 
                       </div>
