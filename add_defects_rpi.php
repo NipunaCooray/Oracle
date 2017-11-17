@@ -57,7 +57,7 @@ if ($result==1){
    echo $result;
 }
 
-//TO:DO Update knitted quantity of the "ongoing" record of the "machineNo"
+//Update knitted quantity of the "ongoing" record of the "machineNo"
 
 if($status=="Good"){
 	$updateKnittingQuantity = "UPDATE `planningdata` SET planningdata.knittedQuantity= planningdata.knittedQuantity+1 WHERE planningdata.machineNumber= '".$machineNo."' AND planningdata.orderState= 'ongoing' " ;
