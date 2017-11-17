@@ -310,6 +310,7 @@ $("#btnAdd").click(function(event){
   var area = $("#area").val();
   areaList.push(area);
   //alert("Pushing area "+area+" to area list");
+  $('#areaTable tr:last').after('<tr>...</tr><tr>...</tr>');
 
 });
 
