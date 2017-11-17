@@ -139,12 +139,12 @@
                     <div class="controls">
                      <select name="downtimetype" class="form-control" id="downtimetype">
 
-					    <option value="Technical">Technical</option>
-					    <option value="Operational">Operational</option>
-					    <option value="Changeover">Changeover</option>
-					    <option value="Other">Other</option>
-				    
-					</select>
+            					    <option value="Technical">Technical</option>
+            					    <option value="Operational">Operational</option>
+            					    <option value="Changeover">Changeover</option>
+            					    <option value="Other">Other</option>
+            				    
+            					</select>
 
                     </div>
                   </div>

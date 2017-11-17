@@ -11,8 +11,6 @@
           $contactnumber = mysql_real_escape_string($_GET['contactnumber']);
           $email = mysql_real_escape_string($_GET['email']);
 
-   	// $defectid=$_POST[defectid];
-   	// $defectname=$_POST[defectname];
      
 
    	   $query = "INSERT INTO `notifyingusers` (`username`, `contactnumber`,`email`) 

@@ -49,7 +49,7 @@
     
 
     $.get("#",function(all_defects){
-      $("#defect_types").html(all_defects);
+      // $("#defect_types").html(all_defects);
     });
   });
 
@@ -89,7 +89,7 @@
 
 <!--breadcrumbs-->
   <div id="content-header">
-    <div id="breadcrumb"> <a href="index.php" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="#" class="current">Add defect types</a> </div>
+    <div id="breadcrumb"> <a href="index.php" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="#" class="current">Add team members</a> </div>
     
   </div>
 <!--End-breadcrumbs-->
@@ -116,33 +116,47 @@
             <div class="widget-content nopadding">
                 
 
-                <form class="form-horizontal" id="addTokensForm">
-
-                    <div class="control-group">
-                      <label class="control-label">EPF Number :</label>
-                      <div class="controls">
-                        <input type="text" class="span11" placeholder="EPF Number" id="epf_number" name="epf_number" />
-                      </div>
-                    </div>
-                    
+                <form class="form-horizontal" id="fileUploadForm" action="#" method="post" enctype="multipart/form-data">
                     
                     <div class="control-group">
-                      <label class="control-label">Name :</label>
+                      <label class="control-label">EPF No:</label>
                       <div class="controls">
-                        <input type="text" class="span11" placeholder="Team member name" id="member_name" name="member_name" />
+                        <input type="text" class="span3" placeholder="EPF No" id="epf_no" name="epf_no" />
                       </div>
                     </div>
 
                     <div class="control-group">
-                      <label class="control-label">Name :</label>
+                      <label class="control-label">Name:</label>
                       <div class="controls">
-                        <input type="text" class="span11" placeholder="Team member name" id="member_name" name="member_name" />
+                        <input type="text" class="span3" placeholder="Name" id="team_member_name" name="team_member_name" />
                       </div>
                     </div>
 
+                    <div class="control-group">
+                      <label class="control-label">Select downtime type:</label>
+                        <div class="controls">
+                           <select name="shift" class="form-control span3" id="shift">
+
+                                <option value="shift_1">Shift 1</option>
+                                <option value="shift_2">Shift 2</option>
+                                
+                              
+                            </select>
+
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                      <label class="control-label">Select image to upload:</label>
+                      <div class="controls">
+                        <input type="file" name="fileToUpload" id="fileToUpload" >
+                      </div>
+                    </div>
+
+           
   
                     <div class="form-actions">
-                      <button  id="btnSave" type="submit" name="submit" class="btn btn-success">Save</button>
+                      <button  id="btnSave" type="submit" name="submit" class="btn btn-success">Upload</button>
                       <button  id="btnRefresh" type="reset" class="btn btn-success">Refresh</button>
                     </div>
                     
@@ -241,15 +255,14 @@ function resetMenu() {
 <script type="text/javascript">
 
 
-
-    $("#btnSave").click(function (event) {
+$("#btnSave").click(function (event) {
 
 
         //stop submit the form, we will post it manually.
         event.preventDefault();
 
         // Get form
-        var form = $('#addTokensForm')[0];
+        var form = $('#fileUploadForm')[0];
 
     // Create an FormData object
         var data = new FormData(form);
@@ -260,40 +273,34 @@ function resetMenu() {
     // disabled the submit button
         $("#btnSave").prop("disabled", true);
 
+        $.ajax({
+            type: "POST",
+            enctype: 'multipart/form-data',
+            url: "add_team_member.php",
+            data: data,
+            processData: false,
+            contentType: false,
+            cache: false,
+            timeout: 600000,
+            success: function (data) {
 
-        if($("#tokenid").val() && $("#imei_number").val() ){
+                //$("#result").text(data);
+                $("#result").html(data).fadeIn();
+                console.log("SUCCESS : ", data);
+                $("#btnSave").prop("disabled", false);
 
-            $.ajax({
-                type: "POST",
-                url: "add_token_data.php",
-                data: data,
-                processData: false,
-                contentType: false,
-                cache: false,
-                timeout: 600000,
-                success: function (data) {
+            },
+            error: function (e) {
 
-                    //$("#result").text(data);
-                    $("#result").html(data).fadeIn();
-                    console.log("SUCCESS : ", data);
-                    $("#btnSave").prop("disabled", false);
+                // $("#result").text(e.responseText);
+                $("#result").html(data).fadeIn();
+                console.log("ERROR : ", e);
+                $("#btnSave").prop("disabled", false);
 
-                },
-                error: function (e) {
+            }
+        });
 
-                    // $("#result").text(e.responseText);
-                    $("#result").html(data).fadeIn();
-                    console.log("ERROR : ", e);
-                    $("#btnSave").prop("disabled", false);
-
-                }
-  
-             });
-        }else{
-          $("#noValues").fadeIn();
-        }    
-
-    });
+  });
 
 
  

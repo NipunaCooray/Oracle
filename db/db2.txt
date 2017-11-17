@@ -254,3 +254,14 @@ machine10 VARCHAR (50) DEFAULT 'null',
 PRIMARY KEY (id)
 )Engine=InnoDB;
 
+
+/* DROP TABLE team_members; */
+
+CREATE TABLE team_members(
+epf_no int NOT NULL,
+team_member_name VARCHAR(100),
+shift VARCHAR (50),
+image_location VARCHAR(100),
+PRIMARY KEY (epf_no)
+)Engine=InnoDB;
+
