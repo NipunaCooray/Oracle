@@ -49,7 +49,7 @@
     <li class="submenu"> <a href="#"><i class="icon icon-th-list"></i> <span>Manage styles</span> </a>
       <ul>
         <li><a href="upload_style_images_ui.php">Upload style images</a></li>
-        <li><a href="setup_style_ui.php">Setup styles</a></li>
+        <li><a href="setup_style_ui_v2.php">Setup styles</a></li>
         <li><a href="#">View all styles</a></li>
       </ul>
     </li>
