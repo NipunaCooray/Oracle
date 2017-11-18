@@ -80,13 +80,16 @@
 
 <style>
   #screen{
-      float: left;
+      /*float: left;*/
       width: 500px;
-      height: 770px;
-      
-      border: 1px solid black;
+      height: 800px;     
+      border: 2px solid black;
       background-repeat: no-repeat;
+      background-size:contain;
+      /*background-size: cover;*/
   }
+
+
 
 </style>
 
@@ -143,7 +146,7 @@
 
                     <div class="row-fluid">
                 
-                      <div class="span8" id="screen">  
+                      <div class="span8" id="screen" >  
                       </div> 
 
                       <div class="span4">
@@ -284,6 +287,7 @@ $("input[name='myFileSelect']").on("change", function(){
         reader.onloadend = function(){
             
             $("#screen").css("background-image", "url(" + this.result + ")");
+
         
         }
 
