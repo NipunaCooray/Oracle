@@ -157,15 +157,12 @@
 
                               <div class="controls">
                                 <button  id="btnAdd"  class="btn btn-success">Add</button>
+                                <button  id="btnRemove"  class="btn btn-danger">Remove</button>
                               </div>
 
                               <div id="addedAreas">
-                                <table id="areaTable">
-                                  <tbody>
-                                    <tr></tr>
-                                    
-                                  </tbody>
-                                </table>
+                                
+
 
                               </div>
                        
@@ -303,6 +300,19 @@ $("#btnRefresh").click(function(event){
 
 var areaList = [];
 
+function displayArray(){
+
+  $("#addedAreas").empty();
+
+  $("#addedAreas").append("<hr/>");
+
+
+  for(var y=0;y<areaList.length;y++){
+    var span = $('<span class="badge badge-important">' + areaList[y] + '</span>') ; 
+    $("#addedAreas").append(span);
+  }
+}
+
 
 
 $("#btnAdd").click(function(event){
@@ -310,9 +320,28 @@ $("#btnAdd").click(function(event){
   var area = $("#area").val();
   areaList.push(area);
   //alert("Pushing area "+area+" to area list");
-  $('#areaTable tr:last').after('<tr>...</tr><tr>...</tr>');
+
+  // var span = $('<span class="badge badge-important">' + area + '</span>') ; 
+
+  // $("#addedAreas").append(span);
+  displayArray();
+  $("#area").val("");
+  
 
 });
+
+
+$("#btnRemove").click(function(event){
+  event.preventDefault();
+  
+  
+  areaList.pop();
+  
+  displayArray();
+ 
+
+});
+
 
 
 $("#btnSetImage").click(function(event){
