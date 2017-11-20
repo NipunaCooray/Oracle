@@ -149,8 +149,7 @@ styleNumber VARCHAR (300) NOT NULL ,
 imageLocation VARCHAR (500) NOT NULL,
 areaList VARCHAR (500) NOT NULL,
 PRIMARY KEY (styleNumber),
-UNIQUE KEY (imageLocation),
-UNIQUE KEY (dataTableName)
+UNIQUE KEY (imageLocation)
 )Engine=InnoDB;
 
 
