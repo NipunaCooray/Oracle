@@ -145,13 +145,12 @@ Table to store style configuration data i.e area location*/
 
 /* DROP TABLE styledata; */
 CREATE TABLE styledata(
-style_id int NOT NULL AUTO_INCREMENT,
 styleNumber VARCHAR (300) NOT NULL ,
 imageLocation VARCHAR (500) NOT NULL,
 areaList VARCHAR (500) NOT NULL,
-dataTableName VARCHAR(20) NOT NULL,
-PRIMARY KEY (style_id),
-UNIQUE KEY (imageLocation)
+PRIMARY KEY (styleNumber),
+UNIQUE KEY (imageLocation),
+UNIQUE KEY (dataTableName)
 )Engine=InnoDB;
 
 
