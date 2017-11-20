@@ -317,7 +317,13 @@ function displayArray(){
   }
 }
 
-
+function unique(list) {
+  var result = [];
+  $.each(list, function(i, e) {
+    if ($.inArray(e, result) == -1) result.push(e);
+  });
+  return result;
+}
 
 $("#btnAdd").click(function(event){
   event.preventDefault();
@@ -358,7 +364,8 @@ $("#btnSetImage").click(function(event){
 
   
  
-
+  //Cleaning datalist to contain unique elements only
+  areaList = unique(areaList);
 
   //Appending data to the POST request
   data.append("areaList", areaList);
