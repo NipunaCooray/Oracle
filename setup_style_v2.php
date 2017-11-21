@@ -12,16 +12,16 @@ $target_dir = "StyleImages/";
 $image_location = $target_dir . basename($_FILES["myFileSelect"]["name"]);
 
 //Saving data to style_data table
-// $query = "INSERT INTO `styledata` (`styleNumber`, `imageLocation`,`areaList`) VALUES ('".$styleNumber."','".$image_location."','".$areaList."')"; 
+$query = "INSERT INTO `styledata` (`styleNumber`, `imageLocation`,`areaList`) VALUES ('".$styleNumber."','".$image_location."','".$areaList."')"; 
       	
-// $result = mysql_query($query,$link) or die(mysql_error());
+$result = mysql_query($query,$link) or die(mysql_error());
 
 
-// if ($result==1){
-// 	echo "Successfully saved";
-// }else{
-// 	echo $result;
-// }
+if ($result==1){
+	echo "Style data successfully saved";
+}else{
+	echo $result;
+}
 
 $areaArray = array();
 $areaArray =  explode(",",$areaList);
