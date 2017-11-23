@@ -1,51 +1,5 @@
 DROP DATABASE dboracle;
 CREATE DATABASE dboracle;
- 
-
-/*  ######################
-Defects table to insert transaction data */
-
-CREATE TABLE defects(
-id int NOT NULL AUTO_INCREMENT,
-machineNo VARCHAR (100),
-dt TIMESTAMP,
-status VARCHAR (100),
-A INT,
-A1 INT,
-A2 INT,
-B INT,
-B1 INT,
-B2 INT,
-B3 INT,
-B4 INT,
-B5 INT,
-B6 INT,
-C INT,
-C1 INT,
-C2 INT,
-E1 INT,
-E2 INT,
-H INT,
-H1 INT,
-H2 INT,
-H3 INT,
-H4 INT,
-S1 INT,
-S2 INT,
-S3 INT,
-S4 INT,
-T INT,
-TT INT,
-V1 INT,
-V2 INT,
-V3 INT,
-V4 INT,
-total INT,
-PRIMARY KEY (id)
-)Engine=InnoDB;
-
-/* ######################
-defecttypes includes defects like frayed yearn and drop stitch */
 
 
 /* DROP TABLE defecttypes; */
@@ -141,7 +95,7 @@ UNIQUE KEY (imei_number)
 
 
 /* ######################
-Table to store style configuration data i.e area location*/
+Table to store style configuration data */
 
 /* DROP TABLE styledata; */
 CREATE TABLE styledata(
