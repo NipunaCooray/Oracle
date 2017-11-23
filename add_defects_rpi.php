@@ -8,6 +8,10 @@ include("connect.php");
 $link=Connection();
 
 
+//TO DO : Save defects data under particular styleNumber 
+
+
+
 
 $machineNo = isset($_POST['machineNo']) ? $_POST['machineNo'] : null;
 $dt = isset($_POST['dt']) ? $_POST['dt'] : null;

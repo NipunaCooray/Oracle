@@ -26,21 +26,21 @@ if($security_key == "12345"){
 
 	}
 
-	echo $imageLocation."<br>";
-	echo $areaList."<br>";
+	// echo $imageLocation."<br>";
+	// echo $areaList."<br>";
 
 	$areaArray = array();
 	$areaArray =  explode(",",$areaList);	
 
-	print_r($areaArray);
+	//print_r($areaArray);
 
 
 	$result->imageURL = $imageLocation;
-	$result->areaList = json_encode($areaArray);
+	$result->areaList = $areaArray;
 	
 
 	
-	print_r($result);
+	//print_r($result);
 
 	echo json_encode(array("result"=>$result));
 
