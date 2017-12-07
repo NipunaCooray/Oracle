@@ -16,13 +16,19 @@ if($security_key == "12345"){
     	die(mysql_error()); // TODO: better error handling
 	}
 
+
+
 	$result = array();
 
 	while($row = mysql_fetch_array($user)) {
 	   array_push($result,array('userEPF'=>$row[0],'userName'=>$row[1],'shift'=>$row[2],'imageURL'=>$row[3] ));
 	}
 
-	echo json_encode(array("result"=>$result));
+	if (mysql_num_rows($user)==0) {
+		echo "Invalid epf or password";
+	}else{
+		echo json_encode(array("result"=>$result));
+	}
 
 	mysql_free_result($user);
 	mysql_close();

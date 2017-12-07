@@ -50,22 +50,29 @@ if($security_key == "12345"){
 
 		while($row = mysql_fetch_array($nextPlan)) {
 		   $nextPlanID = $row[0];	
-		   array_push($result,array('styleNumber'=>$row[1],'salesOrder'=>$row[2],'lineItem'=>$row[3],'sideAndColor'=>$row[4],'machineNumber'=>$row[5],'orderStart'=>$row[6],'orderEnd'=>$row[7],'plannedQuantity'=>$row[8],'size'=>$row[9],'section'=>$row[10],'orderState'=>$row[11] ));
+		   array_push($result,array('styleNumber'=>$row[1],'salesOrder'=>$row[2],'lineItem'=>$row[3],'sideAndColor'=>$row[4],'machineNumber'=>$row[5],'orderStart'=>$row[6],'orderEnd'=>$row[7],'plannedQuantity'=>$row[8],'knitted_quantity'=>$row[9],'size'=>$row[10],'section'=>$row[11],'orderState'=>$row[12] ));
 		}
 
-		echo json_encode(array("result"=>$result));
+		if($nextPlanID==0){
+			echo json_encode(array("result"=>"Plan not available"));
 
-		//Change the state to ongoing
-		$updateNextPlanQuery = "UPDATE planningdata SET planningdata.orderState='ongoing' WHERE planningdata.id= '".$nextPlanID."' ";
-
-		$updateNextPlanQueryResult = mysql_query($updateNextPlanQuery,$link) or die(mysql_error());
-
-		if ($updateNextPlanQueryResult==1){
-			//echo "Successfully updated incomplete to ongoing";
 		}else{
-			//echo $updateNextPlanQueryResult;
+			echo json_encode(array("result"=>$result));
+
+			//Change the state to ongoing
+			$updateNextPlanQuery = "UPDATE planningdata SET planningdata.orderState='ongoing' WHERE planningdata.id= '".$nextPlanID."' ";
+
+			$updateNextPlanQueryResult = mysql_query($updateNextPlanQuery,$link) or die(mysql_error());
+
+			if ($updateNextPlanQueryResult==1){
+				//echo "Successfully updated incomplete to ongoing";
+			}else{
+				//echo $updateNextPlanQueryResult;
+			}
+
 		}
 
+		
 		mysql_free_result($nextPlan);
 
 		mysql_free_result($ongoingIDResult);
@@ -87,6 +94,7 @@ if($security_key == "12345"){
 			$nextPlan=mysql_query("SELECT * FROM planningdata Where planningdata.orderState='incomplete' and planningdata.machineNumber = '".$machineNumber."' ORDER BY planningdata.orderStart ASC,planningdata.orderEnd ASC LIMIT 1",$link);
 
 			if($nextPlan === FALSE) { 
+
 		    	die(mysql_error()); // TODO: better error handling
 			}
 
