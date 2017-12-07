@@ -12,7 +12,7 @@ $link=Connection();
 if( $_POST ) {
 	$styleNumber = isset($_POST['styleNumber']) ? $_POST['styleNumber'] : null;
 	$security_key = isset($_POST['security_key']) ? $_POST['security_key'] : null;
-	$machineNo = isset($_POST['machineNo']) ? $_POST['machineNo'] : null;
+	$machineNo = isset($_POST['machineNumber']) ? $_POST['machineNumber'] : null;
 	$defect_list = isset($_POST['defect_list']) ? $_POST['defect_list'] : null;
 	$dt = isset($_POST['dt']) ? $_POST['dt'] : null;
 	$status = isset($_POST['status']) ? $_POST['status'] : null;
@@ -20,7 +20,7 @@ if( $_POST ) {
 	if($security_key == "12345"){
 
 	//Insert data to particular style number table
-	//print_r($defect_list);	
+	print_r($defect_list);	
 
 	$rows = count($defect_list);
 
