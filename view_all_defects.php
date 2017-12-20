@@ -13,32 +13,50 @@
 
 	$link=Connection();
 
-	$alldefects=mysql_query("SELECT * FROM `defects` ORDER BY defects.id DESC",$link);
+	$allstyles=mysql_query("SELECT styleNumber FROM `styledata` ",$link);
+
+	//Need to get all the data from each style table
+
+	while($row = mysql_fetch_array($allstyles)) {
+		$styleNumber = $row['styleNumber'];
+		echo $styleNumber;
+
+		echo "<br>";
+
+		$styleDataQuery = mysql_query("SELECT * FROM   ".$styleNumber."   ",$link);
 
 
-	echo '<table class="table table-bordered table-responsive"> ';
-	echo '<thead> <tr>
-	<th class="col-md-1">ID</th>
-	<th class="col-md-3">Machine no</th>
-	<th class="col-md-3">Date and time</th>
-	<th class="col-md-3">Status</th>
+		echo '<table class="table table-bordered table-responsive"> ';
+			echo '<thead> <tr>
+			<th class="col-md-1">ID</th>
+			<th class="col-md-3">Machine no</th>
+			<th class="col-md-3">Date and time</th>
+			<th class="col-md-3">Status</th>
 
-	</tr> </thead>';
+			</tr> </thead>';
 
-	if($alldefects === FALSE) { 
-    	die(mysql_error()); // TODO: better error handling
+		if($styleDataQuery === FALSE) { 
+	    	die(mysql_error()); // TODO: better error handling
+		}
+
+
+		while($row2 = mysql_fetch_array($styleDataQuery)) {
+
+			echo "<tr>";
+			echo "<td>" . $row2['id'] . "</td>";
+			echo "<td>" . $row2['machineNo'] . "</td>";
+			echo "<td>" . $row2['dt'] . "</td>";
+			echo "<td>" . $row2['status'] . "</td>";
+			echo "</tr>";
+		}
+
+		echo "</table>";
+
+
 	}
 
-	while($row = mysql_fetch_array($alldefects)) {
-	    echo "<tr>";
-	    echo "<td>" . $row['id'] . "</td>";
-	    echo "<td>" . $row['machineNo'] . "</td>";
-	    echo "<td>" . $row['dt'] . "</td>";
-	    echo "<td>" . $row['status'] . "</td>";
-	    echo "</tr>";
-	}
-	echo "</table>";
-	mysql_free_result($alldefects);
+	mysql_free_result($styleDataQuery);
+	mysql_free_result($allstyles);
 	mysql_close();
 
   ?>
