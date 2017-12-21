@@ -99,10 +99,12 @@ Table to store style configuration data */
 
 /* DROP TABLE styledata; */
 CREATE TABLE styledata(
+styleID int NOT NULL AUTO_INCREMENT,
 styleNumber VARCHAR (300) NOT NULL ,
 imageLocation VARCHAR (500) NOT NULL,
 areaList VARCHAR (500) NOT NULL,
-PRIMARY KEY (styleNumber),
+PRIMARY KEY (styleID),
+UNIQUE KEY (styleNumber),
 UNIQUE KEY (imageLocation)
 )Engine=InnoDB;
 

@@ -54,8 +54,13 @@ $styleNumber = isset($_POST['styleNumber']) ? $_POST['styleNumber'] : null;
 
 $areaList = isset($_POST['areaList']) ? $_POST['areaList'] : null;
 
-$target_dir = "StyleImages/";
+//$target_dir = "StyleImages/"
 $image_location = $target_dir . basename($_FILES["myFileSelect"]["name"]);
+
+echo $image_location;
+
+
+
 
 //Saving data to style_data table
 $query = "INSERT INTO `styledata` (`styleNumber`, `imageLocation`,`areaList`) VALUES ('".$styleNumber."','".$image_location."','".$areaList."')"; 
@@ -100,6 +105,8 @@ if ($result2==1){
 }
 
 mysql_close($link);
+
+
 
 
 ?>

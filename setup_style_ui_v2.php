@@ -45,6 +45,17 @@
 
   <script src="js/jquery.min.js"></script> 
 
+  <script type="text/javascript">
+   $(document).ready(function() {
+    
+
+    $.get("view_all_styles.php",function(all_styles){
+      $("#all_styles").html(all_styles);
+    });
+  });
+
+</script>
+
   <script src="js/jquery.ui.custom.js"></script> 
   <script src="js/bootstrap.min.js"></script> 
   <script src="js/jquery.flot.min.js"></script> 
@@ -196,6 +207,17 @@
                           Style number not entered or style image is not selected
                         </div>
 
+                        
+
+                      </div>
+
+ 
+                    </div>
+                </div> 
+
+                <div class ="row-fluid">
+                    <div class="span12"> 
+                      <div class="widget-content" id="all_styles">
                         
 
                       </div>
