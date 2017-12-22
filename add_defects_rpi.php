@@ -14,13 +14,13 @@ if( $_POST ) {
 	$security_key = isset($_POST['security_key']) ? $_POST['security_key'] : null;
 	$machineNo = isset($_POST['machineNumber']) ? $_POST['machineNumber'] : null;
 	$defect_list = isset($_POST['defect_list']) ? $_POST['defect_list'] : null;
-	$dt = isset($_POST['dt']) ? $_POST['dt'] : null;
+	$dt = isset($_POST['timestamp']) ? $_POST['timestamp'] : null;
 	$status = isset($_POST['status']) ? $_POST['status'] : null;
 
 	if($security_key == "12345"){
 
 	//Insert data to particular style number table
-	print_r($defect_list);	
+	//print_r($defect_list);	
 
 	$rows = count($defect_list);
 
@@ -74,7 +74,7 @@ if( $_POST ) {
 		$updateQueryResult = mysql_query($updateKnittingQuantity,$link) or die(mysql_error());
 
 		if ($updateQueryResult==1){
-			echo "Successfully updated knitting + 1";
+			//echo "Successfully updated knitting + 1";
 		}else{
 			echo $updateQueryResult;
 		}
