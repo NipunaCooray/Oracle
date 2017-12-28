@@ -13,17 +13,17 @@
 
 	$link=Connection();
 
-	$allstyles=mysql_query("SELECT styleNumber FROM `styledata` ",$link);
+	$allstyles=mysqli_query($link,"SELECT styleNumber FROM `styledata` ");
 
 	//Need to get all the data from each style table
 
-	while($row = mysql_fetch_array($allstyles)) {
+	while($row = mysqli_fetch_array($allstyles)) {
 		$styleNumber = $row['styleNumber'];
 		echo $styleNumber;
 
 		echo "<br>";
 
-		$styleDataQuery = mysql_query("SELECT * FROM   ".$styleNumber."   ",$link);
+		$styleDataQuery = mysqli_query($link,"SELECT * FROM   ".$styleNumber."   ");
 
 
 		echo '<table class="table table-bordered table-responsive"> ';
@@ -36,11 +36,11 @@
 			</tr> </thead>';
 
 		if($styleDataQuery === FALSE) { 
-	    	die(mysql_error()); // TODO: better error handling
+	    	die(mysqli_error()); // TODO: better error handling
 		}
 
 
-		while($row2 = mysql_fetch_array($styleDataQuery)) {
+		while($row2 = mysqli_fetch_array($styleDataQuery)) {
 
 			echo "<tr>";
 			echo "<td>" . $row2['id'] . "</td>";
@@ -55,9 +55,9 @@
 
 	}
 
-	mysql_free_result($styleDataQuery);
-	mysql_free_result($allstyles);
-	mysql_close();
+	mysqli_free_result($styleDataQuery);
+	mysqli_free_result($allstyles);
+	mysqli_close($link);
 
   ?>
 

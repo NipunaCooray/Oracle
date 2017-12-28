@@ -13,7 +13,7 @@
 
 	$link=Connection();
 
-	$alldowntimes=mysql_query("SELECT * FROM `downtimes` ORDER BY downtimes.downtimeid DESC",$link);
+	$alldowntimes=mysqli_query($link,"SELECT * FROM `downtimes` ORDER BY downtimes.downtimeid DESC");
 
 
 	echo '<table class="table table-bordered"> ';
@@ -28,10 +28,10 @@
 	</tr>";
 
 	if($alldowntimes === FALSE) { 
-    	die(mysql_error()); // TODO: better error handling
+    	die(mysqli_error()); // TODO: better error handling
 	}
 
-	while($row = mysql_fetch_array($alldowntimes)) {
+	while($row = mysqli_fetch_array($alldowntimes)) {
 	    echo "<tr>";
 	    echo "<td>" . $row['downtimeid'] . "</td>";
 	    echo "<td>" . $row['downtimetypeid'] . "</td>";
@@ -42,8 +42,8 @@
 	    echo "</tr>";
 	}
 	echo "</table>";
-	mysql_free_result($alldowntimes);
-	mysql_close();
+	mysqli_free_result($alldowntimes);
+	mysqli_close($link);
 
   ?>
 
