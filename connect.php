@@ -1,22 +1,23 @@
 <?php
 
-	function Connection(){
-		$server="localhost";
-		//$user="cl60-dbarduino";
-		$user="root";
-		//$pass="W.m!CFe-B";
-		$pass="";
-		//$db="cl60-dbarduino";
-		$db="dboracle";
-	   	
-		$connection = mysql_connect($server, $user, $pass);
+function Connection(){
+	$server="localhost";
+	$user="root";
+	$pass="";
+	$db="dboracle";
+   	
+	$connection = mysqli_connect($server,$user,$pass,$db);
 
-		if (!$connection) {
-	    	die('MySQL ERROR: ' . mysql_error());
-		}
-		
-		mysql_select_db($db) or die( 'MySQL ERROR: '. mysql_error() );
-
-		return $connection;
+	if (!$connection)
+	{
+		echo "Error: Unable to connect to MySQL." . PHP_EOL;
+	    echo "Debugging errno: " . mysqli_connect_errno() . PHP_EOL;
+	    echo "Debugging error: " . mysqli_connect_error() . PHP_EOL;
+	    exit;
 	}
+
+
+	return $connection;
+}
+
 ?>

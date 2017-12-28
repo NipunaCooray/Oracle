@@ -13,7 +13,7 @@
 
 	$link=Connection();
 
-	$allnotifyingusers=mysql_query("SELECT * FROM `notifyingusers`",$link);
+	$allnotifyingusers=mysqli_query($link,"SELECT * FROM `notifyingusers`");
 
 
 	echo '<table class="table table-bordered"> ';
@@ -26,10 +26,10 @@
 	</tr>";
 
 	if($allnotifyingusers === FALSE) { 
-    	die(mysql_error()); // TODO: better error handling
+    	echo("Errorcode: " . mysqli_errno($link)); // TODO: better error handling
 	}
 
-	while($row = mysql_fetch_array($allnotifyingusers)) {
+	while($row = mysqli_fetch_array($allnotifyingusers)) {
 	    echo "<tr>";
 	    echo "<td>" . $row['username'] . "</td>";
 	    echo "<td>" . $row['contactnumber'] . "</td>";
@@ -38,8 +38,8 @@
 	    echo "</tr>";
 	}
 	echo "</table>";
-	mysql_free_result($allnotifyingusers);
-	mysql_close();
+	mysqli_free_result($allnotifyingusers);
+	mysqli_close($link);
 
   ?>
 

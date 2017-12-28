@@ -9,15 +9,18 @@
 
 	 if( $_GET ) {
 
-	 	   $notifyinguserid = mysql_real_escape_string($_GET['notifyinguserid']);
+	 	   $notifyinguserid = mysqli_real_escape_string($link,$_GET['notifyinguserid']);
 
 
 	       $query="DELETE FROM `notifyingusers` WHERE `notifyinguserid`= '".$notifyinguserid."' ";
 	      	
-	       $result = mysql_query($query,$link) or die(mysql_error());
-	   	   mysql_close($link);
+	       $result = mysqli_query($link,$query) or exit(mysqli_error($link));
 
-	       //echo $result;
+
+	   	   mysqli_free_result($result);
+	   	   mysqli_close($link);
+
+
 	       header("Location: add_notifying_user_ui.php");
 
  

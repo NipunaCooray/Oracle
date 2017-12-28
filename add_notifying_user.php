@@ -7,22 +7,22 @@
        if( $_GET ) {
 
           
-          $username = mysql_real_escape_string($_GET['username']);
-          $contactnumber = mysql_real_escape_string($_GET['contactnumber']);
-          $email = mysql_real_escape_string($_GET['email']);
+          $username = mysqli_real_escape_string($link,$_GET['username']);
+          $contactnumber = mysqli_real_escape_string($link, $_GET['contactnumber']);
+          $email = mysqli_real_escape_string($link, $_GET['email']);
 
      
 
    	   $query = "INSERT INTO `notifyingusers` (`username`, `contactnumber`,`email`) 
    		VALUES ('".$username."','".$contactnumber."','".$email."')"; 
       	
-      	$result = mysql_query($query,$link) or die(mysql_error());
-   	   mysql_close($link);
+      	$result = mysqli_query($link,$query); 
+   	   mysqli_close($link);
 
         if ($result==1){
           echo "Successfully saved";
         }else{
-          echo $result;
+         echo("Errorcode: " . mysqli_errno($link));
         }
 
       	

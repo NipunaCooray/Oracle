@@ -13,14 +13,14 @@
 
 	$link=Connection();
 
-	$allDefects=mysql_query("SELECT * FROM `defecttypes`",$link);
+	$allDefects=mysqli_query($link,"SELECT * FROM `defecttypes`");
 
 	function getUserName($userid) {
 		$link2=Connection();
-	    $result = mysql_query("SELECT `username` FROM `notifyingusers` WHERE `notifyinguserid`= '".$userid."' ",$link2);
+	    $result = mysqli_query($link2,"SELECT `username` FROM `notifyingusers` WHERE `notifyinguserid`= '".$userid."' ");
 	    $username = "";
 	    
-	    while($row = mysql_fetch_array($result)) {
+	    while($row = mysqli_fetch_array($result)) {
 	    	$username = $row['username'];
 	    	
 		}
@@ -44,7 +44,7 @@
 
 	</tr>";
 
-	while($row = mysql_fetch_array($allDefects)) {
+	while($row = mysqli_fetch_array($allDefects)) {
 	    echo "<tr>";
 	    echo "<td>" . $row['defecttypeid'] . "</td>";
 	    echo "<td>" . $row['defecttype'] . "</td>";
@@ -60,13 +60,10 @@
 	    echo "</tr>";
 	}
 	echo "</table>";
-	mysql_free_result($allDefects);
-	mysql_close();
+	mysqli_free_result($allDefects);
+	mysqli_close($link);
 
   ?>
-
-
-		
 
 
 </body>
