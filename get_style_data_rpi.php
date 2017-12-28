@@ -8,10 +8,10 @@ $styleNumber = isset($_POST['styleNumber']) ? $_POST['styleNumber'] : null;
 
 if($security_key == "12345"){
 
-	$styleData=mysql_query("SELECT styledata.imageLocation,styledata.areaList FROM `styledata` WHERE styledata.styleNumber= '".$styleNumber."' ",$link);
+	$styleData=mysqli_query($link,"SELECT styledata.imageLocation,styledata.areaList FROM `styledata` WHERE styledata.styleNumber= '".$styleNumber."' ");
 
 	if($styleData === FALSE) { 
-    	die(mysql_error()); // TODO: better error handling
+    	die(mysqli_error()); // TODO: better error handling
 	}
 
 	//$result = array();
@@ -20,7 +20,7 @@ if($security_key == "12345"){
 	$imageLocation="";
 	$areaList="";
 
-	while($row = mysql_fetch_array($styleData)) {
+	while($row = mysqli_fetch_array($styleData)) {
 	   $imageLocation = $row[0];
 	   $areaList = $row[1];
 
@@ -44,8 +44,8 @@ if($security_key == "12345"){
 
 	echo json_encode(array("result"=>$result));
 
-	mysql_free_result($styleData);
-	mysql_close();
+	mysqli_free_result($styleData);
+	mysqli_close($link);
 
 
 }else{

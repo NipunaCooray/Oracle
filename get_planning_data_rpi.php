@@ -16,20 +16,20 @@ if($security_key == "12345"){
 
 		$ongoingID = 0;
 
-		$ongoingIDResult = mysql_query("SELECT id FROM planningdata Where planningdata.orderState='ongoing' and planningdata.machineNumber = '".$machineNumber."' ",$link);
+		$ongoingIDResult = mysqli_query($link,"SELECT id FROM planningdata Where planningdata.orderState='ongoing' and planningdata.machineNumber = '".$machineNumber."' ");
 
 		if($ongoingIDResult === FALSE) { 
-	    	die(mysql_error()); // TODO: better error handling
+	    	die(mysqli_error()); // TODO: better error handling
 		}
 		
-		while($row = mysql_fetch_array($ongoingIDResult)) {
+		while($row = mysqli_fetch_array($ongoingIDResult)) {
 		   $ongoingID = $row[0];
 		}
 
 		//echo "OngoingID : ".$ongoingID;
 
 		$updateQuery = "UPDATE planningdata SET planningdata.orderState='complete' WHERE planningdata.id= '".$ongoingID."' ";
-		$updateQueryResult = mysql_query($updateQuery,$link) or die(mysql_error());
+		$updateQueryResult = mysqli_query($link,$updateQuery) or die(mysqli_error());
 
 		if ($updateQueryResult==1){
 			//echo "Successfully updated ongoing to complete";
@@ -38,17 +38,17 @@ if($security_key == "12345"){
 		}
 
 
-		$nextPlan=mysql_query("SELECT * FROM planningdata Where planningdata.orderState='incomplete' and planningdata.machineNumber = '".$machineNumber."' ORDER BY planningdata.orderStart ASC,planningdata.orderEnd ASC LIMIT 1",$link);
+		$nextPlan=mysqli_query($link,"SELECT * FROM planningdata Where planningdata.orderState='incomplete' and planningdata.machineNumber = '".$machineNumber."' ORDER BY planningdata.orderStart ASC,planningdata.orderEnd ASC LIMIT 1");
 
 		if($nextPlan === FALSE) { 
-	    	die(mysql_error()); // TODO: better error handling
+	    	die(mysqli_error()); // TODO: better error handling
 		}
 
 		$result = array();
 
 		$nextPlanID = 0;
 
-		while($row = mysql_fetch_array($nextPlan)) {
+		while($row = mysqli_fetch_array($nextPlan)) {
 		   $nextPlanID = $row[0];	
 		   array_push($result,array('styleNumber'=>$row[1],'salesOrder'=>$row[2],'lineItem'=>$row[3],'sideAndColor'=>$row[4],'machineNumber'=>$row[5],'orderStart'=>$row[6],'orderEnd'=>$row[7],'plannedQuantity'=>$row[8],'knitted_quantity'=>$row[9],'size'=>$row[10],'section'=>$row[11],'orderState'=>$row[12] ));
 		}
@@ -62,7 +62,7 @@ if($security_key == "12345"){
 			//Change the state to ongoing
 			$updateNextPlanQuery = "UPDATE planningdata SET planningdata.orderState='ongoing' WHERE planningdata.id= '".$nextPlanID."' ";
 
-			$updateNextPlanQueryResult = mysql_query($updateNextPlanQuery,$link) or die(mysql_error());
+			$updateNextPlanQueryResult = mysqli_query($link,$updateNextPlanQuery) or die(mysqli_error());
 
 			if ($updateNextPlanQueryResult==1){
 				//echo "Successfully updated incomplete to ongoing";
@@ -73,9 +73,9 @@ if($security_key == "12345"){
 		}
 
 		
-		mysql_free_result($nextPlan);
+		mysqli_free_result($nextPlan);
 
-		mysql_free_result($ongoingIDResult);
+		mysqli_free_result($ongoingIDResult);
 		
 	}elseif ($planStatus=="data_request") {
 
@@ -83,24 +83,24 @@ if($security_key == "12345"){
 
 		$result = array();
 
-		$currentPlan=mysql_query("SELECT * FROM planningdata Where planningdata.orderState='ongoing' and planningdata.machineNumber = '".$machineNumber."' ORDER BY planningdata.orderStart ASC,planningdata.orderEnd ASC LIMIT 1",$link);
+		$currentPlan=mysqli_query($link,"SELECT * FROM planningdata Where planningdata.orderState='ongoing' and planningdata.machineNumber = '".$machineNumber."' ORDER BY planningdata.orderStart ASC,planningdata.orderEnd ASC LIMIT 1");
 
 		if($currentPlan === FALSE) { 
-	    	die(mysql_error());	
+	    	die(mysqli_error());	
 		}
 
-		if (mysql_num_rows($currentPlan)==0){
+		if (mysqli_num_rows($currentPlan)==0){
 
-			$nextPlan=mysql_query("SELECT * FROM planningdata Where planningdata.orderState='incomplete' and planningdata.machineNumber = '".$machineNumber."' ORDER BY planningdata.orderStart ASC,planningdata.orderEnd ASC LIMIT 1",$link);
+			$nextPlan=mysqli_query($link,"SELECT * FROM planningdata Where planningdata.orderState='incomplete' and planningdata.machineNumber = '".$machineNumber."' ORDER BY planningdata.orderStart ASC,planningdata.orderEnd ASC LIMIT 1");
 
 			if($nextPlan === FALSE) { 
 
-		    	die(mysql_error()); // TODO: better error handling
+		    	die(mysqli_error()); // TODO: better error handling
 			}
 
 			$nextPlanID = 0;
 
-			while($row = mysql_fetch_array($nextPlan)) {
+			while($row = mysqli_fetch_array($nextPlan)) {
 			   $nextPlanID = $row[0];	
 			   array_push($result,array('styleNumber'=>$row[1],'salesOrder'=>$row[2],'lineItem'=>$row[3],'sideAndColor'=>$row[4],'machineNumber'=>$row[5],'orderStart'=>$row[6],'orderEnd'=>$row[7],'plannedQuantity'=>$row[8],'knitted_quantity'=>$row[9],'size'=>$row[10],'section'=>$row[11],'orderState'=>$row[12] ));
 			}
@@ -110,7 +110,7 @@ if($security_key == "12345"){
 			//Change the state to ongoing
 			$updateNextPlanQuery = "UPDATE planningdata SET planningdata.orderState='ongoing' WHERE planningdata.id= '".$nextPlanID."' ";
 
-			$updateNextPlanQueryResult = mysql_query($updateNextPlanQuery,$link) or die(mysql_error());
+			$updateNextPlanQueryResult = mysqli_query($link,$updateNextPlanQuery) or die(mysqli_error());
 
 			if ($updateNextPlanQueryResult==1){
 				//echo "Successfully updated incomplete to ongoing";
@@ -118,10 +118,10 @@ if($security_key == "12345"){
 				//echo $updateNextPlanQueryResult;
 			}
 
-			mysql_free_result($nextPlan);
+			mysqli_free_result($nextPlan);
 
 		}else{
-			while($row = mysql_fetch_array($currentPlan)) {
+			while($row = mysqli_fetch_array($currentPlan)) {
 			   array_push($result,array('styleNumber'=>$row[1],'salesOrder'=>$row[2],'lineItem'=>$row[3],'sideAndColor'=>$row[4],'machineNumber'=>$row[5],'orderStart'=>$row[6],'orderEnd'=>$row[7],'plannedQuantity'=>$row[8],'knitted_quantity'=>$row[9],'size'=>$row[10],'section'=>$row[11],'orderState'=>$row[12]));
 			}
 
@@ -129,12 +129,12 @@ if($security_key == "12345"){
 			
 		}
 
-		mysql_free_result($currentPlan);
+		mysqli_free_result($currentPlan);
 
 	}
 
 	
-	mysql_close();
+	mysql_close($link);
 }else{
 	echo "Security key not matching";
 }

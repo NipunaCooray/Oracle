@@ -8,22 +8,22 @@ $security_key = isset($_POST['security_key']) ? $_POST['security_key'] : null;
 
 if($security_key == "12345"){
 
-	$defect_types=mysql_query("SELECT defecttypeid,defecttype FROM `defecttypes`",$link);
+	$defect_types=mysqli_query($link,"SELECT defecttypeid,defecttype FROM `defecttypes`");
 
 	if($defect_types === FALSE) { 
-    	die(mysql_error()); // TODO: better error handling
+    	die(mysqli_error()); // TODO: better error handling
 	}
 
 	$result = array();
 
-	while($row = mysql_fetch_array($defect_types)) {
+	while($row = mysqli_fetch_array($defect_types)) {
 	   array_push($result,array('defecttypeid'=>$row[0],'defecttype'=>$row[1] ));
 	}
 
 	echo json_encode(array("result"=>$result));
 
-	mysql_free_result($defect_types);
-	mysql_close();
+	mysqli_free_result($defect_types);
+	mysqli_close($link);
 
 }else{
 	echo "Security key not matching";
