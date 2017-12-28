@@ -57,7 +57,7 @@ if( $_POST ) {
 	//echo $query."<br>";
 
 	         
-	$result = mysql_query($query,$link) or die(mysql_error());
+	$result = mysqli_query($link,$query) or die(mysqli_error());
 
 
 	if ($result==1){
@@ -71,7 +71,7 @@ if( $_POST ) {
 	if($status=="Good"){
 		$updateKnittingQuantity = "UPDATE `planningdata` SET planningdata.knittedQuantity= planningdata.knittedQuantity+1 WHERE planningdata.machineNumber= '".$machineNo."' AND planningdata.orderState= 'ongoing' " ;
 
-		$updateQueryResult = mysql_query($updateKnittingQuantity,$link) or die(mysql_error());
+		$updateQueryResult = mysqli_query($link,$updateKnittingQuantity) or die(mysqli_error());
 
 		if ($updateQueryResult==1){
 			//echo "Successfully updated knitting + 1";
@@ -80,7 +80,7 @@ if( $_POST ) {
 		}
 	}
 
-	mysql_close($link);
+	mysqli_close($link);
 
 	}else{
 		echo "Security key not matching";
