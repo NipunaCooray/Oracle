@@ -127,9 +127,9 @@
                           <?php
 
                               $query = "SELECT * FROM `styledata` Order By  styledata.styleID ASC ";
-                              $res = mysql_query($query,$link);
+                              $res = mysqli_query($link,$query);
                               echo '<select name = "styleNumber" class="form-control" id="styleNumber" >';
-                              while (($row = mysql_fetch_assoc($res)) != null)
+                              while (($row = mysqli_fetch_assoc($res)) != null)
                               { 
                                   echo '<option value = "'.$row['styleNumber'].'" ';
                                   echo ">{$row['styleNumber']}</option>";          

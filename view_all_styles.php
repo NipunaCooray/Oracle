@@ -13,7 +13,7 @@
 
 	$link=Connection();
 
-	$allstyles=mysql_query("SELECT * FROM `styledata` ",$link);
+	$allstyles=mysqli_query($link,"SELECT * FROM `styledata` ");
 
 
 	echo '<table class="table table-bordered"> ';
@@ -28,10 +28,10 @@
 	</tr>";
 
 	if($allstyles === FALSE) { 
-    	die(mysql_error()); // TODO: better error handling
+    	die(mysqli_error()); // TODO: better error handling
 	}
 
-	while($row = mysql_fetch_array($allstyles)) {
+	while($row = mysqli_fetch_array($allstyles)) {
 	    echo "<tr>";
 	    echo "<td>" . $row['styleID'] . "</td>";
 	    echo "<td>" . $row['styleNumber'] . "</td>";
@@ -41,8 +41,8 @@
 	    echo "</tr>";
 	}
 	echo "</table>";
-	mysql_free_result($allstyles);
-	mysql_close();
+	mysqli_free_result($allstyles);
+	mysqli_close($link);
 
   ?>
 

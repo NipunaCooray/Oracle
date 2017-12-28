@@ -65,7 +65,7 @@ echo $image_location;
 //Saving data to style_data table
 $query = "INSERT INTO `styledata` (`styleNumber`, `imageLocation`,`areaList`) VALUES ('".$styleNumber."','".$image_location."','".$areaList."')"; 
       	
-$result = mysql_query($query,$link) or die(mysql_error());
+$result = mysqli_query($link,$query) or die(mysqli_error());
 
 
 if ($result==1){
@@ -95,7 +95,7 @@ echo $sql."<br>";
 //mysql_select_db('dboracle');
 
 
-$result2 = mysql_query($sql,$link) or die(mysql_error());
+$result2 = mysqli_query($link,$sql) or die(mysqli_error());
 
 
 if ($result2==1){
@@ -104,7 +104,7 @@ if ($result2==1){
 	echo $result2;
 }
 
-mysql_close($link);
+mysqli_close($link);
 
 
 

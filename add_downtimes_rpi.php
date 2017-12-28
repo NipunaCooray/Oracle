@@ -14,12 +14,12 @@ $reason = isset($_POST['reason']) ? $_POST['reason'] : null;
 $query = "INSERT INTO `downtimes` (`downtimetypeid`, `machineno`,`stoptime`, `starttime`,`reason`) 
 	VALUES ('".$downtimetypeid."','".$machineno."','".$stoptime."','".$starttime."','".$reason."')"; 
 	
-$result = mysql_query($query,$link) or die(mysql_error());
+$result = mysqli_query($link,$query) or die(mysqli_error());
 
 
 
 
-mysql_close($link);
+mysqli_close($link);
 
 $successMessage = "Successfully saved json";
 
