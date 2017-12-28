@@ -9,15 +9,15 @@
 
 	 if( $_GET ) {
 
-	 	   $downtimeid = mysql_real_escape_string($_GET['downtimeid']);
+	 	   $downtimeid = mysqli_real_escape_string($link,$_GET['downtimeid']);
 
 
 	       $query="DELETE FROM `downtimereason` WHERE `downtimeid`= '".$downtimeid."' ";
 	      	
-	       $result = mysql_query($query,$link) or die(mysql_error());
-	   	   mysql_close($link);
+	       $result = mysqli_query($link,$query) or die(mysqli_error());
+	   	   mysqli_close($link);
 
-	       //echo $result;
+
 	       header("Location: add_downtime_reason_ui.php");
 
  

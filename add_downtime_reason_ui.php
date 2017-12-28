@@ -158,9 +158,9 @@
                           <?php
 
                               $query = "SELECT * FROM `notifyingusers`";
-                              $res = mysql_query($query,$link);
+                              $res = mysqli_query($link,$query);
                               echo '<select name = "userlist1" class="form-control" id="userlist1" >';
-                              while (($row = mysql_fetch_assoc($res)) != null)
+                              while (($row = mysqli_fetch_assoc($res)) != null)
                               { 
                                   echo '<option value = "'.$row['notifyinguserid'].'" ';
                                   echo ">{$row['username']}</option>";          
@@ -192,9 +192,9 @@
                           <?php
 
                               $query = "SELECT * FROM `notifyingusers`";
-                              $res = mysql_query($query,$link);
+                              $res = mysqli_query($link,$query);
                               echo '<select name = "userlist2" class="form-control" id="userlist2" >';
-                              while (($row = mysql_fetch_assoc($res)) != null)
+                              while (($row = mysqli_fetch_assoc($res)) != null)
                               { 
                                   echo '<option value = "'.$row['notifyinguserid'].'" ';
                                   echo ">{$row['username']}</option>";          
@@ -226,9 +226,9 @@
                           <?php
 
                               $query = "SELECT * FROM `notifyingusers`";
-                              $res = mysql_query($query,$link);
+                              $res = mysqli_query($link,$query);
                               echo '<select name = "userlist3" class="form-control" id="userlist3" >';
-                              while (($row = mysql_fetch_assoc($res)) != null)
+                              while (($row = mysqli_fetch_assoc($res)) != null)
                               { 
                                   echo '<option value = "'.$row['notifyinguserid'].'" ';
                                   echo ">{$row['username']}</option>";          
@@ -260,9 +260,9 @@
                           <?php
 
                               $query = "SELECT * FROM `notifyingusers`";
-                              $res = mysql_query($query,$link);
+                              $res = mysqli_query($link,$query);
                               echo '<select name = "userlist4" class="form-control" id="userlist4" >';
-                              while (($row = mysql_fetch_assoc($res)) != null)
+                              while (($row = mysqli_fetch_assoc($res)) != null)
                               { 
                                   echo '<option value = "'.$row['notifyinguserid'].'" ';
                                   echo ">{$row['username']}</option>";          

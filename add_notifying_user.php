@@ -17,7 +17,7 @@
    		VALUES ('".$username."','".$contactnumber."','".$email."')"; 
       	
       	$result = mysqli_query($link,$query); 
-   	   mysqli_close($link);
+   	   
 
         if ($result==1){
           echo "Successfully saved";
@@ -25,7 +25,8 @@
          echo("Errorcode: " . mysqli_errno($link));
         }
 
-      	
+
+        mysqli_close($link);
 
       }
 ?>

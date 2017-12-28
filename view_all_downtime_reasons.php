@@ -14,14 +14,14 @@
 
 	$link=Connection();
 
-	$allDowntimes=mysql_query("SELECT * FROM `downtimereason`",$link);
+	$allDowntimes=mysqli_query($link,"SELECT * FROM `downtimereason`");
 
 	function getUserName($userid) {
-		$link2=Connection();
-	    $result = mysql_query("SELECT `username` FROM `notifyingusers` WHERE `notifyinguserid`= '".$userid."' ",$link2);
+
+	    $result = mysqli_query($link,"SELECT `username` FROM `notifyingusers` WHERE `notifyinguserid`= '".$userid."' ");
 	    $username = "";
 	    
-	    while($row = mysql_fetch_array($result)) {
+	    while($row = mysqli_fetch_array($result)) {
 	    	$username = $row['username'];
 	    	
 		}
@@ -48,7 +48,7 @@
 		  </tr>
 		</thead>";
 
-	while($row = mysql_fetch_array($allDowntimes)) {
+	while($row = mysqli_fetch_array($allDowntimes)) {
 	    echo "<tr>";
 	    echo "<td>" . $row['downtimeid'] . "</td>";
 	    echo "<td>" . $row['description'] . "</td>";
@@ -65,8 +65,8 @@
 	    echo "</tr>";
 	}
 	echo "</table>";
-	mysql_free_result($allDowntimes);
-	mysql_close();
+	mysqli_free_result($allDowntimes);
+	mysqli_close($link);
 
   ?>
 
