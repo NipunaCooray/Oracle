@@ -13,8 +13,8 @@
 
 	       $query="DELETE FROM `team_members` WHERE `epf_no`= '".$epf_no."' ";
 	      	
-	       $result = mysql_query($query,$link) or die(mysql_error());
-	   	   mysql_close($link);
+	       $result = mysqli_query($link,$query) or die(mysqli_error());
+	   	   mysqli_close($link);
 
 	       // echo $result;
 	       header("Location: add_team_member_ui.php");

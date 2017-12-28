@@ -13,7 +13,7 @@
 
 	$link=Connection();
 
-	$team_members=mysql_query("SELECT * FROM `team_members`",$link);
+	$team_members=mysqli_query($link,"SELECT * FROM `team_members`");
 
 
 	echo '<table class="table table-bordered"> ';
@@ -28,10 +28,10 @@
 	</tr>";
 
 	if($team_members === FALSE) { 
-    	die(mysql_error()); // TODO: better error handling
+    	die(mysqli_error()); // TODO: better error handling
 	}
 
-	while($row = mysql_fetch_array($team_members)) {
+	while($row = mysqli_fetch_array($team_members)) {
 	    echo "<tr>";
 	    echo "<td>" . $row['epf_no'] . "</td>";
 	    echo "<td>" . $row['team_member_name'] . "</td>";
@@ -42,8 +42,8 @@
 	    echo "</tr>";
 	}
 	echo "</table>";
-	mysql_free_result($team_members);
-	mysql_close();
+	mysqli_free_result($team_members);
+	mysqli_close($link);
 
   ?>
 

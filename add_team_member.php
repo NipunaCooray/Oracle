@@ -64,10 +64,10 @@
 
         
 
-        $epf_no = mysql_real_escape_string($_POST['epf_no']);
-        $team_member_name = mysql_real_escape_string($_POST['team_member_name']);
-        $password = mysql_real_escape_string($_POST['password']);
-        $shift = mysql_real_escape_string($_POST['shift']);
+        $epf_no = mysqli_real_escape_string($link, $_POST['epf_no']);
+        $team_member_name = mysqli_real_escape_string($link,$_POST['team_member_name']);
+        $password = mysqli_real_escape_string($link,$_POST['password']);
+        $shift = mysqli_real_escape_string($link,$_POST['shift']);
         $image_location = $target_file;
 
         echo $epf_no."<br/>";
@@ -85,8 +85,8 @@
         $query = "INSERT INTO `team_members` (`epf_no`, `team_member_name`, `password`,`shift`,`image_location`) 
          VALUES ('".$epf_no."','".$team_member_name."','".$password."','".$shift."','".$image_location."')"; 
 
-         $result = mysql_query($query,$link) or die(mysql_error());
-        mysql_close($link);
+         $result = mysqli_query($link,$query) or die(mysqli_error());
+        mysqli_close($link);
 
          if ($result==1){
            echo "Successfully saved";
