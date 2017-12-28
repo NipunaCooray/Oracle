@@ -9,8 +9,8 @@ $token = isset($_POST['token']) ? $_POST['token'] : null;
 $query = "INSERT INTO `androidtokens` (`token`) 
 	VALUES ('".$token."')"; 
 	
-$result = mysql_query($query,$link) or die(mysql_error());
-mysql_close($link);
+$result = mysqli_query($link,$query) or die(mysqli_error());
+mysqli_close($link);
 
 
 if ($result==1){

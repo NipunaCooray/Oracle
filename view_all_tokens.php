@@ -13,7 +13,7 @@
 
 	$link=Connection();
 
-	$alldefects=mysql_query("SELECT tabid, imei_number, LEFT(token , 100) AS token  FROM `androidtokens`",$link);
+	$alldefects=mysqli_query($link,"SELECT tabid, imei_number, LEFT(token , 100) AS token  FROM `androidtokens`");
 
 
 	echo '<table class="table table-bordered"> ';
@@ -27,10 +27,10 @@
 	</tr>";
 
 	if($alldefects === FALSE) { 
-    	die(mysql_error()); // TODO: better error handling
+    	die(mysqli_error()); // TODO: better error handling
 	}
 
-	while($row = mysql_fetch_array($alldefects)) {
+	while($row = mysqli_fetch_array($alldefects)) {
 	    echo "<tr>";
 	    echo "<td>" . $row['tabid'] . "</td>";
 	    echo "<td>" . $row['imei_number'] . "</td>";
@@ -39,8 +39,8 @@
 	    echo "</tr>";
 	}
 	echo "</table>";
-	mysql_free_result($alldefects);
-	mysql_close();
+	mysqli_free_result($alldefects);
+	mysqli_close($link);
 
   ?>
 

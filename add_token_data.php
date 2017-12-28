@@ -10,8 +10,8 @@ $imei_number = isset($_POST['imei_number']) ? $_POST['imei_number'] : null;
 $query = "INSERT INTO `androidtokens` (`token`,`imei_number`) 
 	VALUES ('".$tokenid."','".$imei_number."')"; 
 	
-$result = mysql_query($query,$link) or die(mysql_error());
-mysql_close($link);
+$result = mysqli_query($link,$query) or die(mysqli_error());
+mysqli_close($link);
 
 
 if ($result==1){

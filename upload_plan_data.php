@@ -63,27 +63,17 @@
                  $query = "INSERT INTO `planningdata` (`styleNumber`,`salesOrder`,`lineItem`,`sideAndColor`,`machineNumber`,`orderStart`,`orderEnd`,`plannedQuantity`,`size`,`section` ) 
                         VALUES ('".$styleNumber."','". $dbData[0]."' ,'". $dbData[1]."','". $dbData[2]."','". $dbData[3]."','". $dbData[4]."','". $dbData[5]."','". $dbData[6]."','". $dbData[7]."','". $dbData[8]."')"; 
         
-                $result = mysql_query($query,$link) or die(mysql_error());
+                $result = mysqli_query($link,$query) or die(mysqli_error());
                 $numberOfResults = $numberOfResults + $result;
 
 		    }
-            mysql_close($link);
+            mysqli_close($link);
 		    fclose($handle);
 		}
 	}
     
     echo $numberOfResults. ' records has been saved';
   
-    // Check if $uploadOk is set to 0 by an error
-    // if ($uploadOk == 0) {
-    //     echo "File was not uploaded.";
-    // // if everything is ok, try to upload file
-    // } else {
-    //     if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-    //         echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
-    //     } else {
-    //         echo "Sorry, there was an error uploading your file.";
-    //     }
-    // }
+   
     
 ?>

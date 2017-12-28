@@ -43,16 +43,16 @@
 
 
          //Need to check whether added TabID's are valid
-        $allTabIDsResult = mysql_query(" SELECT tabid FROM `androidtokens` ",$link);
+        $allTabIDsResult = mysqli_query($link," SELECT tabid FROM `androidtokens` ");
 
         if($allTabIDsResult === FALSE) { 
-            die(mysql_error()); // TODO: better error handling
+            die(mysqli_error()); // TODO: better error handling
         }
 
         $TabIDList = array();
 
         $index = 0;
-        while($singleID = mysql_fetch_array($allTabIDsResult)){ 
+        while($singleID = mysqli_fetch_array($allTabIDsResult)){ 
 
              $TabIDList[$index] = $singleID["tabid"];
 
@@ -97,7 +97,7 @@
                         $query = "INSERT INTO `tabmachineallocation` (`tabid`,`machine1`,`machine2`,`machine3`,`machine4`,`machine5`,`machine6`,`machine7`,`machine8`, `machine9`, `machine10`) 
                     VALUES ('". $dbData[0]."' ,'". $dbData[1]."','". $dbData[2]."','". $dbData[3]."','". $dbData[4]."','". $dbData[5]."','". $dbData[6]."','". $dbData[7]."','". $dbData[8]."','". $dbData[9]."','". $dbData[10]."')"; 
         
-                    $result = mysql_query($query,$link) or die(mysql_error());
+                    $result = mysqli_query($link,$query) or die(mysqli_error());
                     $numberOfResults = $numberOfResults + $result;
                     //echo "Match found<br>";
 
@@ -108,7 +108,7 @@
 
 
 		    }
-            mysql_close($link);
+            mysqli_close($link);
 		    fclose($handle);
 		}
 	}
