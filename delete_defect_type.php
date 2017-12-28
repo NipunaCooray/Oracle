@@ -13,10 +13,10 @@
 
 	       $query="DELETE FROM `defecttypes` WHERE `defecttypeid`= '".$defectid."' ";
 	      	
-	       $result = mysql_query($query,$link) or die(mysql_error());
-	   	   mysql_close($link);
+	       $result = mysqli_query($link,$query) or exit(mysqli_error());
+	       mysqli_free_result($result);
+	   	   mysqli_close($link);
 
-	       // echo $result;
 	       header("Location: add_defect_type_ui.php");
 
  
