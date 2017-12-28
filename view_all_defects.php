@@ -13,7 +13,7 @@
 
 	$link=Connection();
 
-	$allstyles=mysqli_query($link,"SELECT styleNumber FROM `styledata` ");
+	$allstyles = mysqli_query($link,"SELECT styleNumber FROM `styledata` ");
 
 	//Need to get all the data from each style table
 

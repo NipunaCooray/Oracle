@@ -16,14 +16,20 @@
 	$allDefects=mysqli_query($link,"SELECT * FROM `defecttypes`");
 
 	function getUserName($userid) {
+
+		//Without using PHP global $link, $link2, a local connection have been used here
+
 		$link2=Connection();
-	    $result = mysqli_query($link2,"SELECT `username` FROM `notifyingusers` WHERE `notifyinguserid`= '".$userid."' ");
+		
+	    $result = mysqli_query( $link2 , "SELECT `username` FROM `notifyingusers` WHERE `notifyinguserid`= '".$userid."' ");
 	    $username = "";
 	    
 	    while($row = mysqli_fetch_array($result)) {
 	    	$username = $row['username'];
 	    	
 		}
+
+		mysqli_close($link2);
 
 	    return $username;
 	}
