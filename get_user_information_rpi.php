@@ -10,10 +10,10 @@ $user_pword = isset($_POST['user_pword']) ? $_POST['user_pword'] : null;
 
 if($security_key == "12345"){
 
-	$user =mysqli_query($link,"SELECT epf_no,team_member_name,shift,image_location FROM `team_members` WHERE team_members.epf_no='".$user_epf."' AND team_members.password='".$user_pword."'; ");
+	$user =mysqli_query($link,"SELECT epf_no,team_member_name,shift,userRole,image_location FROM `team_members` WHERE team_members.epf_no='".$user_epf."' AND team_members.password='".$user_pword."'; ");
 
 	if($user === FALSE) { 
-    	die(mysqli_error()); // TODO: better error handling
+    	die(mysqli_error($link)); // TODO: better error handling
 	}
 
 
@@ -21,7 +21,7 @@ if($security_key == "12345"){
 	$result = array();
 
 	while($row = mysqli_fetch_array($user)) {
-	   array_push($result,array('userEPF'=>$row[0],'userName'=>$row[1],'shift'=>$row[2],'imageURL'=>$row[3] ));
+	   array_push($result,array('userEPF'=>$row[0],'userName'=>$row[1],'shift'=>$row[2],'userRole'=>$row[3],'imageURL'=>$row[4] ));
 	}
 
 	if (mysqli_num_rows($user)==0) {

@@ -22,6 +22,7 @@
 	<th>Name</th>
 	<th>Password</th>
 	<th>Shift</th>
+	<th>User role</th>
 	<th>Image URL</th>
 	<th></th>
 
@@ -37,6 +38,7 @@
 	    echo "<td>" . $row['team_member_name'] . "</td>";
 	    echo "<td>" . $row['password'] . "</td>";
 	    echo "<td>" . $row['shift'] . "</td>";
+	    echo "<td>" . $row['userRole'] . "</td>";
 	    echo "<td>" . $row['image_location'] . "</td>";
 	    echo '<td> <a href="delete_team_member.php?epf_no= ' . $row['epf_no'] .  ' " '  , '  class="btn btn-default" > Delete </a> </td> ';
 	    echo "</tr>";

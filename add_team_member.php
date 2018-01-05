@@ -68,12 +68,14 @@
         $team_member_name = mysqli_real_escape_string($link,$_POST['team_member_name']);
         $password = mysqli_real_escape_string($link,$_POST['password']);
         $shift = mysqli_real_escape_string($link,$_POST['shift']);
+        $userRole = mysqli_real_escape_string($link,$_POST['userRole']);
         $image_location = $target_file;
 
         echo $epf_no."<br/>";
         echo $team_member_name."<br/>";
         echo $password."<br/>";
         echo $shift."<br/>";
+        echo $userRole."<br/>";
         echo $image_location."<br/>";
 
 
@@ -82,8 +84,8 @@
 
 
 
-        $query = "INSERT INTO `team_members` (`epf_no`, `team_member_name`, `password`,`shift`,`image_location`) 
-         VALUES ('".$epf_no."','".$team_member_name."','".$password."','".$shift."','".$image_location."')"; 
+        $query = "INSERT INTO `team_members` (`epf_no`, `team_member_name`, `password`,`shift`,`userRole`,`image_location`) 
+         VALUES ('".$epf_no."','".$team_member_name."','".$password."','".$shift."','".$userRole."','".$image_location."')"; 
 
          $result = mysqli_query($link,$query) or die(mysqli_error());
         mysqli_close($link);

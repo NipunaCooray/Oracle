@@ -57,7 +57,7 @@ if( $_POST ) {
 	//echo $query."<br>";
 
 	         
-	$result = mysqli_query($link,$query) or die(mysqli_error());
+	$result = mysqli_query($link,$query) or die(mysqli_error($link));
 
 
 	if ($result==1){

@@ -1,0 +1,1 @@
+SELECT dt FROM tr_flyknit Where machineNo='X37'  AND HOUR (tr_flyknit.dt) BETWEEN 7 AND 19 ORDER BY id DESC Limit 2

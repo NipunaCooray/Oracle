@@ -1,0 +1,1 @@
+SELECT * FROM tr_flyknit Where (HOUR (tr_flyknit_1.dt) BETWEEN 19 AND 24 OR HOUR (tr_flyknit.dt) BETWEEN 0 AND 7 ) ORDER BY tr_flyknit.id DESC Limit 2

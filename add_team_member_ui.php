@@ -153,6 +153,20 @@
                         </div>
                     </div>
 
+                     <div class="control-group">
+                      <label class="control-label">Role:</label>
+                        <div class="controls">
+                           <select name="userRole" class="form-control span3" id="userRole">
+
+                                <option value="tm">Team member</option>
+                                <option value="qc">Quality checker</option>
+                                
+                              
+                            </select>
+
+                        </div>
+                    </div>
+
                     <div class="control-group">
                       <label class="control-label">Select image to upload:</label>
                       <div class="controls">
