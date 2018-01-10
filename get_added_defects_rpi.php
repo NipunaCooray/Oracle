@@ -67,7 +67,7 @@
 
 				$query = "SELECT * FROM `".$styleNumber[$counter]."` Where machineNo='".$machineNo."' AND (HOUR (".$styleNumber[$counter].".dt) BETWEEN 7 AND 19) ORDER BY dt DESC Limit ".$numberOfResults." " ;
 
-				//echo $query. PHP_EOL ;;
+				//echo $query. PHP_EOL ;
 
 				$shift_1_results=mysqli_query($link,$query);
 

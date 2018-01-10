@@ -82,7 +82,7 @@ $number_of_areas = count($areaArray);
 
 echo "<br> Number of elements :".$number_of_areas."<br>";
 
-$sql = "CREATE TABLE IF NOT EXISTS ".$styleNumber." (id int NOT NULL AUTO_INCREMENT,machineNo VARCHAR(100),dt TIMESTAMP,status VARCHAR (100),qceditcounter int DEFAULT 0,";
+$sql = "CREATE TABLE IF NOT EXISTS ".$styleNumber." (id int NOT NULL AUTO_INCREMENT,machineNo VARCHAR(100),dt TIMESTAMP,status VARCHAR (100),qceditcounter int DEFAULT 0,planId int,";
 
 foreach ($areaArray as $area) {
     $sql .= $area. " VARCHAR(200) DEFAULT 'NULL', ";
