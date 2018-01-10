@@ -7,21 +7,16 @@
     $link=Connection();
 
 
-    $target_dir = "planningData/";
-    $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+    //$target_dir = "planningData/";
+    //$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+    
+    $target_file =  basename($_FILES["fileToUpload"]["name"]);
     $uploadOk = 1;
     $fileType = pathinfo($target_file,PATHINFO_EXTENSION);
 
-    //$styleNumber = isset($_POST['styleNumber']) ? $_POST['styleNumber'] : null;
-
-
 
     
-    // // Check if file already exists
-    // if (file_exists($target_file)) {
-    //     echo "Sorry, file already exists.";
-    //     $uploadOk = 0;
-    // }
+
 
     // Check file size
     if ($_FILES["fileToUpload"]["size"] > 500000) {

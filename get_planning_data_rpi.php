@@ -50,7 +50,7 @@ if($security_key == "12345"){
 
 		while($row = mysqli_fetch_array($nextPlan)) {
 		   $nextPlanID = $row[0];	
-		   array_push($result,array('styleNumber'=>$row[1],'salesOrder'=>$row[2],'lineItem'=>$row[3],'sideAndColor'=>$row[4],'machineNumber'=>$row[5],'orderStart'=>$row[6],'orderEnd'=>$row[7],'plannedQuantity'=>$row[8],'knitted_quantity'=>$row[9],'size'=>$row[10],'section'=>$row[11],'orderState'=>$row[12] ));
+		   array_push($result,array('machineNumber'=>$row[1],'styleNumber'=>$row[2],'salesOrderLineItem'=>$row[3],'cw'=>$row[4],'component'=>$row[5],'size'=>$row[6],'plannedQuantity'=>$row[7],'orderStart'=>$row[8],'orderEnd'=>$row[9],'knittedQuantity'=>$row[10],'orderState'=>$row[11],'planAddedTime'=>$row[12] ));
 		}
 
 		if($nextPlanID==0){
@@ -102,7 +102,7 @@ if($security_key == "12345"){
 
 			while($row = mysqli_fetch_array($nextPlan)) {
 			   $nextPlanID = $row[0];	
-			   array_push($result,array('styleNumber'=>$row[1],'salesOrder'=>$row[2],'lineItem'=>$row[3],'sideAndColor'=>$row[4],'machineNumber'=>$row[5],'orderStart'=>$row[6],'orderEnd'=>$row[7],'plannedQuantity'=>$row[8],'knitted_quantity'=>$row[9],'size'=>$row[10],'section'=>$row[11],'orderState'=>$row[12] ));
+			   array_push($result,array('machineNumber'=>$row[1],'styleNumber'=>$row[2],'salesOrderLineItem'=>$row[3],'cw'=>$row[4],'component'=>$row[5],'size'=>$row[6],'plannedQuantity'=>$row[7],'orderStart'=>$row[8],'orderEnd'=>$row[9],'knittedQuantity'=>$row[10],'orderState'=>$row[11],'planAddedTime'=>$row[12] ));
 			}
 
 			echo json_encode(array("result"=>$result));
@@ -122,7 +122,7 @@ if($security_key == "12345"){
 
 		}else{
 			while($row = mysqli_fetch_array($currentPlan)) {
-			   array_push($result,array('styleNumber'=>$row[1],'salesOrder'=>$row[2],'lineItem'=>$row[3],'sideAndColor'=>$row[4],'machineNumber'=>$row[5],'orderStart'=>$row[6],'orderEnd'=>$row[7],'plannedQuantity'=>$row[8],'knitted_quantity'=>$row[9],'size'=>$row[10],'section'=>$row[11],'orderState'=>$row[12]));
+			   array_push($result,array('machineNumber'=>$row[1],'styleNumber'=>$row[2],'salesOrderLineItem'=>$row[3],'cw'=>$row[4],'component'=>$row[5],'size'=>$row[6],'plannedQuantity'=>$row[7],'orderStart'=>$row[8],'orderEnd'=>$row[9],'knittedQuantity'=>$row[10],'orderState'=>$row[11],'planAddedTime'=>$row[12] ));
 			}
 
 			echo json_encode(array("result"=>$result));
@@ -134,7 +134,7 @@ if($security_key == "12345"){
 	}
 
 	
-	mysql_close($link);
+	mysqli_close($link);
 }else{
 	echo "Security key not matching";
 }
