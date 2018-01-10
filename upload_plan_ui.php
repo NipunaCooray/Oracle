@@ -111,14 +111,6 @@
 
                 <form class="form-horizontal" id="fileUploadForm" >
                     
-                     <div class="control-group">
-                      <label class="control-label">Style number:</label>
-                      <div class="controls">
-                        <input type="text" class="span3" placeholder="Enter exact style number !" id="styleNumber" name="styleNumber" />
-                      </div>
-                    </div>
-                     
-                    
                     <div class="control-group">
                       <label class="control-label">Select file to upload:</label>
                       <div class="controls">

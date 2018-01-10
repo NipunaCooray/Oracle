@@ -144,8 +144,8 @@
                         <div class="controls">
                            <select name="shift" class="form-control span3" id="shift">
 
-                                <option value="shift_1">Shift 1</option>
-                                <option value="shift_2">Shift 2</option>
+                                <option value="1">Shift 1</option>
+                                <option value="2">Shift 2</option>
                                 
                               
                             </select>

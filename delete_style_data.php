@@ -25,7 +25,7 @@
 	       $delete_styledata_query="DELETE FROM `styledata` WHERE `styleID`= '".$styleID."' ";
 
 	       
-	       $result = mysqli_query($link,$delete_styledata_query) or die(mysqli_error());
+	       $result = mysqli_query($link,$delete_styledata_query) or die(mysqli_error($link));
 	       
 
 	       //After deleting styledata row, particular style table need to be dropped
@@ -34,7 +34,7 @@
 
 	      
 
-	       $result2 = mysqli_query($link,$drop_style_table_query) or die(mysqli_error());
+	       $result2 = mysqli_query($link,$drop_style_table_query) or die(mysqli_error($link));
 
 	       
 

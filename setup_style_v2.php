@@ -65,7 +65,7 @@ echo $image_location;
 //Saving data to style_data table
 $query = "INSERT INTO `styledata` (`styleNumber`, `imageLocation`,`areaList`) VALUES ('".$styleNumber."','".$image_location."','".$areaList."')"; 
       	
-$result = mysqli_query($link,$query) or die(mysqli_error());
+$result = mysqli_query($link,$query) or die(mysqli_error($link));
 
 
 if ($result==1){
@@ -82,10 +82,10 @@ $number_of_areas = count($areaArray);
 
 echo "<br> Number of elements :".$number_of_areas."<br>";
 
-$sql = "CREATE TABLE IF NOT EXISTS ".$styleNumber." (id int NOT NULL AUTO_INCREMENT,machineNo VARCHAR(100),dt TIMESTAMP,status VARCHAR (100),";
+$sql = "CREATE TABLE IF NOT EXISTS ".$styleNumber." (id int NOT NULL AUTO_INCREMENT,machineNo VARCHAR(100),dt TIMESTAMP,status VARCHAR (100),qceditcounter int DEFAULT 0,";
 
 foreach ($areaArray as $area) {
-    $sql .= $area. " VARCHAR(200), ";
+    $sql .= $area. " VARCHAR(200) DEFAULT 'NULL', ";
 }
 
 $sql .= "PRIMARY KEY (id)) ENGINE=InnoDB";
@@ -95,7 +95,7 @@ echo $sql."<br>";
 //mysql_select_db('dboracle');
 
 
-$result2 = mysqli_query($link,$sql) or die(mysqli_error());
+$result2 = mysqli_query($link,$sql) or die(mysqli_error($link));
 
 
 if ($result2==1){

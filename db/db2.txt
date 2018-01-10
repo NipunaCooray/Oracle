@@ -115,17 +115,16 @@ Table to store Planning data*/
 /* DROP TABLE planningdata; */
 CREATE TABLE planningdata(
 id int NOT NULL AUTO_INCREMENT,
-styleNumber VARCHAR (300) NOT NULL,
-salesOrder VARCHAR (50),
-lineItem int,
-sideAndColor  VARCHAR (50),
-machineNumber VARCHAR (50),
+machineNumber VARCHAR (200),
+styleNumber VARCHAR (200),
+salesOrderLineItem VARCHAR (200),
+cw VARCHAR (200),
+component VARCHAR (200),
+size float(4,2),
+plannedQuantity int,
 orderStart TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 orderEnd TIMESTAMP NOT NULL,
-plannedQuantity int,
 knittedQuantity int DEFAULT 0,
-size float(4,2),
-section VARCHAR (50),
 orderState VARCHAR(10) DEFAULT 'incomplete',
 PRIMARY KEY (id)
 )Engine=InnoDB;
