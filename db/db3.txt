@@ -125,6 +125,8 @@ plannedQuantity int,
 orderStart TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 orderEnd TIMESTAMP NOT NULL,
 knittedQuantity int DEFAULT 0,
+reworkQuantity int DEFAULT 0,
+rejectQuantity int DEFAULT 0,
 orderState VARCHAR(10) DEFAULT 'incomplete',
 planAddedTime TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 PRIMARY KEY (id)

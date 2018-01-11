@@ -88,6 +88,32 @@ if( $_POST ) {
 					echo $updateQueryResult;
 				}
 			}
+
+			//If piece out is a rework, Update rework counter of the planning data
+			if($status=="Rework"){
+				$updateReworkQuantity = "UPDATE `planningdata` SET planningdata.reworkQuantity= planningdata.reworkQuantity+1 WHERE planningdata.machineNumber= '".$machineNo."' AND planningdata.orderState= 'ongoing' " ;
+
+				$updateQueryResult = mysqli_query($link,$updateReworkQuantity) or die(mysqli_error($link));
+
+				if ($updateQueryResult==1){
+					//echo "Successfully updated knitting + 1";
+				}else{
+					echo $updateQueryResult;
+				}
+			}else if($status=="Reject"){
+				$updateRejectQuantity = "UPDATE `planningdata` SET planningdata.rejectQuantity= planningdata.rejectQuantity+1 WHERE planningdata.machineNumber= '".$machineNo."' AND planningdata.orderState= 'ongoing' " ;
+
+				$updateQueryResult = mysqli_query($link,$updateRejectQuantity) or die(mysqli_error($link));
+
+				if ($updateQueryResult==1){
+					//echo "Successfully updated knitting + 1";
+				}else{
+					echo $updateQueryResult;
+				}
+			}
+
+
+
 		}else if($role=="qc"){
 
 			//To handle old piece out records
@@ -106,9 +132,9 @@ if( $_POST ) {
 			//echo $oldStatus.PHP_EOL;
 
 			if($oldStatus=="Good"&&$status=="Reject"){
-				//echo "Reduce 1 from the plan id".PHP_EOL;
+				//echo "Reduce 1 from knitted quantity and  Add 1 to the Reject quantity from the plan id".PHP_EOL;
 
-				$updatePlanKnttedQuantity = "UPDATE `planningdata` SET planningdata.knittedQuantity= planningdata.knittedQuantity-1 WHERE planningdata.id= '".$planId."' " ;
+				$updatePlanKnttedQuantity = "UPDATE `planningdata` SET planningdata.knittedQuantity= planningdata.knittedQuantity-1,planningdata.rejectQuantity= planningdata.rejectQuantity+1 WHERE planningdata.id= '".$planId."' " ;
 
 				$updatePlanKnttedQuantityResult = mysqli_query($link,$updatePlanKnttedQuantity) or die(mysqli_error($link));
 
@@ -121,14 +147,36 @@ if( $_POST ) {
 
 
 			}else if($oldStatus=="Good"&&$status=="Rework"){
-				//echo "Do nothing to the plan".PHP_EOL;
+				//echo "Add 1 to the Rework quantity".PHP_EOL;
+
+				$updatePlanKnttedQuantity = "UPDATE `planningdata` SET planningdata.reworkQuantity= planningdata.reworkQuantity+1 WHERE planningdata.id= '".$planId."' " ;
+
+				$updatePlanKnttedQuantityResult = mysqli_query($link,$updatePlanKnttedQuantity) or die(mysqli_error($link));
+
+				if ($updatePlanKnttedQuantityResult==1){
+					//echo "Successfully updated knitting - 1";
+				}else{
+					echo $updatePlanKnttedQuantityResult;
+				}
+
 			}else if($oldStatus=="Rework"&&$status=="Good"){
-				//echo "Do nothing to the plan".PHP_EOL;
+				//echo "Reduce 1 from the rework quantity".PHP_EOL;
+				$updatePlanKnttedQuantity = "UPDATE `planningdata` SET planningdata.reworkQuantity= planningdata.reworkQuantity-1 WHERE planningdata.id= '".$planId."' " ;
+
+				$updatePlanKnttedQuantityResult = mysqli_query($link,$updatePlanKnttedQuantity) or die(mysqli_error($link));
+
+				if ($updatePlanKnttedQuantityResult==1){
+					//echo "Successfully updated knitting - 1";
+				}else{
+					echo $updatePlanKnttedQuantityResult;
+				}
+
+
 			}else if($oldStatus=="Rework"&&$status=="Reject"){
 				
-				//echo "Reduce 1 from the plan id".PHP_EOL;
+				//echo "Reduce 1 from the knitted quantity and reduce 1 from the Rework counter and Add 1 to the reject quantity ".PHP_EOL;
 
-				$updatePlanKnttedQuantity = "UPDATE `planningdata` SET planningdata.knittedQuantity= planningdata.knittedQuantity-1 WHERE planningdata.id= '".$planId."' " ;
+				$updatePlanKnttedQuantity = "UPDATE `planningdata` SET planningdata.knittedQuantity= planningdata.knittedQuantity-1, planningdata.reworkQuantity= planningdata.reworkQuantity-1, planningdata.rejectQuantity= planningdata.rejectQuantity+1 WHERE planningdata.id= '".$planId."' " ;
 
 				$updatePlanKnttedQuantityResult = mysqli_query($link,$updatePlanKnttedQuantity) or die(mysqli_error($link));
 
@@ -140,9 +188,9 @@ if( $_POST ) {
 
 
 			}else if($oldStatus=="Reject"&&$status=="Good"){
-				//echo "Add 1 to the knitted quantity of the plan id".PHP_EOL;
+				//echo "Add 1 to the knitted quantity and  Reduce 1 from the Reject counter of the plan id".PHP_EOL;
 
-				$updatePlanKnttedQuantity = "UPDATE `planningdata` SET planningdata.knittedQuantity= planningdata.knittedQuantity+1 WHERE planningdata.id= '".$planId."' " ;
+				$updatePlanKnttedQuantity = "UPDATE `planningdata` SET planningdata.knittedQuantity= planningdata.knittedQuantity+1,planningdata.rejectQuantity= planningdata.rejectQuantity-1 WHERE planningdata.id= '".$planId."' " ;
 
 				$updatePlanKnttedQuantityResult = mysqli_query($link,$updatePlanKnttedQuantity) or die(mysqli_error($link));
 
@@ -154,9 +202,9 @@ if( $_POST ) {
 
 
 			}else if($oldStatus=="Reject"&&$status=="Rework"){
-				//echo "Add 1 to the knitted quantity of the plan id".PHP_EOL;
+				//echo "Add 1 to the knitted quantity and Reduce 1 from the Reject quantity and add 1 to the Rework quantity of the plan id".PHP_EOL;
 
-				$updatePlanKnttedQuantity = "UPDATE `planningdata` SET planningdata.knittedQuantity= planningdata.knittedQuantity+1 WHERE planningdata.id= '".$planId."' " ;
+				$updatePlanKnttedQuantity = "UPDATE `planningdata` SET planningdata.knittedQuantity= planningdata.knittedQuantity+1, planningdata.rejectQuantity= planningdata.rejectQuantity-1, planningdata.reworkQuantity= planningdata.reworkQuantity+1 WHERE planningdata.id= '".$planId."' " ;
 
 				$updatePlanKnttedQuantityResult = mysqli_query($link,$updatePlanKnttedQuantity) or die(mysqli_error($link));
 
