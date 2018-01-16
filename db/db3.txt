@@ -140,16 +140,7 @@ CREATE TABLE tabmachineallocation(
 id int NOT NULL AUTO_INCREMENT,
 timeadded TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 tabid int NOT NULL,
-machine1 VARCHAR (50) DEFAULT 'null',
-machine2 VARCHAR (50) DEFAULT 'null',
-machine3 VARCHAR (50) DEFAULT 'null',
-machine4 VARCHAR (50) DEFAULT 'null',
-machine5 VARCHAR (50) DEFAULT 'null',
-machine6 VARCHAR (50) DEFAULT 'null',
-machine7 VARCHAR (50) DEFAULT 'null',
-machine8 VARCHAR (50) DEFAULT 'null',
-machine9 VARCHAR (50) DEFAULT 'null',
-machine10 VARCHAR (50) DEFAULT 'null',
+machineNumber VARCHAR (50) NOT NULL,
 PRIMARY KEY (id)
 )Engine=InnoDB;
 
@@ -164,5 +155,15 @@ shift VARCHAR (50),
 userRole VARCHAR (50),
 image_location VARCHAR(100),
 PRIMARY KEY (epf_no)
+)Engine=InnoDB;
+
+/* DROP TABLE piece_out_notifications; */
+
+CREATE TABLE piece_out_notifications(
+id int NOT NULL AUTO_INCREMENT,
+machineNumber VARCHAR(50),
+timestamp TIMESTAMP NOT NULL,
+status VARCHAR(50) DEFAULT 'not_sent',
+PRIMARY KEY (id)
 )Engine=InnoDB;
 

@@ -66,10 +66,11 @@
 		    while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
 		        //if($row == 1){ $row++; continue; }
 		        $num = count($data);
-		        //echo "<p> $num fields in line $row: <br /></p>\n";
+		        echo "<p> $num fields in line $row: <br /></p>\n";
 		        $row++;
 
                 $dbData = array();
+                $size=0;
 
 		        for ($c=0; $c < $num; $c++) {
                     //echo $styleNumber;
@@ -80,25 +81,33 @@
 		        }
                 echo "<br/>";
 
-                for ($c=$num; $c <= 10; $c++) {
 
-                    $dbData[$c] = "null";
-                }
 
                 echo "Printing dbData[0] :".$dbData[0]."<br/>";
-               
 
-                if (in_array($dbData[0], $TabIDList)){
-                        $query = "INSERT INTO `tabmachineallocation` (`tabid`,`machine1`,`machine2`,`machine3`,`machine4`,`machine5`,`machine6`,`machine7`,`machine8`, `machine9`, `machine10`) 
-                    VALUES ('". $dbData[0]."' ,'". $dbData[1]."','". $dbData[2]."','". $dbData[3]."','". $dbData[4]."','". $dbData[5]."','". $dbData[6]."','". $dbData[7]."','". $dbData[8]."','". $dbData[9]."','". $dbData[10]."')"; 
+                $deleteTabIDQuery = "DELETE FROM `tabmachineallocation` WHERE tabmachineallocation.tabid='" .$dbData[0]. " ' ";
+                $result = mysqli_query($link,$deleteTabIDQuery) or die(mysqli_error($link));
+              
+
+                $size = count($dbData);
+                echo "Size of array: ".$size."<br/>";
+                $x = 0;
+
+
+                for ($x = 1; $x < $size; $x++) {
+                    if (in_array($dbData[0], $TabIDList)){
+                        $query = "INSERT INTO `tabmachineallocation` (`tabid`,`machineNumber`) VALUES ('". $dbData[0]."' ,'". $dbData[$x]."')"; 
         
-                    $result = mysqli_query($link,$query) or die(mysqli_error());
-                    $numberOfResults = $numberOfResults + $result;
-                    //echo "Match found<br>";
+
+                        echo $query."<br/>";
+
+                        $result = mysqli_query($link,$query) or die(mysqli_error($link));
+                        $numberOfResults = $numberOfResults + $result;
 
 
-                }else{
-                    echo "Invalid Tab IDs <br/>";
+                    }else{
+                        echo "Invalid Tab IDs <br/>";
+                    }
                 }
 
 
@@ -108,7 +117,7 @@
 		}
 	}
     
-    echo $numberOfResults. ' records has been saved';
+    //echo $numberOfResults. ' records has been saved';
   
     
     
