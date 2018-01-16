@@ -141,7 +141,8 @@ id int NOT NULL AUTO_INCREMENT,
 timeadded TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 tabid int NOT NULL,
 machineNumber VARCHAR (50) NOT NULL,
-PRIMARY KEY (id)
+PRIMARY KEY (id),
+UNIQUE KEY (machineNumber)
 )Engine=InnoDB;
 
 
