@@ -3,6 +3,8 @@
 include("connect.php");
 include("send_firebase_notifications.php");
 
+$response = 0;
+
 
 $link=Connection();
 
@@ -55,12 +57,15 @@ if($security_key == "12345"){
 		$firebaseSuccessValue = $firebaseResponse->{'success'}; 
 
 		if($firebaseSuccessValue==1){
-			echo "Successfully sent";
+			$response = 1;
 		}
 
 
 	}
 
+	if($response==1){
+		echo "Successfully sent";
+	}
 
 	mysqli_free_result($sentNotificationResult);
 	
