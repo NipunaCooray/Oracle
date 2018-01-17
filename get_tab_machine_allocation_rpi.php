@@ -11,7 +11,7 @@ if($security_key == "12345"){
 	$machine_list=mysqli_query($link,"SELECT machineNumber FROM `tabmachineallocation` WHERE tabmachineallocation.tabid= (SELECT androidtokens.tabid FROM `androidtokens` WHERE androidtokens.imei_number= '".$imei_number."' )  ORDER BY tabmachineallocation.timeadded DESC  ");
 
 	if($machine_list === FALSE) { 
-    	die(mysqli_error()); // TODO: better error handling
+    	die(mysqli_error($link)); // TODO: better error handling
 	}
 
 	$result = array();

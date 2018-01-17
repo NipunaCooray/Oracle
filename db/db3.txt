@@ -163,7 +163,7 @@ PRIMARY KEY (epf_no)
 CREATE TABLE piece_out_notifications(
 id int NOT NULL AUTO_INCREMENT,
 machineNumber VARCHAR(50),
-timestamp TIMESTAMP NOT NULL,
+timestamp TIMESTAMP NOT NULL DEFAULT 0,
 status VARCHAR(50) DEFAULT 'not_sent',
 PRIMARY KEY (id)
 )Engine=InnoDB;

@@ -24,6 +24,11 @@ if( $_POST ) {
 	//Plan id will saved with each piece out 
 	$planId = isset($_POST['planId']) ? $_POST['planId'] : null;
 
+	//Notification id will be taken to update particular notification's status
+	$notificationId = isset($_POST['notificationId']) ? $_POST['notificationId'] : null;
+
+
+
 	if($security_key == "12345"){
 
 		//Insert data to particular style number table
@@ -111,6 +116,22 @@ if( $_POST ) {
 					echo $updateQueryResult;
 				}
 			}
+
+			//------------------------------------------------------------------------------------------------------------------------------
+
+
+			//Updating notification status when piece infor is added to the db 
+			
+			$updateNotificationStatusQuery = "UPDATE `piece_out_notifications` SET piece_out_notifications.status= 'serviced' WHERE piece_out_notifications.id= '".$notificationId."' ";
+			$updateNotificationStatusResult = mysqli_query($link,$updateNotificationStatusQuery) or die(mysqli_error($link));
+
+			if ($updateNotificationStatusResult==1){
+				//echo "Successfully updated knitted quantity to serviced";
+			}else{
+				echo $updateNotificationStatusResult;
+			}
+
+
 
 
 

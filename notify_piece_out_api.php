@@ -93,27 +93,45 @@ while($row =  mysqli_fetch_array($unsentNotifications)) {
 		$tokens[] = $row["token"];
 	}
 
+
 	echo "Firebase token : ";
 	print_r($tokens);
 	echo "<br>";
 
-	$message = array("machine" => $machineNumber ,"type" => "piece_out","timestamp" => $timestamp);
+	$message = array("notificationId" => $id,"machineNumber" => $machineNumber ,"notificationType" => "piece_out","timestamp" => $timestamp);
 
 	echo "Message to be sent : ";
 	print_r($message);
 	echo "<br>";
 
-	// $message_status = send_notification($tokens, $message);
-	// echo $message_status;
+	$message_status = send_notification($tokens, $message);
+	echo $message_status;
+	echo "<br>";
+
+	//Sample reply :{"multicast_id":6726022849045016561,"success":1,"failure":0,"canonical_ids":0,"results":[{"message_id":"0:1516170517011919%6e665f98f9fd7ecd"}]}
+
+	//Update notification status
 
 	//Only for testing
-	$message_status = 1;
+	
+	$firebaseResponse = json_decode($message_status);
+	$firebaseSuccessValue = $firebaseResponse->{'success'}; 
 
-	if($message_status==1){
-		$updateNotificationStatusQuery = "UPDATE `piece_out_notifications` SET piece_out_notifications.status= 'sent' WHERE piece_out_notifications.id= '".$id."' " ;;
+
+	if($firebaseSuccessValue==1){
+		$updateNotificationStatusQuery = "UPDATE `piece_out_notifications` SET piece_out_notifications.status= 'sent' WHERE piece_out_notifications.id= '".$id."' " ;
 	}
 
 	echo $updateNotificationStatusQuery."<br>";
+
+	$updateNotificationStatusResult = mysqli_query($link,$updateNotificationStatusQuery) or die(mysqli_error($link));
+
+	if ($updateNotificationStatusResult==1){
+		echo "Successfully updated";
+	}else{
+		echo $updateNextPlanQueryResult;
+	}
+
 
 }
 
