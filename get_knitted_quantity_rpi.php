@@ -12,7 +12,7 @@ if($security_key == "12345"){
 	$knitted_quantity=mysqli_query($link,"SELECT knittedQuantity FROM `planningdata` Where planningdata.orderState= 'ongoing' AND planningdata.machineNumber='".$machine_number."' ");
 
 	if($knitted_quantity === FALSE) { 
-    	die(mysqli_error()); // TODO: better error handling
+    	die(mysqli_error($link)); // TODO: better error handling
 	}
 
 	$result = array();

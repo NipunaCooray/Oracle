@@ -14,7 +14,7 @@
 
 	       $query="DELETE FROM `downtimereason` WHERE `downtimeid`= '".$downtimeid."' ";
 	      	
-	       $result = mysqli_query($link,$query) or die(mysqli_error());
+	       $result = mysqli_query($link,$query) or die(mysqli_error($link));
 	   	   mysqli_close($link);
 
 

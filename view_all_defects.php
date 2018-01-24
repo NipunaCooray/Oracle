@@ -36,7 +36,7 @@
 			</tr> </thead>';
 
 		if($styleDataQuery === FALSE) { 
-	    	die(mysqli_error()); // TODO: better error handling
+	    	die(mysqli_error($link)); // TODO: better error handling
 		}
 
 
@@ -55,8 +55,8 @@
 
 	}
 
-	mysqli_free_result($styleDataQuery);
-	mysqli_free_result($allstyles);
+	// mysqli_free_result($styleDataQuery);
+	// mysqli_free_result($allstyles);
 	mysqli_close($link);
 
   ?>

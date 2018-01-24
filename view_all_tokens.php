@@ -27,7 +27,7 @@
 	</tr>";
 
 	if($alldefects === FALSE) { 
-    	die(mysqli_error()); // TODO: better error handling
+    	die(mysqli_error($link)); // TODO: better error handling
 	}
 
 	while($row = mysqli_fetch_array($alldefects)) {

@@ -41,7 +41,7 @@
         $allTabIDsResult = mysqli_query($link," SELECT tabid FROM `androidtokens` ");
 
         if($allTabIDsResult === FALSE) { 
-            die(mysqli_error()); // TODO: better error handling
+            die(mysqli_error($link)); // TODO: better error handling
         }
 
         $TabIDList = array();

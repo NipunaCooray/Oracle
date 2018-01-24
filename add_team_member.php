@@ -87,7 +87,7 @@
         $query = "INSERT INTO `team_members` (`epf_no`, `team_member_name`, `password`,`shift`,`userRole`,`image_location`) 
          VALUES ('".$epf_no."','".$team_member_name."','".$password."','".$shift."','".$userRole."','".$image_location."')"; 
 
-         $result = mysqli_query($link,$query) or die(mysqli_error());
+         $result = mysqli_query($link,$query) or die(mysqli_error($link));
         mysqli_close($link);
 
          if ($result==1){

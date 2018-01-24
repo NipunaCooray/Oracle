@@ -11,7 +11,7 @@ if($security_key == "12345"){
 	$styleData=mysqli_query($link,"SELECT styledata.imageLocation,styledata.areaList FROM `styledata` WHERE styledata.styleNumber= '".$styleNumber."' ");
 
 	if($styleData === FALSE) { 
-    	die(mysqli_error()); // TODO: better error handling
+    	die(mysqli_error($link)); // TODO: better error handling
 	}
 
 	//$result = array();

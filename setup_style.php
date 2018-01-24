@@ -117,7 +117,7 @@ function validateArea($rowValue) {
 $query = "INSERT INTO `styledata` (`styleNumber`, `imageLocation`,`A_x`,`A_y`,`A1_x`,`A1_y`,`A2_x`,`A2_y`,`B_x`,`B_y`,`B1_x`,`B1_y`,`B2_x`,`B2_y`,`B3_x`,`B3_y`,`B4_x`,`B4_y`,`B5_x`,`B5_y`,`B6_x`,`B6_y`,`C_x`,`C_y`,`C1_x`,`C1_y`,`C2_x`,`C2_y`,`E1_x`,`E1_y`,`E2_x`,`E2_y`,`H_x`,`H_y`,`H1_x`,`H1_y`,`H2_x`,`H2_y`,`H3_x`,`H3_y`,`H4_x`,`H4_y`,`S1_x`,`S1_y`,`S2_x`,`S2_y`,`S3_x`,`S3_y`,`S4_x`,`S4_y`,`T_x`,`T_y`,`TT_x`,`TT_y`,`V1_x`,`V1_y`,`V2_x`,`V2_y`,`V3_x`,`V3_y`,`V4_x`,`V4_y`) 
    		VALUES ('".$styleNumber."','".$imageLocation."','".$A_x."','".$A_y."','".$A1_x."','".$A1_y."','".$A2_x."','".$A2_y."','".$B_x."','".$B_y."','".$B1_x."','".$B1_y."','".$B2_x."','".$B2_y."','".$B3_x."','".$B3_y."','".$B4_x."','".$B4_y."','".$B5_x."','".$B5_y."','".$B6_x."','".$B6_y."','".$C_x."','".$C_y."','".$C1_x."','".$C1_y."','".$C2_x."','".$C2_y."','".$E1_x."','".$E1_y."','".$E2_x."','".$E2_y."','".$H_x."','".$H_y."','".$H1_x."','".$H1_y."','".$H2_x."','".$H2_y."','".$H3_x."','".$H3_y."','".$H4_x."','".$H4_y."','".$S1_x."','".$S1_y."','".$S2_x."','".$S2_y."','".$S3_x."','".$S3_y."','".$S4_x."','".$S4_y."','".$T_x."','".$T_y."','".$TT_x."','".$TT_y."','".$V1_x."','".$V1_y."','".$V2_x."','".$V2_y."','".$V3_x."','".$V3_y."','".$V4_x."','".$V4_y."')"; 
       	
-$result = mysqli_query($link,$query) or die(mysqli_error());
+$result = mysqli_query($link,$query) or die(mysqli_error($link));
 mysqli_close($link);
 
 if ($result==1){

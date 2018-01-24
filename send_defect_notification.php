@@ -44,7 +44,7 @@
 
 	$getTokensQuery = " Select tabid,token From androidtokens";
 	$tokens = array();
-	$tokenResult = mysqli_query($link,$getTokensQuery) or die(mysqli_error());
+	$tokenResult = mysqli_query($link,$getTokensQuery) or die(mysqli_error($link));
 
 	while($row = mysqli_fetch_array($tokenResult)) {
 		$tokens[] = $row["token"];

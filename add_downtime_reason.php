@@ -21,7 +21,7 @@ $downtimenotifytime4 = isset($_POST['downtimenotifytime4']) ? $_POST['downtimeno
  $query = "INSERT INTO `downtimereason` (`downtimeid`, `description`,`downtimetype` , `notifyinguserid1`,`downtimenotifytime1`, `notifyinguserid2`,`downtimenotifytime2`, `notifyinguserid3`,`downtimenotifytime3`, `notifyinguserid4`,`downtimenotifytime4`) 
    		VALUES ('".$downtimeid."','".$downtimereason."','".$downtimetype."','".$notifyinguserid1."','".$downtimenotifytime1."','".$notifyinguserid2."','".$downtimenotifytime2."','".$notifyinguserid3."','".$downtimenotifytime3."','".$notifyinguserid4."','".$downtimenotifytime4."')"; 
       	
-$result = mysqli_query($link,$query) or die(mysqli_error());
+$result = mysqli_query($link,$query) or die(mysqli_error($link));
 
 
 if ($result==1){

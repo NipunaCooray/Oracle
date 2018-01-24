@@ -11,7 +11,7 @@ if($security_key == "12345"){
 	$defect_types=mysqli_query($link,"SELECT downtimeid,description,downtimetype FROM `downtimereason`");
 
 	if($defect_types === FALSE) { 
-    	die(mysqli_error()); // TODO: better error handling
+    	die(mysqli_error($link)); // TODO: better error handling
 	}
 
 	$result = array();

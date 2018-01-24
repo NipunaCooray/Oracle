@@ -14,7 +14,7 @@ $reason = isset($_POST['reason']) ? $_POST['reason'] : null;
 $query = "INSERT INTO `downtimes` (`downtimetypeid`, `machineno`,`stoptime`, `starttime`,`reason`) 
 	VALUES ('".$downtimetypeid."','".$machineno."','".$stoptime."','".$starttime."','".$reason."')"; 
 	
-$result = mysqli_query($link,$query) or die(mysqli_error());
+$result = mysqli_query($link,$query) or die(mysqli_error($link));
 
 
 

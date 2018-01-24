@@ -12,7 +12,7 @@ $security_key = isset($_POST['security_key']) ? $_POST['security_key'] : null;
 		$defect_types=mysqli_query($link,"SELECT defecttypeid,defecttype FROM `defecttypes`");
 
 		if($defect_types === FALSE) { 
-	    	die(mysqli_error()); // TODO: better error handling
+	    	die(mysqli_error($link)); // TODO: better error handling
 		}
 
 		$result = array();

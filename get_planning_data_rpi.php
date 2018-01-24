@@ -19,7 +19,7 @@ if($security_key == "12345"){
 		$ongoingIDResult = mysqli_query($link,"SELECT id FROM planningdata Where planningdata.orderState='ongoing' and planningdata.machineNumber = '".$machineNumber."' ");
 
 		if($ongoingIDResult === FALSE) { 
-	    	die(mysqli_error()); // TODO: better error handling
+	    	die(mysqli_error($link)); // TODO: better error handling
 		}
 		
 		while($row = mysqli_fetch_array($ongoingIDResult)) {
@@ -29,7 +29,7 @@ if($security_key == "12345"){
 		//echo "OngoingID : ".$ongoingID;
 
 		$updateQuery = "UPDATE planningdata SET planningdata.orderState='complete' WHERE planningdata.id= '".$ongoingID."' ";
-		$updateQueryResult = mysqli_query($link,$updateQuery) or die(mysqli_error());
+		$updateQueryResult = mysqli_query($link,$updateQuery) or die(mysqli_error($link));
 
 		if ($updateQueryResult==1){
 			//echo "Successfully updated ongoing to complete";
@@ -41,7 +41,7 @@ if($security_key == "12345"){
 		$nextPlan=mysqli_query($link,"SELECT * FROM planningdata Where planningdata.orderState='incomplete' and planningdata.machineNumber = '".$machineNumber."' ORDER BY planningdata.orderStart ASC,planningdata.orderEnd ASC LIMIT 1");
 
 		if($nextPlan === FALSE) { 
-	    	die(mysqli_error()); // TODO: better error handling
+	    	die(mysqli_error($link)); // TODO: better error handling
 		}
 
 		$result = array();
@@ -62,7 +62,7 @@ if($security_key == "12345"){
 			//Change the state to ongoing
 			$updateNextPlanQuery = "UPDATE planningdata SET planningdata.orderState='ongoing' WHERE planningdata.id= '".$nextPlanID."' ";
 
-			$updateNextPlanQueryResult = mysqli_query($link,$updateNextPlanQuery) or die(mysqli_error());
+			$updateNextPlanQueryResult = mysqli_query($link,$updateNextPlanQuery) or die(mysqli_error($link));
 
 			if ($updateNextPlanQueryResult==1){
 				//echo "Successfully updated incomplete to ongoing";
@@ -86,7 +86,7 @@ if($security_key == "12345"){
 		$currentPlan=mysqli_query($link,"SELECT * FROM planningdata Where planningdata.orderState='ongoing' and planningdata.machineNumber = '".$machineNumber."' ORDER BY planningdata.orderStart ASC,planningdata.orderEnd ASC LIMIT 1");
 
 		if($currentPlan === FALSE) { 
-	    	die(mysqli_error());	
+	    	die(mysqli_error($link));	
 		}
 
 		if (mysqli_num_rows($currentPlan)==0){
@@ -95,7 +95,7 @@ if($security_key == "12345"){
 
 			if($nextPlan === FALSE) { 
 
-		    	die(mysqli_error()); // TODO: better error handling
+		    	die(mysqli_error($link)); // TODO: better error handling
 			}
 
 			$nextPlanID = 0;
@@ -110,7 +110,7 @@ if($security_key == "12345"){
 			//Change the state to ongoing
 			$updateNextPlanQuery = "UPDATE planningdata SET planningdata.orderState='ongoing' WHERE planningdata.id= '".$nextPlanID."' ";
 
-			$updateNextPlanQueryResult = mysqli_query($link,$updateNextPlanQuery) or die(mysqli_error());
+			$updateNextPlanQueryResult = mysqli_query($link,$updateNextPlanQuery) or die(mysqli_error($link));
 
 			if ($updateNextPlanQueryResult==1){
 				//echo "Successfully updated incomplete to ongoing";

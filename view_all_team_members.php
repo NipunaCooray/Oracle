@@ -29,7 +29,7 @@
 	</tr>";
 
 	if($team_members === FALSE) { 
-    	die(mysqli_error()); // TODO: better error handling
+    	die(mysqli_error($link)); // TODO: better error handling
 	}
 
 	while($row = mysqli_fetch_array($team_members)) {
