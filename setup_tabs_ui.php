@@ -46,7 +46,16 @@
 <script src="js/jquery.min.js"></script> 
 
 
+<script type="text/javascript">
+   $(document).ready(function() {
+    
 
+    $.get("view_all_tab_machine_allocation.php",function(all_tab_machine_allocation){
+      $("#all_tab_machine_allocation").html(all_tab_machine_allocation);
+    });
+  });
+
+</script>
 
 <script src="js/jquery.ui.custom.js"></script> 
 <script src="js/bootstrap.min.js"></script> 
@@ -144,6 +153,17 @@
  
                     </div>
                 </div> 
+
+                 <div class ="row-fluid">
+                    <div class="span6"> 
+                      <div class="widget-content" id="all_tab_machine_allocation">
+                        
+
+                      </div>
+
+ 
+                    </div>
+                </div>   
 
                
 

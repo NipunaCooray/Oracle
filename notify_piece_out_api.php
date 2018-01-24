@@ -56,6 +56,8 @@ foreach($json_obj as $record) {
 
 	*/
 
+	
+
 }
 
 //Get all notifications that are "not_sent" and send tham 

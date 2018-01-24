@@ -1,5 +1,6 @@
 <?php
 
+
 include("connect.php");
 include("send_firebase_notifications.php");
 
@@ -28,8 +29,8 @@ if($security_key == "12345"){
 
 		$getFireBaseTokenQuery = "SELECT token FROM `androidtokens` WHERE androidtokens.imei_number ='".$imei_number."' ";
 
-		// echo $getFireBaseTokenQuery;
-		// echo "<br>";
+		echo $getFireBaseTokenQuery;
+		echo "<br>";
 
 		$tokens = array();
 		$tokenResult = mysqli_query($link,$getFireBaseTokenQuery) or die(mysqli_error($link));
@@ -39,19 +40,19 @@ if($security_key == "12345"){
 		}
 
 
-		// echo "Firebase token : ";
-		// print_r($tokens);
-		// echo "<br>";
+		echo "Firebase token : ";
+		print_r($tokens);
+		echo "<br>";
 
 		$message = array("notificationId" => $id,"machineNumber" => $machineNumber ,"notificationType" => "piece_out","timestamp" => $timestamp);
 
-		//echo "Message to be sent : ";
-		// print_r($message);
-		// echo "<br>";
+		echo "Message to be sent : ";
+		print_r($message);
+		echo "<br>";
 
 		$message_status = send_notification($tokens, $message);
-		// echo $message_status;
-		// echo "<br>";
+		echo $message_status;
+		echo "<br>";
 
 		$firebaseResponse = json_decode($message_status);
 		$firebaseSuccessValue = $firebaseResponse->{'success'}; 
