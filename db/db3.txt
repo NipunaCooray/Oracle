@@ -129,8 +129,12 @@ reworkQuantity int DEFAULT 0,
 rejectQuantity int DEFAULT 0,
 orderState VARCHAR(10) DEFAULT 'incomplete',
 planAddedTime TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+fileName VARCHAR (200),
 PRIMARY KEY (id)
 )Engine=InnoDB;
+
+ALTER TABLE `planningdata` ADD UNIQUE INDEX `UniquePlanningRecord` (`machineNumber`,`styleNumber`,`salesOrderLineItem`,`cw`,`component`,`size`,`plannedQuantity`,`orderStart`,`orderEnd`);
+
 
 /* ######################
 Table to store TabMachineAllocation data*/

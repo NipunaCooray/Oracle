@@ -45,7 +45,21 @@
 
 <script src="js/jquery.min.js"></script> 
 
+<script type="text/javascript">
+   $(document).ready(function() {
 
+    $.get("view_all_plans.php",function(all_plans){
+       $("#all_plans").html(all_plans);
+    });
+
+
+    
+
+  });
+
+
+
+</script>
 
 
 <script src="js/jquery.ui.custom.js"></script> 
@@ -122,6 +136,7 @@
                     <div class="form-actions">
                       <button  id="btnSave" type="submit" name="submit" class="btn btn-success">Upload</button>
                       <button  id="btnRefresh" type="reset" class="btn btn-success">Refresh</button>
+                      
                     </div>
   
                 </form>
@@ -138,6 +153,19 @@
                         
 
                       </div>
+
+ 
+                    </div>
+                </div> 
+
+                <div class ="row-fluid">
+                    <div class="span12"> 
+                      <div class="widget-content" id="all_plans">
+                        
+
+                      </div>
+
+                      
 
  
                     </div>
@@ -167,34 +195,11 @@
 
 <!-- Custom js to save data -->
 
-<script type="text/javascript">
-  // This function is called from the pop-up menus to transfer to
-  // a different page. Ignore if the value returned is a null string:
-  function goPage (newURL) {
-
-      // if url is empty, skip the menu dividers and reset the menu selection to default
-      if (newURL != "") {
-      
-          // if url is "-", it is this page -- reset the menu:
-          if (newURL == "-" ) {
-              resetMenu();            
-          } 
-          // else, send page to designated URL            
-          else {  
-            document.location.href = newURL;
-          }
-      }
-  }
-
-// resets the menu selection upon entry to this page:
-function resetMenu() {
-   document.gomenu.selector.selectedIndex = 2;
-}
-</script>
 
 
 
-<script type="text/javascript">
+
+<script type="application/javascript">
 
 
 
@@ -251,19 +256,20 @@ function resetMenu() {
  
 
   $("#btnRefresh").click(function(event){
-    location.reload();
+    
 
-    //  $.get("view_all_defect_types.php",function(all_defects){
-    //   $("#defect_types").html(all_defects);
-    // });
+    location.reload();
 
 
   });
 
+
+  function deletePlan() {
+     alert("Deleting");
+  }
+
+
  
-
-
-
 
 
 </script>
