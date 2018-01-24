@@ -19,8 +19,11 @@
 
 	while($row = mysqli_fetch_array($allstyles)) {
 		$styleNumber = $row['styleNumber'];
-		echo $styleNumber;
+		echo "<b>".$styleNumber."</b>";
 
+
+		echo "<br>";
+		echo "<hr>";
 		echo "<br>";
 
 		$styleDataQuery = mysqli_query($link,"SELECT * FROM   ".$styleNumber."   ");

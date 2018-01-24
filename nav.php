@@ -8,17 +8,11 @@
 <!--top-Header-menu-->
 <div id="user-nav" class="navbar navbar-inverse">
   <ul class="nav">
-    <li  class="dropdown" id="profile-messages" ><a title="" href="#" data-toggle="dropdown" data-target="#profile-messages" class="dropdown-toggle"><i class="icon icon-user"></i>  <span class="text">Welcome User</span><b class="caret"></b></a>
-      <ul class="dropdown-menu">
-        <li><a href="#"><i class="icon-user"></i> My Profile</a></li>
-        <li class="divider"></li>
-        <li><a href="#"><i class="icon-check"></i> My Tasks</a></li>
-        <li class="divider"></li>
-        <li><a href="logout.php"><i class="icon-key"></i> Log Out</a></li>
-      </ul>
+    <li  class="dropdown" id="profile-messages" ><a title="" href="#" data-toggle="dropdown" data-target="#profile-messages" class="dropdown-toggle"><i class="icon icon-user"></i>  <span class="text">Welcome User</span></a>
+     
     </li>
 
-    <li class="dropdown" id="menu-messages"><a href="#" data-toggle="dropdown" data-target="#menu-messages" class="dropdown-toggle"><i class="icon icon-envelope"></i> <span class="text">Messages</span> <span class="label label-important">5</span> <b class="caret"></b></a>
+   <!--  <li class="dropdown" id="menu-messages"><a href="#" data-toggle="dropdown" data-target="#menu-messages" class="dropdown-toggle"><i class="icon icon-envelope"></i> <span class="text">Messages</span> <span class="label label-important">5</span> <b class="caret"></b></a>
       <ul class="dropdown-menu">
         <li><a class="sAdd" title="" href="#"><i class="icon-plus"></i> new message</a></li>
         <li class="divider"></li>
@@ -28,7 +22,7 @@
         <li class="divider"></li>
         <li><a class="sTrash" title="" href="#"><i class="icon-trash"></i> trash</a></li>
       </ul>
-    </li>
+    </li> -->
     
     <li class=""><a title="" href="#"><i class="icon icon-cog"></i> <span class="text">Settings</span></a></li>
     <li class=""><a title="" href="logout.php"><i class="icon icon-share-alt"></i> <span class="text">Logout</span></a></li>
@@ -37,8 +31,7 @@
 <!--close-top-Header-menu-->
 <!--start-top-serch-->
 <div id="search">
-  <input type="text" placeholder="Search here..."/>
-  <button type="submit" class="tip-bottom" title="Search"><i class="icon-search icon-white"></i></button>
+  <span class="text">Knitting Operation Data Aquisition and Management System - MAS MATRIX V 1.0</span>
 </div>
 <!--close-top-serch-->
 <!--sidebar-menu-->
@@ -49,21 +42,21 @@
     <li class="submenu"> <a href="#"><i class="icon icon-th-list"></i> <span>Manage styles</span> </a>
       <ul>
         <li><a href="setup_style_ui_v2.php">Setup styles</a></li>
-        <li><a href="#">View all styles</a></li>
+        
       </ul>
     </li>
 
      <li class="submenu"> <a href="#"><i class="icon icon-th-list"></i> <span>Manage defects</span> </a>
       <ul>
         <li><a href="add_defect_type_ui.php">Add defects</a></li>
-        <li><a href="#">View all defects</a></li>
+        
       </ul>
     </li>
 
      <li class="submenu"> <a href="#"><i class="icon icon-th-list"></i> <span>Manage downtimes</span> </a>
       <ul>
         <li><a href="add_downtime_reason_ui.php">Add downtime reason</a></li>
-        <li><a href="#">View all downtime reasons</a></li>
+        
       </ul>
     </li>
 
@@ -77,7 +70,7 @@
      <li class="submenu"> <a href="#"><i class="icon icon-th-list"></i> <span>Manage planning data</span> </a>
       <ul>
         <li><a href="upload_plan_ui.php">Upload planning data</a></li>
-        <li><a href="#">View recent data</a></li>
+        <!-- <li><a href="#">View recent data</a></li> -->
       </ul>
     </li>
 
