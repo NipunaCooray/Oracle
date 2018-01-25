@@ -38,7 +38,8 @@
 	    echo "<tr>";
 	    echo "<td>" . $row['planAddedDate'] . "</td>";
 	    echo "<td>" . $row['fileName'] . "</td>";
-	    echo '<td> <button id="btnDelete" onclick="deletePlan()" class="btn btn-default" > Delete </button> </td> ';
+	    echo ' <td><button class="delete_class" id="'.$row['fileName'].'">Delete</button></td> ';
+
 	    echo "</tr>";
 	}
 	echo "</table>";

@@ -20,6 +20,7 @@
 <title>KODAMS</title>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
 <link rel="stylesheet" href="css/bootstrap.min.css" />
 <link rel="stylesheet" href="css/bootstrap-responsive.min.css" />
 <link rel="stylesheet" href="css/fullcalendar.css" />
@@ -40,30 +41,88 @@
   
 </style>
 
+<script src="js/jquery.min.js"></script> 
+
 
 <script src="js/excanvas.min.js"></script> 
 
-<script src="js/jquery.min.js"></script> 
 
-<script type="text/javascript">
-   $(document).ready(function() {
+
+
+
+
+<script src="js/jquery.ui.custom.js"></script> 
+<script src="js/bootstrap.min.js"></script> 
+
+<script type="application/javascript">
+  $(document).ready(function() {
+
+
 
     $.get("view_all_plans.php",function(all_plans){
        $("#all_plans").html(all_plans);
     });
 
+  });
 
-    
+  $(document).ready(function() {
+
+
+    // $(".delete_class").live( 'click', function() {
+    //   console.log('wORKING');
+    // });
+
+    $("#all_plans").on( 'click','.delete_class', function() {
+      console.log('Working');
+      var fileName = $(this).attr('id');
+
+      console.log(fileName);
+
+      if (confirm("Are you sure you want to delete all records added from this file ?")) {
+          var datastr = 'fileName='+fileName ;    
+
+          console.log(datastr);
+
+
+          $.ajax({
+          type: "POST",
+          url: "delete_plan_file.php",
+          data: datastr,
+          processData: false,
+          cache: false,
+          timeout: 600000,
+          success: function (data) {
+
+            $("#result").html(data).fadeIn();
+            console.log("SUCCESS : ", data);
+            
+
+          },
+          error: function (e) {
+
+            // $("#result").text(e.responseText);
+            $("#result").html(data).fadeIn();
+            console.log("ERROR : ", e);
+            
+
+          }
+
+          });
+
+      } else {
+        
+      }
+
+    });
 
   });
 
 
 
+
+
 </script>
 
-
-<script src="js/jquery.ui.custom.js"></script> 
-<script src="js/bootstrap.min.js"></script> 
 <script src="js/jquery.flot.min.js"></script> 
 <script src="js/jquery.flot.resize.min.js"></script> 
 <script src="js/jquery.peity.min.js"></script> 
@@ -264,14 +323,11 @@
   });
 
 
-  function deletePlan() {
-     alert("Deleting");
+  function deletePlan(fileName) {
+     alert("Deleting"+fileName);
   }
 
-
  
-
-
 </script>
 
 

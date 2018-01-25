@@ -18,6 +18,8 @@
 
 	function getUserName($userid) {
 
+		$link=Connection();
+
 	    $result = mysqli_query($link,"SELECT `username` FROM `notifyingusers` WHERE `notifyinguserid`= '".$userid."' ");
 	    $username = "";
 	    

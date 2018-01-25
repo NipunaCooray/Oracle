@@ -9,6 +9,8 @@
 
 	 if( $_GET ) {
 
+	 		
+
 	 	   $downtimeid = mysqli_real_escape_string($link,$_GET['downtimeid']);
 
 
