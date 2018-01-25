@@ -53,6 +53,61 @@
     });
   });
 
+
+$(document).ready(function() {
+
+
+    // $(".delete_class").live( 'click', function() {
+    //   console.log('wORKING');
+    // });
+
+    $("#all_users").on( 'click','.delete_class', function() {
+      console.log('Working');
+      var notifyinguserid = $(this).attr('id');
+
+      console.log(notifyinguserid);
+
+      if (confirm("Are you sure you want to delete this notifying user ?")) {
+          var datastr = 'notifyinguserid='+notifyinguserid ;    
+
+          console.log(datastr);
+
+
+          $.ajax({
+          type: "POST",
+          url: "delete_notifying_user.php",
+          data: datastr,
+          processData: false,
+          cache: false,
+          timeout: 600000,
+          success: function (data) {
+
+            $("#success").html(data).fadeIn();
+            console.log("SUCCESS : ", data);
+            
+
+          },
+          error: function (e) {
+
+            // $("#result").text(e.responseText);
+            $("#success").html(data).fadeIn();
+            console.log("ERROR : ", e);
+            
+
+          }
+
+          });
+
+      } else {
+        
+      }
+
+    });
+
+});
+
+
+
 </script>
 
 

@@ -53,6 +53,54 @@
     });
   });
 
+
+
+$(document).ready(function() {
+
+    $("#all_downtimes").on( 'click','.delete_class', function() {
+      console.log('Working');
+      var downtimeid = $(this).attr('id');
+
+      console.log(downtimeid);
+
+      if (confirm("Are you sure you want to delete this downtime reason ?")) {
+          var datastr = 'downtimeid='+downtimeid ;    
+
+          console.log(datastr);
+
+
+          $.ajax({
+          type: "POST",
+          url: "delete_downtime_reason.php",
+          data: datastr,
+          processData: false,
+          cache: false,
+          timeout: 600000,
+          success: function (data) {
+
+            $("#success").html(data).fadeIn();
+            console.log("SUCCESS : ", data);
+            
+
+          },
+          error: function (e) {
+
+            // $("#result").text(e.responseText);
+            $("#success").html(data).fadeIn();
+            console.log("ERROR : ", e);
+            
+
+          }
+
+          });
+
+      } else {
+        
+      }
+
+    });
+
+  });
 </script>
 
 

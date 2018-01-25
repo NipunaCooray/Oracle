@@ -1,26 +1,20 @@
 <?php 
-	include("connect.php"); 	
+include("connect.php"); 	
 
-	$link=Connection();
+$link=Connection();
 
-	$epf_no = 0;
-	$query = "";
+$epf_no = isset($_POST['epf_no']) ? $_POST['epf_no'] : null;
 
 
-	 if( $_GET ) {
+$query="DELETE FROM `team_members` WHERE `epf_no`= '".$epf_no."' ";
 
-	 	   $epf_no = (int)$_GET['epf_no'];
+$result = mysqli_query($link,$query) or die(mysqli_error($link));
 
-	       $query="DELETE FROM `team_members` WHERE `epf_no`= '".$epf_no."' ";
-	      	
-	       $result = mysqli_query($link,$query) or die(mysqli_error($link));
-	   	   mysqli_close($link);
+mysqli_close($link);
 
-	       // echo $result;
-	       header("Location: add_team_member_ui.php");
-
- 
-      }
+if($result==1){
+	echo "Deleted team member with epf number ".$epf_no;
+}
 	
 
   ?>

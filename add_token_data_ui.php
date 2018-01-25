@@ -48,10 +48,65 @@
    $(document).ready(function() {
     
 
-    $.get("view_all_tokens.php",function(all_defects){
-      $("#defect_types").html(all_defects);
+    $.get("view_all_tokens.php",function(all_tokens){
+      $("#all_tokens").html(all_tokens);
     });
   });
+
+
+
+   $(document).ready(function() {
+
+
+    // $(".delete_class").live( 'click', function() {
+    //   console.log('wORKING');
+    // });
+
+    $("#all_tokens").on( 'click','.delete_class', function() {
+      console.log('Working');
+      var tabid = $(this).attr('id');
+
+      console.log(tabid);
+
+      if (confirm("Are you sure you want to delete records of this tab ?")) {
+          var datastr = 'tabid='+tabid ;    
+
+          console.log(datastr);
+
+
+          $.ajax({
+          type: "POST",
+          url: "delete_tab_info.php",
+          data: datastr,
+          processData: false,
+          cache: false,
+          timeout: 600000,
+          success: function (data) {
+
+            $("#result").html(data).fadeIn();
+            console.log("SUCCESS : ", data);
+            
+
+          },
+          error: function (e) {
+
+            // $("#result").text(e.responseText);
+            $("#result").html(data).fadeIn();
+            console.log("ERROR : ", e);
+            
+
+          }
+
+          });
+
+      } else {
+        
+      }
+
+    });
+
+  });
+
 
 </script>
 
@@ -165,7 +220,7 @@
 
                 <div class ="row-fluid">
                     <div class="span12"> 
-                      <div class="widget-content" id="defect_types">
+                      <div class="widget-content" id="all_tokens">
                         
 
                       </div>

@@ -1,29 +1,19 @@
 <?php 
-	include("connect.php"); 	
+include("connect.php"); 	
 
-	$link=Connection();
+$link=Connection();
 
-	$downtimeid = 0;
-	$query = "";
-
-
-	 if( $_GET ) {
-
-	 		
-
-	 	   $downtimeid = mysqli_real_escape_string($link,$_GET['downtimeid']);
+$downtimeid = isset($_POST['downtimeid']) ? $_POST['downtimeid'] : null;
 
 
-	       $query="DELETE FROM `downtimereason` WHERE `downtimeid`= '".$downtimeid."' ";
-	      	
-	       $result = mysqli_query($link,$query) or die(mysqli_error($link));
-	   	   mysqli_close($link);
+$query="DELETE FROM `downtimereason` WHERE `downtimeid`= '".$downtimeid."' ";
+
+$result = mysqli_query($link,$query) or die(mysqli_error($link));
+mysqli_close($link);
+
+if($result==1){
+	echo "Deleted downtime reason with id ".$downtimeid;
+}
 
 
-	       header("Location: add_downtime_reason_ui.php");
-
- 
-      }
-	
-
-  ?>
+?>

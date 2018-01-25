@@ -40,7 +40,7 @@
 	    echo "<td>" . $row['shift'] . "</td>";
 	    echo "<td>" . $row['userRole'] . "</td>";
 	    echo "<td>" . $row['image_location'] . "</td>";
-	    echo '<td> <a href="delete_team_member.php?epf_no= ' . $row['epf_no'] .  ' " '  , '  class="btn btn-default" > Delete </a> </td> ';
+	    echo ' <td><button class="delete_class" id="'.$row['epf_no'].'">Delete</button></td> ';
 	    echo "</tr>";
 	}
 	echo "</table>";

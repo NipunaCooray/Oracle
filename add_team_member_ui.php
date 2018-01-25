@@ -53,6 +53,56 @@
     });
   });
 
+
+$(document).ready(function() {
+
+
+    $("#all_team_members").on( 'click','.delete_class', function() {
+
+      var epf_no = $(this).attr('id');
+
+      console.log(epf_no);
+
+      if (confirm("Are you sure you want to delete selected team member ?")) {
+          var datastr = 'epf_no='+epf_no ;    
+
+          console.log(datastr);
+
+
+          $.ajax({
+          type: "POST",
+          url: "delete_team_member.php",
+          data: datastr,
+          processData: false,
+          cache: false,
+          timeout: 600000,
+          success: function (data) {
+
+            $("#result").html(data).fadeIn();
+            console.log("SUCCESS : ", data);
+            
+
+          },
+          error: function (e) {
+
+            // $("#result").text(e.responseText);
+            $("#result").html(data).fadeIn();
+            console.log("ERROR : ", e);
+            
+
+          }
+
+          });
+
+      } else {
+        
+      }
+
+    });
+
+});
+
+
 </script>
 
 

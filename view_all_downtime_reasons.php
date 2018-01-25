@@ -63,7 +63,7 @@
 	    echo "<td>" . $row['downtimenotifytime3'] . "</td>";
 	    echo "<td>" .  getUserName($row['notifyinguserid4']) . "</td>";
 	    echo "<td>" . $row['downtimenotifytime4'] . "</td>";
-	    echo '<td> <a href="delete_downtime_reason.php?downtimeid= ' . $row['downtimeid'] .  ' " '  , '  class="btn btn-default" > Delete </a> </td> ';
+	    echo ' <td><button class="delete_class" id="'.$row['downtimeid'].'">Delete</button></td> ';
 	    echo "</tr>";
 	}
 	echo "</table>";

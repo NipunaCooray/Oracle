@@ -1,26 +1,18 @@
 <?php 
-	include("connect.php"); 	
 
-	$link=Connection();
+include("connect.php"); 	
 
-	$defectid = 0;
-	$query = "";
+$link=Connection();
 
+$defectid = isset($_POST['defecttypeid']) ? $_POST['defecttypeid'] : null;
 
-	 if( $_GET ) {
+$query="DELETE FROM `defecttypes` WHERE `defecttypeid`= '".$defectid."' ";
+      	
+$result = mysqli_query($link,$query) or die(mysqli_error($link));       
+mysqli_close($link);
 
-	 	   $defectid = (int)$_GET['defecttypeid'];
+if($result==1){
+	echo "Deleted defect type with ".$defectid;
+}
 
-	       $query="DELETE FROM `defecttypes` WHERE `defecttypeid`= '".$defectid."' ";
-	      	
-	       $result = mysqli_query($link,$query) or exit(mysqli_error($link));
-	       mysqli_free_result($result);
-	   	   mysqli_close($link);
-
-	       header("Location: add_defect_type_ui.php");
-
- 
-      }
-	
-
-  ?>
+?>

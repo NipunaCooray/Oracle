@@ -54,6 +54,57 @@
     });
   });
 
+$(document).ready(function() {
+
+
+    $("#all_styles").on( 'click','.delete_class', function() {
+
+      var styleID = $(this).attr('id');
+
+      console.log(styleID);
+
+      if (confirm("Are you sure you want to delete all records of this style ? This will also remove all the piece out records under this style ! ")) {
+          var datastr = 'styleID='+styleID ;    
+
+          console.log(datastr);
+
+
+          $.ajax({
+          type: "POST",
+          url: "delete_style_data.php",
+          data: datastr,
+          processData: false,
+          cache: false,
+          timeout: 600000,
+          success: function (data) {
+
+            $("#result").html(data).fadeIn();
+            console.log("SUCCESS : ", data);
+            
+
+          },
+          error: function (e) {
+
+            // $("#result").text(e.responseText);
+            $("#result").html(data).fadeIn();
+            console.log("ERROR : ", e);
+            
+
+          }
+
+          });
+
+      } else {
+        
+      }
+
+    });
+
+});
+
+
+
+
 </script>
 
   <script src="js/jquery.ui.custom.js"></script> 

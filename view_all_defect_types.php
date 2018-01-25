@@ -62,7 +62,7 @@
 	    echo "<td>" . $row['defectcountmargin3'] . "</td>";
 	    echo "<td>" .  getUserName($row['notifyinguserid4']) . "</td>";
 	    echo "<td>" . $row['defectcountmargin4'] . "</td>";
-	    echo '<td> <a href="delete_defect_type.php?defecttypeid= ' . $row['defecttypeid'] .  ' " '  , '  class="btn btn-default" > Delete </a> </td> ';
+	    echo ' <td><button class="delete_class" id="'.$row['defecttypeid'].'">Delete</button></td> ';
 	    echo "</tr>";
 	}
 	echo "</table>";

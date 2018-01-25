@@ -34,7 +34,7 @@
 	    echo "<td>" . $row['username'] . "</td>";
 	    echo "<td>" . $row['contactnumber'] . "</td>";
 	    echo "<td>" . $row['email'] . "</td>";
-	    echo '<td> <a href="delete_notifying_user.php?notifyinguserid= ' . $row['notifyinguserid'] .  ' " '  , '  class="btn btn-default" > Delete </a> </td> ';
+	    echo ' <td><button class="delete_class" id="'.$row['notifyinguserid'].'">Delete</button></td> ';
 	    echo "</tr>";
 	}
 	echo "</table>";

@@ -37,7 +37,8 @@
 	    echo "<td>" . $row['styleNumber'] . "</td>";
 	    echo "<td>" . $row['imageLocation'] . "</td>";
 	    echo "<td>" . $row['areaList'] . "</td>";
-	     echo '<td> <a href="delete_style_data.php?styleID= '. $row['styleID'].' & styleNumber= '. $row['styleNumber'].' & imageLocation= '. $row['imageLocation'].' " '  , '  class="btn btn-default" > Delete </a> </td> ';
+
+	    echo ' <td><button class="delete_class" id="'.$row['styleID'].'">Delete</button></td> ';
 	    echo "</tr>";
 	}
 	echo "</table>";
