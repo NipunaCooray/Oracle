@@ -52,6 +52,12 @@ if ($uploadOk == 0) {
 
 $styleNumber = isset($_POST['styleNumber']) ? $_POST['styleNumber'] : null;
 
+//Making styleNumer lower case
+$styleNumber = strtolower($styleNumber);
+
+//Removing spaces
+$styleNumber = str_replace(' ', '', $styleNumber);
+
 $areaList = isset($_POST['areaList']) ? $_POST['areaList'] : null;
 
 //$target_dir = "StyleImages/"

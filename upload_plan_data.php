@@ -54,10 +54,14 @@
 
 		        }
 
+
+
                 array_push($dbData,$filename);
 
+                //Lower cased and removed spaces in the styleNumber data
+
                  $query = "INSERT INTO `planningdata` (`machineNumber`,`styleNumber`,`salesOrderLineItem`,`cw`,`component`,`size`,`plannedQuantity`,`orderStart`,`orderEnd`,`fileName` ) 
-                        VALUES ('". $dbData[0]."' ,'". $dbData[1]."','". $dbData[2]."','". $dbData[3]."','". $dbData[4]."','". $dbData[5]."','". $dbData[6]."','". $dbData[7]."','". $dbData[8]."','". $dbData[9]."')"; 
+                        VALUES ('". $dbData[0]."' ,'". str_replace(' ', '', strtolower($dbData[1]))."','". $dbData[2]."','". $dbData[3]."','". $dbData[4]."','". $dbData[5]."','". $dbData[6]."','". $dbData[7]."','". $dbData[8]."','". $dbData[9]."')"; 
         
                 $result = mysqli_query($link,$query) or die(mysqli_error($link));
                 $numberOfResults = $numberOfResults + $result;
