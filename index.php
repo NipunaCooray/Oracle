@@ -30,9 +30,12 @@
 
 <script src="js/jquery.min.js"></script> 
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.bundle.min.js"></script>
+
 <script type="text/javascript">
    $(document).ready(function() {
-    
+
+   
 
     $.get("view_all_defects.php",function(all_defects){
       $("#all_defects").html(all_defects);
@@ -43,6 +46,105 @@
     });
 
   });
+
+
+   $(document).ready(function() {
+
+    var lineChartData = [];
+
+    
+    $.ajax({
+      type: 'POST',
+      url: 'generate_piece_out_ratio_chart.php',
+      success: function (data) {
+      //lineChartData = data;//alert(JSON.stringify(data));
+      
+      console.log("Data :"+data);
+      var data=JSON.parse(data);
+      
+      var machineNumbers = [];
+      var knittedQUantities = [];
+      var reworkQuantities = [];
+      var rejectQuantities = [];
+
+      for(var i in data) {
+        machineNumbers.push( data[i]["machineNumber"]);
+        knittedQUantities.push(data[i]["knittedQuantity"]);
+        reworkQuantities.push(data[i]["reworkQuantity"]);
+        rejectQuantities.push(data[i]["rejectQuantity"]);
+      }
+
+      console.log(machineNumbers);
+      console.log(knittedQUantities);
+
+      var chartdata = {
+        labels: machineNumbers,
+        datasets : [
+          {
+            label: 'Knitted percentage',
+            backgroundColor: '#66ff33',
+            borderColor: '#66ff33',
+            hoverBackgroundColor: '#66ff33',
+            hoverBorderColor: '#66ff33',
+            data: knittedQUantities
+          },
+          {
+            label: 'Rework percentage',
+            backgroundColor: '#ffcc00',
+            borderColor: '#ffcc00',
+            hoverBackgroundColor: '#ffcc00',
+            hoverBorderColor: '#ffcc00',
+            data: reworkQuantities
+          },
+          {
+            label: 'Reject percentage',
+            backgroundColor: '#cc0000',
+            borderColor: '#cc0000',
+            hoverBackgroundColor: '#cc0000',
+            hoverBorderColor: '#cc0000',
+            data: rejectQuantities
+          }
+        ]
+      };
+
+      var ctx = $("#myChart");
+
+      var barGraph = new Chart(ctx, {
+        type: 'bar',
+        data: chartdata,
+        options: {
+            title: {
+              display: false
+            },
+            scales: {
+              yAxes: [{
+                ticks: {
+                  beginAtZero: true
+                },scaleLabel: {
+                     display: true,
+                     labelString: "Percentage"
+                 }
+              }]
+            }
+          }
+      
+      });
+
+      },
+
+     
+
+      error: function(data) {
+      console.log(data);
+    }
+
+    });
+});
+
+
+      
+
+   
 
 </script>
 
@@ -66,6 +168,13 @@
 <script src="js/jquery.dataTables.min.js"></script> 
 <script src="js/matrix.tables.js"></script> 
 
+
+
+<script type="text/javascript">
+
+
+
+</script>
 
 
 </head>
@@ -108,7 +217,7 @@
     </div>
 <!--End-Defect data--> 
     
-<!--Defect data-->    
+<!--Downtime data-->    
     <div class="row-fluid">
       <div class="widget-box">
         <div class="widget-title bg_lg"><span class="icon"><i class="icon-signal"></i></span>
@@ -124,7 +233,46 @@
         </div>
       </div>
     </div>
-<!--End-Defect data-->     
+<!--End-Downtime data-->  
+
+
+<!--Chart data-->    
+    <div class="row-fluid">
+
+    <div class="span4">
+        <div class="widget-box">
+        <div class="widget-title bg_lg"><span class="icon"><i class="icon-signal"></i></span>
+          <h5> Active plans' good,rework,reject ratio</h5>
+        </div>
+        <div class="widget-content" >
+                        
+              <canvas  id="myChart" width="400" height="400"></canvas>
+
+        </div>
+      </div>
+
+
+    </div>
+
+    <div class="span4">
+        <div class="widget-box">
+        <div class="widget-title bg_lg"><span class="icon"><i class="icon-signal"></i></span>
+          <h5> Ongoing plans' good,rework,reject ratio</h5>
+        </div>
+        <div class="widget-content" >
+                        
+              <canvas  id="myChart2" width="400" height="400"></canvas>
+
+        </div>
+      </div>
+
+
+    </div>
+
+
+
+    </div>
+<!--End-Downtime data-->     
 
     
 
@@ -170,6 +318,10 @@
 function resetMenu() {
    document.gomenu.selector.selectedIndex = 2;
 }
+
+
+
+
 </script>
 </body>
 </html>
