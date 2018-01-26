@@ -45,6 +45,10 @@
       $("#all_downtimes").html(all_downtimes);
     });
 
+     $.get("view_piece_status_under_machine.php",function(all_defects){
+      $("#all_records_under_machine").html(all_defects);
+    });
+
   });
 
 </script>
@@ -108,7 +112,7 @@
     <div class="row-fluid">
       <div class="widget-box">
         <div class="widget-title bg_lg"><span class="icon"><i class="icon-signal"></i></span>
-          <h5>Defect data</h5>
+          <h5>Latest piece out information of styles</h5>
         </div>
         <div class="widget-content" >
           
@@ -121,6 +125,68 @@
       </div>
     </div>
 <!--End-Defect data--> 
+
+<!--Chart data-->    
+    <div class="row-fluid">
+
+    <div class="span6">
+        <div class="widget-box">
+        <div class="widget-title bg_lg"><span class="icon"><i class="icon-signal"></i></span>
+          <h5> Active plans' good,rework,reject ratio</h5>
+        </div>
+        <div class="widget-content" >
+                        
+              <canvas  id="myChart" width="400" height="400"></canvas>
+
+        </div>
+      </div>
+
+
+    </div>
+
+    <div class="span6">
+        <div class="widget-box">
+        <div class="widget-title bg_lg"><span class="icon"><i class="icon-signal"></i></span>
+          <h5> Current styles latest piece information</h5>
+        </div>
+        <div class="widget-content" >
+                        
+              <canvas  id="myChart2" width="400" height="400"></canvas>
+
+        </div>
+      </div>
+
+
+    </div>
+
+
+
+    </div>
+<!--End-Chart data-->  
+
+
+
+<!--Defect data-->    
+    <div class="row-fluid">
+      <div class="widget-box">
+        <div class="widget-title bg_lg"><span class="icon"><i class="icon-signal"></i></span>
+          <h5>Latest piece out data under plan ongoing machines</h5>
+        </div>
+        <div class="widget-content" >
+          <div class="row-fluid" id="all_records_under_machine" >
+      
+      
+          </div>
+             
+          
+        </div>
+      </div>
+    </div>
+
+
+<!--End-Defect data--> 
+
+
     
 <!--Downtime data-->    
     <div class="row-fluid">
@@ -139,49 +205,6 @@
       </div>
     </div>
 <!--End-Downtime data-->  
-
-
-<!--Chart data-->    
-    <div class="row-fluid">
-
-    <div class="span4">
-        <div class="widget-box">
-        <div class="widget-title bg_lg"><span class="icon"><i class="icon-signal"></i></span>
-          <h5> Active plans' good,rework,reject ratio</h5>
-        </div>
-        <div class="widget-content" >
-                        
-              <canvas  id="myChart" width="400" height="400"></canvas>
-
-        </div>
-      </div>
-
-
-    </div>
-
-    <div class="span4">
-        <div class="widget-box">
-        <div class="widget-title bg_lg"><span class="icon"><i class="icon-signal"></i></span>
-          <h5> Ongoing plans' good,rework,reject ratio</h5>
-        </div>
-        <div class="widget-content" >
-                        
-              <canvas  id="myChart2" width="400" height="400"></canvas>
-
-        </div>
-      </div>
-
-
-    </div>
-
-
-
-    </div>
-<!--End-Downtime data-->     
-
-    
-
-  
 
   </div>
 

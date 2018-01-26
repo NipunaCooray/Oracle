@@ -17,6 +17,8 @@
 
 	//Need to get all the data from each style table
 
+	echo "These are the latest piece out information of latest styles <br> <br> ";
+
 	while($row = mysqli_fetch_array($allstyles)) {
 		$styleNumber = $row['styleNumber'];
 		echo "<b>".$styleNumber."</b>";
@@ -26,7 +28,7 @@
 		echo "<hr>";
 		echo "<br>";
 
-		$styleDataQuery = mysqli_query($link,"SELECT * FROM   ".$styleNumber."   ");
+		$styleDataQuery = mysqli_query($link,"SELECT * FROM   ".$styleNumber." ORDER BY id DESC Limit 5  ");
 
 
 		echo '<table class="table table-bordered table-responsive"> ';
