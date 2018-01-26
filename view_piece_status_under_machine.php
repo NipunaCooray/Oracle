@@ -29,7 +29,7 @@
 		echo "<hr>";
 		echo "<br>";
 
-		$machineDataQuery = mysqli_query($link,"SELECT DISTINCT machineNo FROM   ".$styleNumber." ORDER BY machineNo LIMIT 5 ");
+		$machineDataQuery = mysqli_query($link,"SELECT DISTINCT machineNo FROM   ".$styleNumber." Where machineNo IN (SELECT machineNumber from `planningdata` Where orderState ='ongoing') ORDER BY machineNo  ");
 
 		if($machineDataQuery === FALSE) { 
 	    	die(mysqli_error($link)); // TODO: better error handling
@@ -40,7 +40,7 @@
 
 
 
-			$statusQuery = "SELECT id,machineNo,status FROM   ".$styleNumber." Where machineNo='".$machineNumber." ' AND  machineNo IN (SELECT machineNumber from `planningdata` Where orderState ='ongoing')  Order BY id DESC Limit 5 ";
+			$statusQuery = "SELECT id,machineNo,status FROM   ".$styleNumber." Where machineNo='".$machineNumber." ' Order BY id DESC Limit 5 ";
 
 			//echo $statusQuery."<br>";
 
