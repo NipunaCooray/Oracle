@@ -181,12 +181,12 @@
                     </div>
                     
                     
-                    <div class="control-group">
+                   <!--  <div class="control-group">
                       <label class="control-label">Firebase token:</label>
                       <div class="controls">
                         <input type="text" class="span11" placeholder="Firebase token" id="tokenid" name="tokenid" />
                       </div>
-                    </div>
+                    </div> -->
 
   
                     <div class="form-actions">
@@ -207,7 +207,7 @@
                         </div>
 
                         <div id="noValues" class="alert alert-error"> <a class="close" data-dismiss="alert" href="#">×</a>
-                          Need to fill the firebase token id
+                          Need to fill all fields
                         </div>
 
                         
@@ -309,7 +309,7 @@ function resetMenu() {
         $("#btnSave").prop("disabled", true);
 
 
-        if($("#tokenid").val() && $("#imei_number").val() ){
+        if( $("#imei_number").val() ){
 
             $.ajax({
                 type: "POST",
