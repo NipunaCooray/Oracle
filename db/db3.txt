@@ -159,6 +159,7 @@ password VARCHAR(50),
 shift VARCHAR (50),
 userRole VARCHAR (50),
 image_location VARCHAR(100),
+loggedStatus VARCHAR (50),
 PRIMARY KEY (epf_no)
 )Engine=InnoDB;
 

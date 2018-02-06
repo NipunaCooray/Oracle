@@ -49,6 +49,10 @@
       $("#all_records_under_machine").html(all_defects);
     });
 
+    $.get("view_common_defects_of_active_styles.php",function(common_defects){
+      $("#common_defects").html(common_defects);
+    });
+
   });
 
 </script>
@@ -147,11 +151,13 @@
     <div class="span6">
         <div class="widget-box">
         <div class="widget-title bg_lg"><span class="icon"><i class="icon-signal"></i></span>
-          <h5> Current styles latest piece information</h5>
+          <h5> Most common defect under active styles</h5>
         </div>
         <div class="widget-content" >
                         
-              <canvas  id="myChart2" width="400" height="400"></canvas>
+          <div class="row-fluid" id="common_defects" >
+
+          </div>
 
         </div>
       </div>
