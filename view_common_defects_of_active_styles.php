@@ -40,8 +40,8 @@
 		    $getDefectsQuery = $getDefectsQuery.",".$area;
 		}
 
-		$getDefectsQuery = $getDefectsQuery." FROM ".$styleNumber." LIMIT 5";
-		// echo $getDefectsQuery."<br>";
+		$getDefectsQuery = $getDefectsQuery." FROM ".$styleNumber." WHERE status='Rework' OR status='Reject' ORDER BY id DESC LIMIT 5";
+		//echo $getDefectsQuery."<br>";
 
 		$getDefectsResult = mysqli_query($link,$getDefectsQuery) or die(mysqli_error($link));
 
