@@ -38,7 +38,7 @@ if($security_key == $GLOBALS['server_key']){
 		}
 
 
-		$nextPlan=mysqli_query($link,"SELECT * FROM planningdata Where planningdata.orderState='incomplete' and planningdata.machineNumber = '".$machineNumber."' ORDER BY planningdata.orderStart ASC,planningdata.orderEnd ASC LIMIT 1");
+		$nextPlan=mysqli_query($link,"SELECT * FROM planningdata Where planningdata.orderState='incomplete' and planningdata.machineNumber = '".$machineNumber."' ORDER BY planningdata.id LIMIT 1");
 
 		if($nextPlan === FALSE) { 
 	    	die(mysqli_error($link)); // TODO: better error handling
@@ -83,7 +83,7 @@ if($security_key == $GLOBALS['server_key']){
 
 		$result = array();
 
-		$currentPlan=mysqli_query($link,"SELECT * FROM planningdata Where planningdata.orderState='ongoing' and planningdata.machineNumber = '".$machineNumber."' ORDER BY planningdata.orderStart ASC,planningdata.orderEnd ASC LIMIT 1");
+		$currentPlan=mysqli_query($link,"SELECT * FROM planningdata Where planningdata.orderState='ongoing' and planningdata.machineNumber = '".$machineNumber."' ORDER BY planningdata.id LIMIT 1");
 
 		if($currentPlan === FALSE) { 
 	    	die(mysqli_error($link));	
@@ -91,7 +91,7 @@ if($security_key == $GLOBALS['server_key']){
 
 		if (mysqli_num_rows($currentPlan)==0){
 
-			$nextPlan=mysqli_query($link,"SELECT * FROM planningdata Where planningdata.orderState='incomplete' and planningdata.machineNumber = '".$machineNumber."' ORDER BY planningdata.orderStart ASC,planningdata.orderEnd ASC LIMIT 1");
+			$nextPlan=mysqli_query($link,"SELECT * FROM planningdata Where planningdata.orderState='incomplete' and planningdata.machineNumber = '".$machineNumber."' ORDER BY planningdata.id LIMIT 1");
 
 			if($nextPlan === FALSE) { 
 
