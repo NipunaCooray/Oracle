@@ -16,7 +16,7 @@
 	//shift 2 from 7pm-7am
 
 
-    if($security_key == "12345"){
+    if($security_key == $GLOBALS['server_key']){
 
     	//Need to select * the styles
     	$allStyles=mysqli_query($link,"SELECT styleNumber FROM `styledata`");

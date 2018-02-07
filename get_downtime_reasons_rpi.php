@@ -6,7 +6,7 @@ $link=Connection();
 $security_key = isset($_POST['security_key']) ? $_POST['security_key'] : null;
 
 
-if($security_key == "12345"){
+if($security_key == $GLOBALS['server_key']){
 
 	$defect_types=mysqli_query($link,"SELECT downtimeid,description,downtimetype FROM `downtimereason`");
 

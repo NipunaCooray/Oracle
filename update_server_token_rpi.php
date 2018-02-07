@@ -7,7 +7,7 @@ $security_key = isset($_POST['security_key']) ? $_POST['security_key'] : null;
 $imei_number = isset($_POST['imei_number']) ? $_POST['imei_number'] : null;
 $token = isset($_POST['token']) ? $_POST['token'] : null;
 
-if($security_key == "12345"){
+if($security_key == $GLOBALS['server_key']){
 
 	$updateServerTokenQuery = "UPDATE `androidtokens` SET androidtokens.token= '".$token."' WHERE androidtokens.imei_number= '".$imei_number."' " ;
 

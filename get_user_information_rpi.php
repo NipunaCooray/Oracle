@@ -1,14 +1,18 @@
 <?php
+
 include("connect.php");
 
 $link=Connection();
+
+
 
 $security_key = isset($_POST['security_key']) ? $_POST['security_key'] : null;
 $user_epf = isset($_POST['user_epf']) ? $_POST['user_epf'] : null;
 $user_pword = isset($_POST['user_pword']) ? $_POST['user_pword'] : null;
 
 
-if($security_key == "12345"){
+
+if($security_key ==  $GLOBALS['server_key']){
 
 	$user =mysqli_query($link,"SELECT epf_no,team_member_name,shift,userRole,image_location FROM `team_members` WHERE team_members.epf_no='".$user_epf."' AND team_members.password='".$user_pword."'; ");
 

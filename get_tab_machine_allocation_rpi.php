@@ -6,7 +6,7 @@ $link=Connection();
 $security_key = isset($_POST['security_key']) ? $_POST['security_key'] : null;
 $imei_number = isset($_POST['imei_number']) ? $_POST['imei_number'] : null;
 
-if($security_key == "12345"){
+if($security_key == $GLOBALS['server_key']){
 
 	$machine_list=mysqli_query($link,"SELECT machineNumber FROM `tabmachineallocation` WHERE tabmachineallocation.tabid= (SELECT androidtokens.tabid FROM `androidtokens` WHERE androidtokens.imei_number= '".$imei_number."' )  ORDER BY tabmachineallocation.timeadded DESC  ");
 

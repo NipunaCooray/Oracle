@@ -10,6 +10,11 @@ $GLOBALS['database'] = "dboracle";
 //Host URL
 $GLOBALS['URL'] = "http://localhost/Oracle_V2/Oracle/";
 
+//SecurityKey for to secure requests from android application
+$GLOBALS['server_key'] = "12345";
+
+//Error codes
+
 
 
 

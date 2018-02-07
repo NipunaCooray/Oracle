@@ -8,7 +8,7 @@ $machineNumber = isset($_POST['machineNumber']) ? $_POST['machineNumber'] : null
 $planStatus = isset($_POST['planStatus']) ? $_POST['planStatus'] : null;
 
 
-if($security_key == "12345"){
+if($security_key == $GLOBALS['server_key']){
 
 	if($planStatus =="finished"){
 

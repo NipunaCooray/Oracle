@@ -8,7 +8,7 @@ $user_epf = isset($_POST['user_epf']) ? $_POST['user_epf'] : null;
 
 
 
-if($security_key == "12345"){
+if($security_key == $GLOBALS['server_key']){
 	$changeUserLoggedStatusQuery = "UPDATE team_members SET team_members.loggedStatus='loggedout' WHERE team_members.epf_no='".$user_epf." ' ";
 	$changeUserLoggedResult = mysqli_query($link,$changeUserLoggedStatusQuery) or die(mysqli_error($link));
 

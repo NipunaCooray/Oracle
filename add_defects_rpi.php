@@ -1,6 +1,5 @@
 <?php
 
-
 include("connect.php");
 
 //POST request
@@ -29,7 +28,7 @@ if( $_POST ) {
 
 
 
-	if($security_key == "12345"){
+	if($security_key == $GLOBALS['server_key']){
 
 		//Insert data to particular style number table
 		//print_r($defect_list);	

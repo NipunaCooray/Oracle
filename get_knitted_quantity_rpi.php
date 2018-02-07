@@ -7,7 +7,7 @@ $security_key = isset($_POST['security_key']) ? $_POST['security_key'] : null;
 $machine_number = isset($_POST['machine_number']) ? $_POST['machine_number'] : null;
 
 
-if($security_key == "12345"){
+if($security_key == $GLOBALS['server_key']){
 
 	$knitted_quantity=mysqli_query($link,"SELECT knittedQuantity FROM `planningdata` Where planningdata.orderState= 'ongoing' AND planningdata.machineNumber='".$machine_number."' ");
 

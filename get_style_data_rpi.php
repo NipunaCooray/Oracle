@@ -6,7 +6,7 @@ $link=Connection();
 $security_key = isset($_POST['security_key']) ? $_POST['security_key'] : null;
 $styleNumber = isset($_POST['styleNumber']) ? $_POST['styleNumber'] : null;
 
-if($security_key == "12345"){
+if($security_key == $GLOBALS['server_key']){
 
 	$styleData=mysqli_query($link,"SELECT styledata.imageLocation,styledata.areaList FROM `styledata` WHERE styledata.styleNumber= '".$styleNumber."' ");
 
