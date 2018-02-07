@@ -40,7 +40,7 @@
 
 				//echo "Shift 1".PHP_EOL;
 
-				$schemaQuery = "SELECT COLUMN_NAME FROM `INFORMATION_SCHEMA`.`COLUMNS`  WHERE `TABLE_SCHEMA`='dboracle' AND `TABLE_NAME`='".$styleNumber[$counter]."' " ;
+				$schemaQuery = "SELECT COLUMN_NAME FROM `INFORMATION_SCHEMA`.`COLUMNS`  WHERE `TABLE_SCHEMA`=' ".$GLOBALS['database']."' AND `TABLE_NAME`='".$styleNumber[$counter]."' " ;
 
 				//echo $schemaQuery. PHP_EOL ;
 
@@ -90,7 +90,7 @@
 
 				//echo "Shift 2".PHP_EOL;
 
-				$schemaQuery = "SELECT COLUMN_NAME FROM `INFORMATION_SCHEMA`.`COLUMNS`  WHERE `TABLE_SCHEMA`='dboracle' AND `TABLE_NAME`='".$styleNumber[$counter]."' " ;
+				$schemaQuery = "SELECT COLUMN_NAME FROM `INFORMATION_SCHEMA`.`COLUMNS`  WHERE `TABLE_SCHEMA`='".$GLOBALS['database']."' AND `TABLE_NAME`='".$styleNumber[$counter]."' " ;
 
 				//echo $schemaQuery. PHP_EOL ;
 

@@ -1,5 +1,7 @@
 <?php
 
+include("globals.php");
+
 /*
 
 $cars = array
@@ -26,7 +28,7 @@ $data_string = json_encode($data);
 
 //Change address when pushing into server
                                                                                                                      
-$ch = curl_init('http://localhost/Oracle_V2/Oracle/notify_piece_out_api.php');    
+$ch = curl_init($GLOBALS['URL']."notify_piece_out_api.php");    
 //$ch = curl_init('http://kodams.xyz/notify_piece_out_api.php');                                                                   
 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);                                                                  
