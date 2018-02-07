@@ -1,10 +1,17 @@
 <?php
 
+include("globals.php");
+
 function Connection(){
-	$server="localhost";
-	$user="root";
-	$pass="";
-	$db="dboracle";
+	// $server="localhost";
+	// $user="root";
+	// $pass="";
+	// $db="dboracle";
+
+	$server = $GLOBALS['server'];
+	$user = $GLOBALS['user'];
+	$pass=$GLOBALS['password'];
+	$db=$GLOBALS['database'];
    	
 	$connection = mysqli_connect($server,$user,$pass,$db);
 
