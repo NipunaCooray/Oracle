@@ -33,6 +33,11 @@ if($security_key ==  $GLOBALS['server_key']){
 	if (mysqli_num_rows($user)==0) {
 		echo "Invalid epf or password";
 	}else{
+
+		echo json_encode(array("result"=>$result));
+
+		/*
+
 		//Need to check whether the user is already logged in
 
 		$getUserLoggedStatusQuery = "SELECT team_members.loggedStatus FROM `team_members` WHERE  team_members.epf_no='".$user_epf." ' ";
@@ -49,6 +54,7 @@ if($security_key ==  $GLOBALS['server_key']){
 		if($userLoggedStatus=="loggedin"){
 			echo "User already logged in";
 		}else if($userLoggedStatus=="loggedout"){
+
 			//Change user loggged in status in DB
 			$changeUserLoggedStatusQuery = "UPDATE team_members SET team_members.loggedStatus='loggedin' WHERE team_members.epf_no='".$user_epf." ' ";
 			$changeUserLoggedResult = mysqli_query($link,$changeUserLoggedStatusQuery) or die(mysqli_error($link));
@@ -61,7 +67,10 @@ if($security_key ==  $GLOBALS['server_key']){
 
 			echo json_encode(array("result"=>$result));
 
-			}
+		}
+
+
+		*/
 		
 	}
 
