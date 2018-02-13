@@ -31,24 +31,22 @@ if(!is_array($json_obj)){
     throw new Exception('Received content contained invalid JSON!');
 }
 
-// print_r($json_obj);
-// echo "<br>";
+//print_r($json_obj);
 
 //Saving records from bot to the DB
 
 foreach($json_obj as $record) {
-   //print_r($record);
-
+   // print_r($item);
    print $record->machineNumber;
    echo " | ";
    print $record->Timestamp;
    echo "<br>";
 
-    $savePieceOutQuery = "INSERT INTO `piece_out_notifications` (`machineNumber`, `timestamp`) VALUES ('".$record->machineNumber."','".$record->Timestamp."')"; 
+    $saveMachineDownQuery = "INSERT INTO `machine_down_notifications` (`machineNumber`, `timestamp`) VALUES ('".$record->machineNumber."','".$record->Timestamp."')"; 
 
     
 
-	$result = mysqli_query($link,$savePieceOutQuery) or die(mysqli_error($link));
+	$result = mysqli_query($link,$saveMachineDownQuery) or die(mysqli_error($link));
 
 	if ($result==1){
 		$response = "Successfully saved";
@@ -56,11 +54,15 @@ foreach($json_obj as $record) {
 		echo $result;
 	}
 
+	
+
+	
+
 }
 
 //Get all notifications that are "not_sent" and send tham 
 
-$unsentNotificationQuery = "SELECT id,machineNumber,timestamp FROM `piece_out_notifications` WHERE piece_out_notifications.status='not_sent' ";
+$unsentNotificationQuery = "SELECT id,machineNumber,timestamp FROM `machine_down_notifications` WHERE machine_down_notifications.status='not_sent' ";
 
 $unsentNotifications = mysqli_query($link,$unsentNotificationQuery) or die(mysqli_error($link));
 
@@ -98,7 +100,7 @@ while($row =  mysqli_fetch_array($unsentNotifications)) {
 	print_r($tokens);
 	echo "<br>";
 
-	$message = array("notificationId" => $id,"machineNumber" => $machineNumber ,"notificationType" => "piece_out","timestamp" => $timestamp);
+	$message = array("notificationId" => $id,"machineNumber" => $machineNumber ,"notificationType" => "downtime","timestamp" => $timestamp);
 
 	echo "Message to be sent : ";
 	print_r($message);
@@ -119,7 +121,7 @@ while($row =  mysqli_fetch_array($unsentNotifications)) {
 
 
 	if($firebaseSuccessValue==1){
-		$updateNotificationStatusQuery = "UPDATE `piece_out_notifications` SET piece_out_notifications.status= 'sent' WHERE piece_out_notifications.id= '".$id."' " ;
+		$updateNotificationStatusQuery = "UPDATE `machine_down_notifications` SET machine_down_notifications.status= 'sent' WHERE machine_down_notifications.id= '".$id."' " ;
 	}
 
 	echo $updateNotificationStatusQuery."<br>";
@@ -134,7 +136,6 @@ while($row =  mysqli_fetch_array($unsentNotifications)) {
 
 
 }
-
 
 
 mysqli_close($link);

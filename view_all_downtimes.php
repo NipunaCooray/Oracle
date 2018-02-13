@@ -19,10 +19,10 @@
 	echo '<table class="table table-bordered"> ';
 	echo "<tr>
 	<th>ID</th>
-	<th>TypeID</th>
-	<th>Machine no</th>
-	<th>StopTime</th>
-	<th>StartTime</th>
+	<th>Machine No</th>
+	<th>Stopped Time</th>
+	<th>Started Time</th>
+	<th>Duration (Minutes)</th>
 	<th>Reason</th>
 
 	</tr>";
@@ -34,10 +34,10 @@
 	while($row = mysqli_fetch_array($alldowntimes)) {
 	    echo "<tr>";
 	    echo "<td>" . $row['downtimeid'] . "</td>";
-	    echo "<td>" . $row['downtimetypeid'] . "</td>";
-	    echo "<td>" . $row['machineno'] . "</td>";
-	    echo "<td>" . $row['stoptime'] . "</td>";
-	    echo "<td>" . $row['starttime'] . "</td>";
+	    echo "<td>" . $row['machineNumber'] . "</td>";
+	    echo "<td>" . $row['stopTime'] . "</td>";
+	    echo "<td>" . $row['startTime'] . "</td>";
+	    echo "<td>" . $row['duration'] . "</td>";
 	    echo "<td>" . $row['reason'] . "</td>";
 	    echo "</tr>";
 	}

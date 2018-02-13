@@ -61,11 +61,13 @@ Downtimes includes downtime transaction records received from R-Pi */
 
 CREATE TABLE downtimes(
 downtimeid int NOT NULL AUTO_INCREMENT,
-downtimetypeid int,
-machineno VARCHAR (50),
-stoptime TIMESTAMP,
-starttime TIMESTAMP,
+machineNumber VARCHAR (50),
+stopTime TIMESTAMP,
+startTime TIMESTAMP,
+duration int,
 reason VARCHAR(100),
+type VARCHAR (50),
+remarks VARCHAR (200),
 PRIMARY KEY (downtimeid)
 )Engine=InnoDB;
 
@@ -166,6 +168,16 @@ PRIMARY KEY (epf_no)
 /* DROP TABLE piece_out_notifications; */
 
 CREATE TABLE piece_out_notifications(
+id int NOT NULL AUTO_INCREMENT,
+machineNumber VARCHAR(50),
+timestamp TIMESTAMP NOT NULL DEFAULT 0,
+status VARCHAR(50) DEFAULT 'not_sent',
+PRIMARY KEY (id)
+)Engine=InnoDB;
+
+/* DROP TABLE machine_down_notifications; */
+
+CREATE TABLE machine_down_notifications(
 id int NOT NULL AUTO_INCREMENT,
 machineNumber VARCHAR(50),
 timestamp TIMESTAMP NOT NULL DEFAULT 0,
