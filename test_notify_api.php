@@ -18,13 +18,13 @@ $json_str = file_get_contents('php://input');
 # Get as an object
 $json_obj = json_decode($json_str,false);
  
-//If json_decode failed, the JSON is invalid.
-if(!is_array($json_obj)){
-    throw new Exception('Received content contained invalid JSON!');
-}
+// //If json_decode failed, the JSON is invalid.
+// if(!is_array($json_obj)){
+//     throw new Exception('Received content contained invalid JSON!');
+// }
 
 print_r($json_obj);
-echo "<br>";
+
 
 
 ?>
