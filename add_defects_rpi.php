@@ -26,6 +26,10 @@ if( $_POST ) {
 	//Notification id will be taken to update particular notification's status
 	$notificationId = isset($_POST['notificationId']) ? $_POST['notificationId'] : null;
 
+	//user_epf need to saved in the record
+	$user_epf = isset($_POST['user_epf']) ? $_POST['user_epf'] : null;
+
+
 
 
 	if($security_key == $GLOBALS['server_key']){

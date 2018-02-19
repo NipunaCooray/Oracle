@@ -19,7 +19,7 @@ $cars = array
 
 $data = array
   (
-  array("machineNumber" => "A01","Timestamp" => "2018-01-10 16:23:19"),
+  array("machineNumber" => "A01","Timestamp" => "2018-01-11 16:23:19"),
   array("machineNumber" =>"A02","Timestamp" =>"2018-01-11 16:23:19")
   );
 

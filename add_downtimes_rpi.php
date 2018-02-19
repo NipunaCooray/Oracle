@@ -15,14 +15,13 @@ $type = isset($_POST['type']) ? $_POST['type'] : null;
 $remarks = isset($_POST['remarks']) ? $_POST['remarks'] : null;
 
 
+
 if($security_key == $GLOBALS['server_key']){
 
 	$query = "INSERT INTO `downtimes` ( `machineNumber`,`stopTime`,`startTime`,`duration`,`reason`,`type`,`remarks`) 
 		VALUES ('".$machineNumber."','".$stopTime."','".$startTime."','".$duration."','".$reason."','".$type."','".$remarks."')"; 
 		
 	$result = mysqli_query($link,$query) or die(mysqli_error($link));
-
-
 
 
 	if ($result==1){

@@ -17,10 +17,18 @@ $cars = array
 
 */
 
+date_default_timezone_set('Asia/Colombo');
+
+//$currentTime = date("H:i:s");
+$currentTime =time();
+
+$machineList = array("A01", "A02", "A03","A04", "A05");
+
+$randomMachine = mt_rand (0,4);
+
 $data = array
   (
-  array("machineNumber" => "A01","Timestamp" => "2018-01-10 16:23:19"),
-  array("machineNumber" =>"A02","Timestamp" =>"2018-01-11 16:23:19")
+  array("machineNumber" => $machineList[$randomMachine],"Timestamp" => $currentTime)
   );
 
 //$data = array("machineNumber" => "A01", "Timestamp" => "2018-01-10 16:23:19");                                                                    
